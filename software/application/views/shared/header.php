@@ -47,7 +47,7 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?php echo URL; ?>">
                         <img src="application/libs//img/logo.png" alt="logo"/>
                     </a>
                     <button
@@ -68,7 +68,7 @@
                     >
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="<?php echo URL; ?>">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about.html">About</a>
