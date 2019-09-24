@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>dizzi</title>
-    <link rel="icon" href="img/favicon.png" />
+    <link rel="icon" href="application/libs/img/favicon.png"/>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="application/libs/css/bootstrap.min.css"/>
     <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="application/libs/css/animate.css"/>
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="application/libs/css/owl.carousel.min.css"/>
     <!-- themify CSS -->
-    <link rel="stylesheet" href="css/themify-icons.css" />
+    <link rel="stylesheet" href="application/libs/css/themify-icons.css"/>
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="application/libs/css/flaticon.css"/>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="application/libs/css/magnific-popup.css"/>
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="application/libs/css/slick.css"/>
     <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="application/libs/css/style.css"/>
 </head>
 
 <body>
@@ -35,23 +35,23 @@
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="img/logo.png" alt="logo" />
+                        <img src="application/libs//img/logo.png" alt="logo"/>
                     </a>
                     <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+                            class="navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
                     >
                         <span class="ti-menu"></span>
                     </button>
 
                     <div
-                        class="collapse navbar-collapse main-menu-item justify-content-center"
-                        id="navbarSupportedContent"
+                            class="collapse navbar-collapse main-menu-item justify-content-center"
+                            id="navbarSupportedContent"
                     >
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item">
@@ -68,13 +68,13 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a
-                                    class="nav-link dropdown-toggle"
-                                    href="blog.html"
-                                    id="navbarDropdown"
-                                    role="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
+                                        class="nav-link dropdown-toggle"
+                                        href="blog.html"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
                                 >
                                     Pages
                                 </a>

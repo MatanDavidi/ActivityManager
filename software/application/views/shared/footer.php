@@ -5,7 +5,7 @@
             <div class="col-sm-6 col-md-3 col-xl-3">
                 <div class="single-footer-widget footer_1">
                     <a href="index.html">
-                        <img src="img/footer_logo.png" alt=""/>
+                        <img src="application/libs//img/footer_logo.png" alt=""/>
                     </a>
                     <ul>
                         <li><a href="#">Work</a></li>
@@ -91,25 +91,25 @@
             </div>
         </div>
     </div>
-    <img src="img/animate_icon/icon_2.png" class="animation_icon_2" alt="">
+    <img src="application/libs//img/animate_icon/icon_2.png" class="animation_icon_2" alt="">
 
 </footer>
 <!-- footer part end-->
 
 <!-- jquery plugins here-->
-<script src="js/jquery-1.12.1.min.js"></script>
+<script src="application/libs//js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
-<script src="js/popper.min.js"></script>
+<script src="application/libs//js/popper.min.js"></script>
 <!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src="application/libs//js/bootstrap.min.js"></script>
 <!-- easing js -->
-<script src="js/jquery.magnific-popup.js"></script>
+<script src="application/libs//js/jquery.magnific-popup.js"></script>
 <!-- isotope js -->
-<script src="js/isotope.pkgd.min.js"></script>
+<script src="application/libs//js/isotope.pkgd.min.js"></script>
 <!-- particles js -->
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
+<script src="application/libs//js/owl.carousel.min.js"></script>
+<script src="application/libs//js/jquery.nice-select.min.js"></script>
 <!-- custom js -->
-<script src="js/custom.js"></script>
+<script src="application/libs//js/custom.js"></script>
 </body>
 </html>
