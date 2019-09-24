@@ -105,10 +105,7 @@
                         </ul>
                     </div>
                     <div class="social_icon d-none d-lg-block">
-                        <a href="#"><i class="ti-facebook"></i></a>
-                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                        <a href="#"><i class="ti-dribbble"></i></a>
-                        <a href="#"><i class="ti-instagram"></i></a>
+                        <a href="https://github.com/MatanDavidi"><i class="ti-github"></i></a>
                     </div>
                 </nav>
             </div>
