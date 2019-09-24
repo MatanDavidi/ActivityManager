@@ -12,32 +12,32 @@
     <!--    Thanks to icontree for the favicon     -->
     <!--    https://www.iconfinder.com/icontree    -->
     <!--    Also, thanks to https://realfavicongenerator.net/ for the favicon generation and implementation code    -->
-    <link rel="apple-touch-icon" sizes="180x180" href="application/libs/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="application/libs/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="application/libs/img/favicon-16x16.png">
-    <link rel="manifest" href="application/libs/img/site.webmanifest">
-    <link rel="mask-icon" href="application/libs/img/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="application/libs/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/application/libs/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/application/libs/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/application/libs/img/favicon-16x16.png">
+    <link rel="manifest" href="/application/libs/img/site.webmanifest">
+    <link rel="mask-icon" href="/application/libs/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/application/libs/img/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="application/libs/img/browserconfig.xml">
+    <meta name="msapplication-config" content="/application/libs/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="application/libs/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/application/libs/css/bootstrap.min.css"/>
     <!-- animate CSS -->
-    <link rel="stylesheet" href="application/libs/css/animate.css"/>
+    <link rel="stylesheet" href="/application/libs/css/animate.css"/>
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="application/libs/css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="/application/libs/css/owl.carousel.min.css"/>
     <!-- themify CSS -->
-    <link rel="stylesheet" href="application/libs/css/themify-icons.css"/>
+    <link rel="stylesheet" href="/application/libs/css/themify-icons.css"/>
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="application/libs/css/flaticon.css"/>
+    <link rel="stylesheet" href="/application/libs/css/flaticon.css"/>
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="application/libs/css/magnific-popup.css"/>
+    <link rel="stylesheet" href="/application/libs/css/magnific-popup.css"/>
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="application/libs/css/slick.css"/>
+    <link rel="stylesheet" href="/application/libs/css/slick.css"/>
     <!-- style CSS -->
-    <link rel="stylesheet" href="application/libs/css/style.css"/>
+    <link rel="stylesheet" href="/application/libs/css/style.css"/>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="<?php echo URL; ?>">
-                        <img src="application/libs//img/logo.png" alt="logo"/>
+                        <img src="/application/libs/img/logo.png" alt="logo"/>
                     </a>
                     <button
                             class="navbar-toggler"
@@ -105,7 +105,7 @@
                         </ul>
                     </div>
                     <div class="social_icon d-none d-lg-block">
-                        <a href="https://github.com/MatanDavidi"><i class="ti-github"></i></a>
+                        <a href="https://www.github.com/MatanDavidi"><i class="ti-github"></i></a>
                     </div>
                 </nav>
             </div>
