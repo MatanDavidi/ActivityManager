@@ -7,8 +7,20 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="icon" href="application/libs/img/favicon.png"/>
     <title>ActivityManager - Gestisci le ore di lavoro della tua azienda in modo facile e veloce</title>
+
+    <!--    Thanks to icontree for the favicon     -->
+    <!--    https://www.iconfinder.com/icontree    -->
+    <!--    Also, thanks to https://realfavicongenerator.net/ for the favicon generation and implementation code    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="application/libs/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="application/libs/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="application/libs/img/favicon-16x16.png">
+    <link rel="manifest" href="application/libs/img/site.webmanifest">
+    <link rel="mask-icon" href="application/libs/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="application/libs/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="application/libs/img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="application/libs/css/bootstrap.min.css"/>
