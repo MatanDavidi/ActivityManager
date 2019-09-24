@@ -7,7 +7,6 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>dizzi</title>
     <link rel="icon" href="application/libs/img/favicon.png"/>
     <title>ActivityManager - Gestisci le ore di lavoro della tua azienda in modo facile e veloce</title>
 
