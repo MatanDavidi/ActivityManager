@@ -9,6 +9,8 @@
     />
     <title>dizzi</title>
     <link rel="icon" href="application/libs/img/favicon.png"/>
+    <title>ActivityManager - Gestisci le ore di lavoro della tua azienda in modo facile e veloce</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="application/libs/css/bootstrap.min.css"/>
     <!-- animate CSS -->
