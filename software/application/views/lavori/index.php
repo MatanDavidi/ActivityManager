@@ -22,21 +22,21 @@
             <i class="ti-plus"></i> NUOVA RISORSA
         </a>
     </div>
-    <div class="table border border-dark rounded">
+    <div class="row border border-dark rounded">
         <div class="col">
-            <p>yea boi</p>
+            <p>lavoro 1</p>
         </div>
         <div class="col">
-            <p>yea boi</p>
+            <p>lavoro 1</p>
         </div>
         <div class="col">
-            <p>yea boi</p>
+            <p>lavoro 1</p>
         </div>
         <div class="col">
-            <p>yea boi</p>
+            <p>lavoro 1</p>
         </div>
         <div class="col">
-            <p>yea boi</p>
+            <p>lavoro 1</p>
         </div>
     </div>
 </div>
