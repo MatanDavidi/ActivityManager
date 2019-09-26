@@ -24,7 +24,7 @@ class HomeController
         } else {
 
             //TODO: Add login logic
-            require_once "./lavoriController.php";
+            require_once "application/controller/lavoriController.php";
             $lavoriController = new LavoriController();
             $lavoriController->index();
 
