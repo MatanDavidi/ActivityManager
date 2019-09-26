@@ -17,8 +17,8 @@ class Controller
         //Thanks to Robert Pitt for answering the question at https://stackoverflow.com/questions/4979614/redirection-php-inside-mvc
 
         //Costruisci l'URL della richiesta con l'URL di base dell'applicazione,
-        // il nome del controller, quello del metodo e gli argomenti.
-        $location = URL . "/" . $controller . "/" . $action . "/" . implode("/", $parameters);
+        //il nome del controller, quello del metodo e gli argomenti.
+        $location = URL . $controller . "/" . $action . "/" . implode("/", $parameters);
 
         //Manda il browser a quell'URL
         header("Location: $location");
