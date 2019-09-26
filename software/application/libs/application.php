@@ -11,6 +11,11 @@ class Application
     public function __construct()
     {
         $this->splitUrl(); //funzione da creare per dividere l'URL
+        if (!file_exists('./application/controller/' . $this->url_controller . '.php') &&
+            file_exists('./application/controller/' . $this->url_controller . 'Controller.php')) {
+            $this->url_controller .= "Controller";
+        }
+
         if (file_exists('./application/controller/' . $this->url_controller . '.php')) {
             require './application/controller/' . $this->url_controller . '.php';
             $this->url_controller = new $this->url_controller();
