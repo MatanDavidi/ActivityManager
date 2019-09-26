@@ -23,7 +23,10 @@ class HomeController
 
         } else {
 
-            echo "Login attempt";
+            //TODO: Add login logic
+            require_once "./lavoriController.php";
+            $lavoriController = new LavoriController();
+            $lavoriController->index();
 
         }
 
