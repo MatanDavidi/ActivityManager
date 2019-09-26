@@ -13,7 +13,7 @@
 </section>
 <!-- breadcrumb start-->
 
-<div class="container">
+<div class="container mt-5 mb-4">
     <div class="row align-items-center">
         <div class="col-lg-12">
             <form action="<?php echo URL; ?>home/login" method="post">
@@ -30,7 +30,6 @@
                 </div>
                 <input class="btn_1 btn-block" type="submit" value="Accedi">
             </form>
-
         </div>
     </div>
 </div>
