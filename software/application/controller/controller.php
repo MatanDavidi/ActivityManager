@@ -14,6 +14,7 @@ class Controller
      */
     public function redirect(string $controller, string $action = "index", Array $parameters = Array())
     {
+        //Thanks to Robert Pitt for answering the question at https://stackoverflow.com/questions/4979614/redirection-php-inside-mvc
 
         //Costruisci l'URL della richiesta con l'URL di base dell'applicazione,
         // il nome del controller, quello del metodo e gli argomenti.
@@ -21,7 +22,7 @@ class Controller
 
         //Manda il browser a quell'URL
         header("Location: $location");
-        
+
         //Ferma l'esecuzione del codice per evitare risultati inattesi
         die();
 
