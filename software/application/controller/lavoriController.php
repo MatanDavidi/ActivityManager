@@ -1,7 +1,7 @@
 <?php
 
 
-class LavoriController
+class LavoriController extends Controller
 {
 
     public function index()
