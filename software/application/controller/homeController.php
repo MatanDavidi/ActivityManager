@@ -24,9 +24,9 @@ class HomeController extends Controller
         } else {
 
             //TODO: Add login logic
-            require_once "application/controller/lavoriController.php";
-            $lavoriController = new LavoriController();
-            $lavoriController->index();
+
+            $this->redirect("lavori");
+            exit;
 
         }
 
