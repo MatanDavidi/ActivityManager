@@ -12,4 +12,13 @@ class LavoriController extends Controller
         require "application/views/shared/footer.php";
     }
 
+    public function dettagli(string $nome)
+    {
+
+        require "application/views/shared/header.php";
+        require "application/views/lavori/dettagli.php";
+        require "application/views/shared/footer.php";
+
+    }
+
 }
