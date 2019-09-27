@@ -46,25 +46,25 @@
             </div>
         </div>
     </div>
-    <img src="/application/libs//img/animate_icon/icon_2.png" class="animation_icon_2" alt="">
+    <img src="/application/libs/img/animate_icon/icon_2.png" class="animation_icon_2" alt="">
 
 </footer>
 <!-- footer part end-->
 
 <!-- jquery plugins here-->
-<script src="/application/libs//js/jquery-1.12.1.min.js"></script>
+<script src="/application/libs/js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
-<script src="/application/libs//js/popper.min.js"></script>
+<script src="/application/libs/js/popper.min.js"></script>
 <!-- bootstrap js -->
-<script src="/application/libs//js/bootstrap.min.js"></script>
+<script src="/application/libs/js/bootstrap.min.js"></script>
 <!-- easing js -->
-<script src="/application/libs//js/jquery.magnific-popup.js"></script>
+<script src="/application/libs/js/jquery.magnific-popup.js"></script>
 <!-- isotope js -->
-<script src="/application/libs//js/isotope.pkgd.min.js"></script>
+<script src="/application/libs/js/isotope.pkgd.min.js"></script>
 <!-- particles js -->
-<script src="/application/libs//js/owl.carousel.min.js"></script>
-<script src="/application/libs//js/jquery.nice-select.min.js"></script>
+<script src="/application/libs/js/owl.carousel.min.js"></script>
+<script src="/application/libs/js/jquery.nice-select.min.js"></script>
 <!-- custom js -->
-<script src="/application/libs//js/custom.js"></script>
+<script src="/application/libs/js/custom.js"></script>
 </body>
 </html>
