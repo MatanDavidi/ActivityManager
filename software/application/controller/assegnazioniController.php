@@ -1,7 +1,8 @@
 <?php
 
+require_once "application/controller/controller.php";
 
-class AssegnazioniController
+class AssegnazioniController extends Controller
 {
 
 }
