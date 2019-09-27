@@ -4,8 +4,8 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6">
                 <div class="breadcrumb_tittle">
-                    <p>Mostra i lavori in corso</p>
-                    <h2>Lavori</h2>
+                    <p>Assegna una risorsa a un lavoro</p>
+                    <h2>Assegnazione</h2>
                 </div>
             </div>
         </div>
