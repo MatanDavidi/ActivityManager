@@ -25,7 +25,7 @@
             <p>Numero di risorse assegnate: xx</p>
             <p>Costo complessivo: xxx.xx CHF</p>
         </div>
-        <a href="#" class="mt-auto ml-auto btn btn-success">
+        <a href="<?php echo URL . "assegnazioni"; ?>" class="mt-auto ml-auto btn btn-success">
             <i class="ti-plus"></i> ASSEGNA RISORSA
         </a>
         <div class="col-12 mt-3">
