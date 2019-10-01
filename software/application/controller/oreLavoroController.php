@@ -1,7 +1,8 @@
 <?php
 
+require_once "application/controller/controller.php";
 
-class OreLavoroController
+class OreLavoroController extends Controller
 {
 
     public function index()
