@@ -36,7 +36,7 @@
             </a>
         </div>
         <div class="col-12 mt-3">
-            <table class="table">
+            <table class="table table-responsive-sm">
                 <thead>
                 <tr>
                     <th scope="col">Nome risorsa</th>
