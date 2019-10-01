@@ -14,4 +14,12 @@ class AssegnazioniController extends Controller
 
     }
 
+    public function assegna()
+    {
+
+        //TODO: Add database logic
+        $this->redirect("lavori", "dettagli", Array(0));
+
+    }
+
 }
