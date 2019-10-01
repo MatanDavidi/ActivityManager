@@ -4,7 +4,7 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6">
                 <div class="breadcrumb_tittle">
-                    <p>Mostra i dettagli del lavoro 0</p>
+                    <p>Mostra i dettagli del lavoro 'Lavoro 0'</p>
                     <h2>Dettagli</h2>
                 </div>
             </div>
