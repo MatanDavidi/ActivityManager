@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="lavoro">Lavoro:</label>
                 <select class="wide disabled" name="lavoro" id="lavoro">
-                    <option value="Lavoro 1" selected>Lavoro 0</option>
+                    <option value="Lavoro 0" selected>Lavoro 0</option>
                 </select>
             </div>
             <div class="form-group">
