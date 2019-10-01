@@ -13,5 +13,12 @@ class OreLavoroController extends Controller
         require "application/views/shared/footer.php";
 
     }
-    
+
+    public function registra()
+    {
+
+        $this->redirect("lavori", "dettagli", Array(0));
+
+    }
+
 }
