@@ -25,9 +25,16 @@
             <p>Numero di risorse assegnate: xx</p>
             <p>Costo complessivo: xxx.xx CHF</p>
         </div>
-        <a href="<?php echo URL . "assegnazioni"; ?>" class="mt-auto ml-auto btn btn-success">
-            <i class="ti-plus"></i> ASSEGNA RISORSA
-        </a>
+        <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
+            <a href="<?php echo URL . "assegnazioni"; ?>"
+               class="btn btn-success btn-block">
+                <i class="ti-plus"></i> ASSEGNA RISORSA
+            </a>
+            <a href="<?php echo URL . "oreLavoro"; ?>"
+               class="btn btn-success btn-block">
+                <i class="ti-time"></i> REGISTRA LAVORO
+            </a>
+        </div>
         <div class="col-12 mt-3">
             <table class="table">
                 <thead>
