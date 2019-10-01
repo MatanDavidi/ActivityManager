@@ -4,8 +4,8 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6">
                 <div class="breadcrumb_tittle">
-                    <p>Mostra i lavori in corso</p>
-                    <h2>Lavori</h2>
+                    <p>Registra le ore di lavoro per l'attività 'Lavoro 0'</p>
+                    <h2>Ore lavoro</h2>
                 </div>
             </div>
         </div>
