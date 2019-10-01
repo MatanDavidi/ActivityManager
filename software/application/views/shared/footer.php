@@ -46,7 +46,6 @@
             </div>
         </div>
     </div>
-    <img src="/application/libs/img/animate_icon/icon_2.png" class="animation_icon_2" alt="">
 
 </footer>
 <!-- footer part end-->
