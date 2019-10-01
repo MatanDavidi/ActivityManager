@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="/application/libs/css/magnific-popup.css"/>
     <!-- swiper CSS -->
     <link rel="stylesheet" href="/application/libs/css/slick.css"/>
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="/application/libs/css/nice-select.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="/application/libs/css/style.css"/>
 </head>
