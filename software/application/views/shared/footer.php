@@ -57,8 +57,10 @@
 <script src="/application/libs/js/isotope.pkgd.min.js"></script>
 <!-- particles js -->
 <script src="/application/libs/js/owl.carousel.min.js"></script>
+<!--jquery.nice-select js-->
 <script src="/application/libs/js/jquery.nice-select.min.js"></script>
 <!-- custom js -->
 <script src="/application/libs/js/custom.js"></script>
+
 </body>
 </html>
