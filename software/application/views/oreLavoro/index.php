@@ -45,7 +45,7 @@
             </div>
             <div class="col-xs-12 col-lg-6 px-0">
                 <button class="btn btn-success btn-block" type="submit">
-                    <i class="ti-pencil"></i> REGISTRA
+                    <i class="ti-write"></i> REGISTRA
                 </button>
             </div>
         </div>
