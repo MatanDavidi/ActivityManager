@@ -14,6 +14,11 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
+    <div class="row col-xs-12 col-lg-4 mb-1 ml-0">
+        <a href="<?php echo URL . "lavori"; ?>" class="btn btn-danger btn-block">
+            <i class="ti-arrow-left"></i> TORNA ALLA LISTA DEI LAVORI
+        </a>
+    </div>
     <div class="row border border-dark rounded p-3">
         <div class="col-12">
             <h1 class="text-center">Lavoro 0</h1>
