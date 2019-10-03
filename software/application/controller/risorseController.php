@@ -1,7 +1,8 @@
 <?php
 
+require_once "application/controller/controller.php";
 
-class RisorseController
+class RisorseController extends Controller
 {
 
     public function index()
