@@ -6622,3 +6622,12 @@ h6 {
 }
 
 /*# sourceMappingURL=../css/style.map */
+
+.activity-table:hover p {
+
+  z-index: 1;
+  color: #495057;
+  text-decoration: none;
+  background-color: #f8f9fa;
+
+}
