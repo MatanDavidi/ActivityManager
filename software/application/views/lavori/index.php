@@ -18,8 +18,8 @@
         <a href="<?php echo URL; ?>lavori/nuovo" class="col-sm-3 mb-2 btn btn-success">
             <i class="ti-plus"></i> NUOVO LAVORO
         </a>
-        <a href="<?php echo URL; ?>risorse" class="col-sm-3 mb-2 ml-auto btn btn-success">
-            <i class="ti-plus"></i> GESTISCI RISORSE
+        <a href="<?php echo URL; ?>risorse" class="col-sm-3 mb-2 ml-auto btn btn-danger">
+            <i class="ti-user"></i> GESTISCI RISORSE
         </a>
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
