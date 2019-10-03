@@ -17,13 +17,13 @@
     <form action="<?php echo URL . "oreLavoro/registra"; ?>" method="post">
         <div class="form-group">
             <label for="lavoro">Lavoro:</label>
-            <select class="wide disabled" name="lavoro" id="lavoro">
+            <select class="wide disabled" name="lavoro" id="lavoro" required>
                 <option value="Lavoro 0" selected>Lavoro 0</option>
             </select>
         </div>
         <div class="form-group">
             <label for="risorsa">Risorsa:</label>
-            <select class="wide" name="risorsa" id="risorsa">
+            <select class="wide" name="risorsa" id="risorsa" required>
                 <option value="Roberto Gervasoni">Roberto Gervasoni</option>
                 <option value="Franco Rezzonico">Franco Rezzonico</option>
             </select>
