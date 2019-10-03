@@ -21,4 +21,21 @@ class LavoriController extends Controller
 
     }
 
+    public function nuovo()
+    {
+
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+            require "application/views/shared/header.php";
+            require "application/views/lavori/nuovo.php";
+            require "application/views/shared/footer.php";
+
+        } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            //TODO: Add database logic
+
+        }
+
+    }
+
 }
