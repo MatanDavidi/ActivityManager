@@ -23,59 +23,59 @@
         </a>
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 1
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 1</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 2
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 2</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 3
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 3</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 4
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 4</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 5
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 5</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
-        <div class="col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="list-group-item list-group-item-action">
-                Lavoro 6
+        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+            <a href="<?php echo URL . "lavori/dettagli/0"; ?>">
+                <p class="list-group-item list-group-item-action">Lavoro 6</p>
+                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
+                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
+                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
+                <p class="list-group-item">Collaboratori assegnati: xx</p>
             </a>
-            <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-            <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-            <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-            <p class="list-group-item">Collaboratori assegnati: xx</p>
         </div>
     </div>
 </div>
