@@ -4,9 +4,8 @@
         <div class="row justify-content-between">
             <div class="col-sm-12 col-md-12 col-xl-12">
                 <div class="single-footer-widget footer_1">
-                    <a href="index.html">
+                    <a>
                         <h6>Creato da</h6>
-
                     </a>
                     <ul>
                         <li><a>Matan Davidi</a></li>
@@ -15,13 +14,9 @@
                     </ul>
                     <div class="social_icon">
                         <a href="https://github.com/MatanDavidi"><i class="ti-github"></i></a>
-
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
     <div class="container-fluid">
