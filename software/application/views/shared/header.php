@@ -40,6 +40,9 @@
     <link rel="stylesheet" href="/application/libs/css/nice-select.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="/application/libs/css/style.css"/>
+
+    <!-- jquery here-->
+    <script src="/application/libs/js/jquery-1.12.1.min.js"></script>
 </head>
 
 <body>

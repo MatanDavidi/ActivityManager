@@ -46,7 +46,6 @@
 <!-- footer part end-->
 
 <!-- jquery plugins here-->
-<script src="/application/libs/js/jquery-1.12.1.min.js"></script>
 <!-- popper js -->
 <script src="/application/libs/js/popper.min.js"></script>
 <!-- bootstrap js -->
