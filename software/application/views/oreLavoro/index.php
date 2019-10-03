@@ -37,6 +37,17 @@
             <input class="form-control" type="number" name="numeroOre" id="numeroOre"
                    min="1" required>
         </div>
-        <input class="btn btn-success btn-block" type="submit" value="REGISTRA">
+        <div class="row col-12 mx-0 px-0 mt-1">
+            <div class="col-xs-12 col-lg-6 px-0">
+                <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="btn btn-danger btn-block">
+                    <i class="ti-close"></i> ANNULLA
+                </a>
+            </div>
+            <div class="col-xs-12 col-lg-6 px-0">
+                <button class="btn btn-success btn-block" type="submit">
+                    <i class="ti-pencil"></i> REGISTRA
+                </button>
+            </div>
+        </div>
     </form>
 </div>
