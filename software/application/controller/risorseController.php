@@ -24,4 +24,22 @@ class RisorseController extends Controller
 
     }
 
+    public function aggiungi()
+    {
+
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+            require "application/views/shared/header.php";
+            require "application/views/risorse/aggiungi.php";
+            require "application/views/shared/footer.php";
+
+        } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            //TODO: Add database logic
+            $this->redirect("risorse");
+
+        }
+
+    }
+
 }
