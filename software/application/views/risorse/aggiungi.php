@@ -27,7 +27,7 @@
             <label for="password">Password:</label>
             <input class="form-control" type="password" name="password" id="password">
         </div>
-        <div class="form-group">
+        <div id="ruolo" class="form-group">
             <label for="ruolo">
                 Ruolo: <span class="text-danger">(obbligatorio se il campo 'password' è stato riempito)</span>
             </label>
