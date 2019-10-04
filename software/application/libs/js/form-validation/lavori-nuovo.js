@@ -3,19 +3,30 @@ $(document).ready(() => {
     $("form").validate({
         rules: {
             nome: {
-                required: true
+                required: true,
+                maxlength: {
+                    param: 255
+                }
             },
             data_inizio: {
                 required: true
             },
             data_consegna: {
-                required: true
+                required: true,
+                min: () => {
+                    return $("#data_inizio").val();
+                }
             },
             ore: {
-                required: true
+                required: true,
+                min: {
+                    param: 1
+                }
             },
             note: {
-
+                maxlength: {
+                    param: 255
+                }
             }
         }
     });
