@@ -57,3 +57,4 @@
     </form>
 </div>
 
+<script src="/application/libs/js/form-validation/risorse-aggiungi.js"></script>
