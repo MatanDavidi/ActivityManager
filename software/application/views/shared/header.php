@@ -43,6 +43,8 @@
 
     <!-- jquery here-->
     <script src="/application/libs/js/jquery-1.12.1.min.js"></script>
+    <!-- jquery.validate js -->
+    <script src="/application/libs/js/jquery.validate.min.js"></script>
 </head>
 
 <body>
