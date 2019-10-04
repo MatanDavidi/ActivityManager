@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="costo">Costo all'ora: <span class="text-danger">*</span></label>
-            <input class="form-control" type="number" step="0.05" name="costo" id="costo" required>
+            <input class="form-control" type="number" step="0.05" name="costo" id="costo" min="0" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
