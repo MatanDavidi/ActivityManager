@@ -15,17 +15,13 @@
 
 <div class="container mt-5 mb-4">
     <div class="row">
-        <div class="col-xs-12 col-sm-3 mt-auto mb-2">
-            <a href="<?php echo URL; ?>lavori" class="btn btn-info btn-block">
-                <i class="ti-agenda"></i> GESTISCI LAVORI
-            </a>
-        </div>
-        <div class="col-xs-12 col-sm-3 mt-auto ml-auto mb-2">
-            <a href="<?php echo URL; ?>risorse/aggiungi"
-               class="btn btn-success btn-block">
-                <i class="ti-plus"></i> REGISTRA RISORSA
-            </a>
-        </div>
+        <a href="<?php echo URL; ?>lavori" class="col-sm-3 mb-2 btn btn-info">
+            <i class="ti-agenda"></i> GESTISCI LAVORI
+        </a>
+        <a href="<?php echo URL; ?>risorse/aggiungi"
+           class="col-sm-3 ml-auto mb-2 btn btn-success">
+            <i class="ti-plus"></i> REGISTRA RISORSA
+        </a>
     </div>
     <div class="row">
         <p class="text-info mt-auto">Numero di risorse registrate: xx</p>
