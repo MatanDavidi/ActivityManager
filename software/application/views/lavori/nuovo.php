@@ -49,3 +49,5 @@
         </div>
     </form>
 </div>
+
+<script src="/application/libs/js/form-validation/lavori-nuovo.js"></script>
