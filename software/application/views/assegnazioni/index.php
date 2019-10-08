@@ -20,6 +20,7 @@
             <select class="wide disabled" name="lavoro" id="lavoro" required>
                 <option value="Lavoro 0" selected>Lavoro 0</option>
             </select>
+            <div class="error-container"></div>
         </div>
         <div id="risorsaSelect" class="form-group">
             <label for="risorsa">Risorsa:</label>
@@ -28,6 +29,7 @@
                 <option value="Roberto Gervasoni">Roberto Gervasoni</option>
                 <option value="Franco Rezzonico">Franco Rezzonico</option>
             </select>
+            <div class="error-container"></div>
         </div>
         <div class="row col-12 mx-0 px-0 mt-5">
             <div class="col-xs-12 col-lg-6 px-0">
