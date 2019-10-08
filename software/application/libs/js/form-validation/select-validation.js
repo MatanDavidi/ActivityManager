@@ -8,10 +8,10 @@ class SelectValidation {
 
     constructor(selectIDs) {
         this.selectIDs = selectIDs;
-        this.getOriginalValues();
+        this.getSelectValues();
     }
 
-    getOriginalValues() {
+    getSelectValues() {
 
         if (this.originalOptionsValues.length < this.selectIDs.length) {
 
