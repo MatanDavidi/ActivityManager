@@ -6,6 +6,8 @@ class SelectValidation {
     /**
      * Gli identificatori univoci dei select che si vuole validare.
      * Non devono necessariamente essere valori dell'attributo 'id' di un tag HTML, basta che siano univoci.
+     * Esempio:
+     * ["#select1", ".container select[name='select2']"]
      * @type {Array}
      */
     selectIDs = [];
@@ -13,13 +15,21 @@ class SelectValidation {
     /**
      * Un array contenente tutti i valori che erano selezionati al caricamento della pagina
      * nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
+     * Esempio:
+     * ["Select1Default", "select_2_default", "--- SCEGLI ---"]
      * @type {Array}
      */
     originalSelectsValues = [];
 
     /**
-     * Un array contenente tutti i valori di tutte le opzioni che erano disponibili al caricamento della pagina
-     * nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
+     * Un array bidimensionale contenente tutti i valori di tutte le opzioni che erano disponibili al caricamento della
+     * pagina nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
+     * Esempio:
+     * [
+     *  ["Select1Default", "Select1Value1", "Select1Value2"],
+     *  ["select_2_default", "select_2_value_1", "select_2_value_2"]
+     *  ["--- SCEGLI ---", "Bill Gates", "Steve Jobs"]
+     * ]
      * @type {Array}
      */
     originalOptionsValues = [];
