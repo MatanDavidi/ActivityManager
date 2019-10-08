@@ -24,7 +24,7 @@
         </div>
         <div id="risorsaSelect" class="form-group">
             <label for="risorsa">Risorsa:</label>
-            <select class="wide" name="risorsa" id="risorsa" required>
+            <select class="wide" name="risorsa" id="risorsa">
                 <option value="">-- SCEGLI --</option>
                 <option value="Roberto Gervasoni">Roberto Gervasoni</option>
                 <option value="Franco Rezzonico">Franco Rezzonico</option>
