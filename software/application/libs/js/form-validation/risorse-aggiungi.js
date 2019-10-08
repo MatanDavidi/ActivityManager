@@ -29,7 +29,7 @@ $(document).ready(() => {
                 maxlength: "Inserire un nome più corto di 256 caratteri"
             },
             costo: {
-                required: "Inserire un costo",
+                required: "Inserire un costo valido",
                 min: "Inserire un costo maggiore o uguale a 0"
             },
             password: {
