@@ -45,3 +45,5 @@
         </div>
     </form>
 </div>
+
+<script src="/application/libs/js/form-validation/assegnazioni-assegna.js"></script>
