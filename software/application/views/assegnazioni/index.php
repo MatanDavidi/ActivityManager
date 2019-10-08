@@ -15,13 +15,13 @@
 
 <div class="container mt-5 mb-4">
     <form action="<?php echo URL . "assegnazioni/assegna"; ?>" method="post">
-        <div class="form-group">
+        <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
             <select class="wide disabled" name="lavoro" id="lavoro" required>
                 <option value="Lavoro 0" selected>Lavoro 0</option>
             </select>
         </div>
-        <div class="form-group">
+        <div id="risorsaSelect" class="form-group">
             <label for="risorsa">Risorsa:</label>
             <select class="wide" name="risorsa" id="risorsa" required>
                 <option value="">-- SCEGLI --</option>
