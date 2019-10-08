@@ -21,7 +21,7 @@ $(document).ready(() => {
             //Se è stato trovato un messaggio d'errore, lo si elimina perché il valore del lavoro è valido
             if (lavoroErrorLabel.length > 0) {
 
-                lavoroErrorLabel.remove();
+                lavoroErrorLabel.hide();
 
             }
 
@@ -36,6 +36,10 @@ $(document).ready(() => {
 
                 $("#lavoroSelect").find(".error-container").append(errorLabel);
 
+            } else {
+
+                lavoroErrorLabel.show();
+
             }
 
         }
@@ -49,7 +53,7 @@ $(document).ready(() => {
             //Se viene trovato un messaggio di errore, rimuovilo
             if (risorsaErrorLabel.length > 0) {
 
-                risorsaErrorLabel.remove();
+                risorsaErrorLabel.hide();
 
             }
 
@@ -63,6 +67,10 @@ $(document).ready(() => {
                 let errorLabel = $("<label for='risorsa' class='error'>" + risorsaErrorMessage + "</label>");
 
                 $("#risorsaSelect").find(".error-container").append(errorLabel);
+
+            } else {
+
+                risorsaErrorLabel.show();
 
             }
 
