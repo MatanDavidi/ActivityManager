@@ -47,3 +47,4 @@
 </div>
 
 <script src="/application/libs/js/form-validation/assegnazioni-assegna.js"></script>
+<script src="/application/libs/js/form-validation/select-validation.js"></script>
