@@ -55,3 +55,4 @@
 </div>
 
 <script src="/application/libs/js/form-validation/oreLavoro-registra.js"></script>
+<script src="/application/libs/js/form-validation/select-validation.js"></script>
