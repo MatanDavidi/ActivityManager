@@ -51,3 +51,5 @@
         </div>
     </form>
 </div>
+
+<script src="/application/libs/js/form-validation/oreLavoro-registra.js"></script>
