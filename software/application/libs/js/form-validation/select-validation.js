@@ -1,16 +1,43 @@
+/**
+ * Permette di validare uno o più select presenti all'interno di una pagina HTML.
+ */
 class SelectValidation {
 
+    /**
+     * Gli identificatori univoci dei select che si vuole validare.
+     * Non devono necessariamente essere valori dell'attributo 'id' di un tag HTML, basta che siano univoci.
+     * @type {Array}
+     */
     selectIDs = [];
 
+    /**
+     * Un array contenente tutti i valori che erano selezionati al caricamento della pagina
+     * nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
+     * @type {Array}
+     */
     originalSelectsValues = [];
 
+    /**
+     * Un array contenente tutti i valori di tutte le opzioni che erano disponibili al caricamento della pagina
+     * nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
+     * @type {Array}
+     */
     originalOptionsValues = [];
 
+    /**
+     * Istanzia nuovi oggetti di tipo SelectValidation.
+     * @param selectIDs Un array contenente un identificatore univoco di un select per ogni elemento al suo interno.
+     * Questi identificatori non devono necessariamente essere valori dell'attributo 'id' di un tag HTML, basta che siano univoci.
+     */
     constructor(selectIDs) {
         this.selectIDs = selectIDs;
         this.getSelectValues();
     }
 
+    /**
+     * Assegna i valori che sono presenti sulla pagina al momento della chiamata al metodo
+     * agli array 'originalSelectsValue' e 'originalOptionsValues'.
+     */
     getSelectValues() {
 
         if (this.originalOptionsValues.length < this.selectIDs.length) {
@@ -34,6 +61,11 @@ class SelectValidation {
 
     }
 
+    /**
+     * Verifica che tutti i valori selezionati di tutti i select siano presenti all'interno delle rispettive opzioni.
+     * @returns {boolean} true se il valore selezionato di tutti i select specificati da un identificatore presente
+     * all'interno del campo 'selectIDs' è presente nelle proprie opzioni, false altrimenti.
+     */
     areValuesInOptions() {
 
         let isValid = true;
@@ -67,6 +99,13 @@ class SelectValidation {
 
     }
 
+    /**
+     * Verifica che il valore selezionato di un singolo select sia presente all'interno delle sue opzioni.
+     * @param selectId L'identificatore univoco corrispondente al select che si vuole validare. Deve essere presente
+     * all'interno del campo 'selectIDs'. Questo identificatore non deve necessariamente corrispondere al valore
+     * dell'attributo 'id' del tag HTML, basta che sia univoco.
+     * @returns {boolean} true se il valore selezionato del select identificato dall'identificatore passato come parametro è presente all'interno delle opzioni disponibile dello stesso select.
+     */
     isValueInOptions(selectId) {
 
         if (this.selectIDs.indexOf(selectId) > -1) {
@@ -103,6 +142,12 @@ class SelectValidation {
 
     }
 
+    /**
+     * Controlla se il valore corrente selezionato di un select sia uguale a quello che era selezionato inizialmente.
+     * @param selectID L'identificatore univoco del select che si vuole controllare.
+     * Non deve necessariamente essere un valore per l'attributo 'id', basta che sia univoco.
+     * @returns {boolean} true se il valore corrente è uguale a quello che aveva quando è stata caricata la pagina.
+     */
     isValueSameAsOriginal(selectID) {
 
         if (this.selectIDs.indexOf(selectID) > -1) {
