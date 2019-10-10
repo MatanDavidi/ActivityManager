@@ -12,7 +12,7 @@ class Model
     /**
      * @var PDO La connessione al database.
      */
-    private $database;
+    protected $database;
 
     /**
      * Costruttore per la classe Model
@@ -24,7 +24,7 @@ class Model
         $this->database = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";", DB_USERNAME, DB_PASSWORD);
     }
 
-    public function getAllModels(): Array
+    protected function getAllModels(): Array
     {
 
         $statement = $this->database->prepare("SELECT * FROM $this->tableName");
