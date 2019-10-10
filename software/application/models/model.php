@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Classe Model
+ */
 class Model
 {
 
