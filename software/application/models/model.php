@@ -28,7 +28,8 @@ class Model
     {
 
         $statement = $this->database->prepare("SELECT * FROM $this->tableName");
-        return $statement->fetchAll(PDO::FETCH_NUM);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
