@@ -15,7 +15,7 @@
 
 <div class="container mt-5 mb-4">
     <div class="row col-xs-12 col-lg-4 mb-1 ml-0">
-        <a href="<?php echo URL . "lavori"; ?>" class="btn btn-danger btn-block">
+        <a href="<?php echo URL . "activities"; ?>" class="btn btn-danger btn-block">
             <i class="ti-arrow-left"></i> TORNA ALLA LISTA DEI LAVORI
         </a>
     </div>
@@ -31,11 +31,11 @@
             <p>Costo complessivo: xxx.xx CHF</p>
         </div>
         <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
-            <a href="<?php echo URL . "assegnazioni"; ?>"
+            <a href="<?php echo URL . "assignments"; ?>"
                class="btn btn-success btn-block">
                 <i class="ti-plus"></i> ASSEGNA RISORSA
             </a>
-            <a href="<?php echo URL . "oreLavoro"; ?>"
+            <a href="<?php echo URL . "workHours"; ?>"
                class="btn btn-success btn-block">
                 <i class="ti-time"></i> REGISTRA LAVORO
             </a>

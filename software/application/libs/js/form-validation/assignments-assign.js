@@ -1,48 +1,16 @@
 $(document).ready(() => {
 
-    const todayDate = new Date();
-
-    let form = $("form");
-
     let selectIDs = ["#lavoro", "#risorsa"];
     let validator = new SelectValidation(selectIDs);
 
-    form.validate({
-        rules: {
-            data: {
-                required: true,
-                max: todayDate.toISOString()
-            },
-            numeroOre: {
-                required: true,
-                min:
-                    1
-            }
-        },
-        messages: {
-            data: {
-                required: "Inserire una data valida",
-                max:
-                    "La data di lavoro non può essere maggiore di quella di oggi. " +
-                    "Inserire un valore minore o uguale a " + todayDate.toLocaleDateString()
-            }
-            ,
-            numeroOre: {
-                required: "Inserire un numero di ore valido",
-                min:
-                    "Inserire un numero di ore maggiore di 0"
-            }
-        }
-    });
+    $("form").on("submit", () => {
 
-    form.on("submit", () => {
-
-        //Il valore del lavoro è valido quando è uguale a quello passato dal controller,
-        // quindi non deve essere cambiato dal caricamento al submit
+        //The value of the work is valid when it is the same as the one passed by
+        // the controller, so it must not be changed from the page's loading to submit
         let isLavoroValid = validator.isValueSameAsOriginal(selectIDs[0]);
 
-        // Variabile booleana che indica se il valore che verrà passato per la registrazione
-        // è contenuto all'interno delle opzioni originali definite dopo il caricamento della pagina
+        // Boolean variable that indicates if the value that will be passed for
+        // the recording is contained within the original options defined after loading the page
         let isRisorsaValid = validator.isValueInOptions(selectIDs[1]) &&
             $("#risorsa").val().trim().length > 0;
 
@@ -50,17 +18,17 @@ $(document).ready(() => {
 
         if (isLavoroValid) {
 
-            //Se è stato trovato un messaggio d'errore, lo si elimina perché il valore del lavoro è valido
+            //If an error message has been found, it is hidden because the value of the work is valid
             if (lavoroErrorLabel.length > 0) {
 
                 lavoroErrorLabel.hide();
 
             }
 
-            //Se il valore non è valido, aggiungi un messaggio di errore
+            //If the value is invalid, add an error message
         } else {
 
-            //Se non viene trovato un messaggio di errore, aggiungilo
+            //If an error message can not be found, it is added
             if (lavoroErrorLabel.length === 0) {
 
                 let lavoroErrorMessage = "Selezionare una lavoro valido";
@@ -70,6 +38,7 @@ $(document).ready(() => {
 
             } else {
 
+                //Otherwise it is simply shown
                 lavoroErrorLabel.show();
 
             }

@@ -14,7 +14,7 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <form action="<?php echo URL . "assegnazioni/assegna"; ?>" method="post">
+    <form action="<?php echo URL . "assignments/assegna"; ?>" method="post">
         <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
             <select class="wide disabled" name="lavoro" id="lavoro" required>
@@ -33,7 +33,7 @@
         </div>
         <div class="row col-12 mx-0 px-0 mt-5">
             <div class="col-xs-12 col-lg-6 px-0">
-                <a href="<?php echo URL . "lavori/dettagli/0"; ?>" class="btn btn-danger btn-block">
+                <a href="<?php echo URL . "activities/dettagli/0"; ?>" class="btn btn-danger btn-block">
                     <i class="ti-close"></i> ANNULLA
                 </a>
             </div>
@@ -46,5 +46,5 @@
     </form>
 </div>
 
-<script src="/application/libs/js/form-validation/assegnazioni-assegna.js"></script>
+<script src="/application/libs/js/form-validation/assignments-assign.js"></script>
 <script src="/application/libs/js/form-validation/select-validation.js"></script>

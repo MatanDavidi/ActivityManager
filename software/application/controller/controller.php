@@ -5,25 +5,25 @@ class Controller
 {
 
     /**
-     * Permette di redirezionare a un'azione di una classe controller da ovunque nel codice di un controller.
-     * @param string $controller Il nome del controller che deve gestire la richiesta.
-     * @param string $action Il nome dell'azione (metodo) al quale si vuole mandare.
-     * Questo parametro è opzionale e ha un valore di default di "index".
-     * @param array $parameters Eventuali parametri che si vuole passare all'azione, sotto forma di array.
-     * Questo parametro è opzionale e ha un valore di default di un array vuoto, che significa che non vengono passati parametri.
+     * Allows to redirect to an action of a controller class from anywhere in a controller's code.
+     * @param string $controller The name of the controller that has to handle the request.
+     * @param string $action The name of the action (function) to which you want to redirect.
+     * This parameter is optional and has a default value of "index".
+     * @param array $parameters Any parameters you want to send to the action as an array.
+     * This parameter is optional and has a default value of an empty array, which means that no parameters are passed.
      */
     public function redirect(string $controller, string $action = "index", Array $parameters = Array())
     {
         //Thanks to Robert Pitt for answering the question at https://stackoverflow.com/questions/4979614/redirection-php-inside-mvc
 
-        //Costruisci l'URL della richiesta con l'URL di base dell'applicazione,
-        //il nome del controller, quello del metodo e gli argomenti.
+        //Build the request URL with the base URL of the application,
+        //the name of the controller, that of the function and its arguments.
         $location = URL . $controller . "/" . $action . "/" . implode("/", $parameters);
 
-        //Manda il browser a quell'URL
+        //Redirect that browser to that URL
         header("Location: $location");
 
-        //Ferma l'esecuzione del codice per evitare risultati inattesi
+        //Stop the code's execution to prevent unwanted results
         die();
 
     }

@@ -26,7 +26,7 @@ class HomeController extends Controller
 
             //TODO: Add login logic
 
-            $this->redirect("lavori");
+            $this->redirect("activities");
             exit;
 
         }

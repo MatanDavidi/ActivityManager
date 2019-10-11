@@ -38,22 +38,22 @@ $(document).ready(() => {
         }
     });
 
-    //Variabile che dice se il ruolo è stato validato con esito negativo (quindi contiene già un messaggio di errore)
+    //Variable that defines if the role has been validated with negative result (therefore it already contains an error message)
     var isRuoloValid = true;
 
     form.on("submit", (evt) => {
 
-        //Ottieni il valore del radio button selezionato:
-        //Prendi tutti i radio button del ruolo
+        //Get the value of the selected radio button:
+        //Get all the radio buttons related to the role
         let ruoloRadios = $("input[name='ruolo']");
-        //Istanzia la variabile che conterrà il valore
+        //Instantiate the variable that will contain the value of the role
         let ruoloInput = "";
 
         for (let i = 0; i < ruoloRadios.length; ++i) {
 
             let ruoloRadio = ruoloRadios[i];
 
-            //Cicla tutti i radio button e trova quello selezionato
+            //Loop through each radio button in search of the selected one
             if (ruoloRadio.checked) {
 
                 ruoloInput = ruoloRadio.value.trim();
@@ -63,16 +63,16 @@ $(document).ready(() => {
         }
 
         let radioDiv = $("#ruolo");
-        //Controlla se la password è stata assegnata
+        //Check if the password has been set
         if ($("#password").val().trim().length > 0) {
 
-            //Se è stato selezionato un valore per il ruolo
+            //If a value for the role has been selected
             if (ruoloInput.length > 0) {
 
-                //Se c'è un messaggio di errore perché il ruolo non è valido
+                //If there's an error message because the role is invalid
                 if (!isRuoloValid) {
 
-                    //Rimuovilo
+                    //Remove it
                     radioDiv.find("label.error").remove();
 
                 }
@@ -80,13 +80,13 @@ $(document).ready(() => {
 
             } else {
 
-                //Non è stato assegnato un valore!
-                //Aggiungi un messaggio di errore
+                //A value has not been set!
+                //Add an error message for the role
                 let ruoloMsg = "Specificare un ruolo per l'utente";
                 let errorLabel = $("<label for=\"ruolo\" class=\"error\">" + ruoloMsg + "</label>");
                 radioDiv.append(errorLabel);
 
-                //NON SUBMITTARE IL FORM
+                //DO NOT SUBMIT THE FORM!
                 evt.preventDefault();
                 isRuoloValid = false;
 
@@ -94,12 +94,13 @@ $(document).ready(() => {
 
         } else {
 
-            //La password non è stata specificata: nessun controllo
+            //The password has not been specified: no controls here
             isRuoloValid = true;
 
         }
 
-        //Concretamente, ritorna falso solo se il form non è valido, questo evita che il form submitti e cambi pagina
+        //Concretely, it only returns false if the form is invalid,
+        //this prevents the form from submitting and changing pages
         return isRuoloValid;
 
     });

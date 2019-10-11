@@ -15,7 +15,7 @@
 
 <div class="container mt-5 mb-4">
     <div class="row col-xs-12 col-lg-4 mb-1 ml-0">
-        <a href="<?php echo URL . "risorse"; ?>" class="btn btn-danger btn-block">
+        <a href="<?php echo URL . "resources"; ?>" class="btn btn-danger btn-block">
             <i class="ti-arrow-left"></i> TORNA ALLA LISTA DELLE RISORSE
         </a>
     </div>

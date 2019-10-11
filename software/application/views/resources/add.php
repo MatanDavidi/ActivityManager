@@ -14,7 +14,7 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <form action="<?php echo URL . "risorse/nuovo"; ?>" method="post">
+    <form action="<?php echo URL . "resources/nuovo"; ?>" method="post">
         <div class="form-group">
             <label for="nome">Nome: <span class="text-danger">*</span></label>
             <input class="form-control" type="text" name="nome" id="nome" required>
@@ -44,7 +44,7 @@
         </div>
         <div class="row col-12 mx-0 px-0 mt-5">
             <div class="col-xs-12 col-lg-6 px-0">
-                <a href="<?php echo URL . "risorse"; ?>" class="btn btn-danger btn-block">
+                <a href="<?php echo URL . "resources"; ?>" class="btn btn-danger btn-block">
                     <i class="ti-close"></i> ANNULLA
                 </a>
             </div>
@@ -57,4 +57,4 @@
     </form>
 </div>
 
-<script src="/application/libs/js/form-validation/risorse-aggiungi.js"></script>
+<script src="/application/libs/js/form-validation/resources-add.js"></script>

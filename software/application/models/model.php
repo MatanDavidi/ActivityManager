@@ -1,24 +1,24 @@
 <?php
 
 /**
- * Classe Model
+ * Class Model
  */
 class Model
 {
 
     /**
-     * @var string Il nome della tabella da gestire con quest'istanza di Model.
+     * @var string The name of the table to manage with this instance of class Model.
      */
     private $tableName;
 
     /**
-     * @var PDO La connessione al database.
+     * @var PDO The connection to the database.
      */
     protected $database;
 
     /**
-     * Costruttore per la classe Model
-     * @param $tableName string Il nome della tabella da gestire con quest'istanza di Model.
+     * Constructor function for class Model.
+     * @param $tableName string The name of the table to manage with this instance of class Model.
      */
     public function __construct(string $tableName)
     {
@@ -26,6 +26,10 @@ class Model
         $this->database = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";", DB_USERNAME, DB_PASSWORD);
     }
 
+    /**
+     * Gets all data from the table whose name corresponds to the value of field 'tableName'.
+     * @return array An associative array containing all data that was read from the database.
+     */
     protected function getAllModels(): Array
     {
 

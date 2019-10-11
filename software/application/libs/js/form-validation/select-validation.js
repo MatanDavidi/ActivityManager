@@ -1,43 +1,43 @@
 /**
- * Permette di validare uno o più select presenti all'interno di una pagina HTML.
+ * Allows you to validate one or more selections within an HTML page.
  */
 class SelectValidation {
 
     /**
-     * Gli identificatori univoci dei select che si vuole validare.
-     * Non devono necessariamente essere valori dell'attributo 'id' di un tag HTML, basta che siano univoci.
-     * Esempio:
+     * The unique identifiers of the selects you want to validate.
+     * They don't have to be values of the 'id' attribute of an HTML tag, as long as they are unique.
+     * Example:
      * ["#select1", ".container select[name='select2']"]
      * @type {Array}
      */
     selectIDs = [];
 
     /**
-     * Un array contenente tutti i valori che erano selezionati al caricamento della pagina
-     * nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
-     * Esempio:
-     * ["Select1Default", "select_2_default", "--- SCEGLI ---"]
+     * An array containing all the values that were selected in the selections defined
+     * by the identifiers contained within 'selectIDs' the moment the page was loaded.
+     * Example:
+     * ["Select1Default", "select_2_default", "--- CHOOSE ---"]
      * @type {Array}
      */
     originalSelectsValues = [];
 
     /**
-     * Un array bidimensionale contenente tutti i valori di tutte le opzioni che erano disponibili al caricamento della
-     * pagina nei select definiti dagli identificatori contenuti all'interno di 'selectIDs'.
-     * Esempio:
+     * A two-dimensional array containing all the values of all the options that were available in the
+     * selects defined by the identifiers contained within 'selectIDs' the moment the page was loaded.
+     * Example:
      * [
      *  ["Select1Default", "Select1Value1", "Select1Value2"],
      *  ["select_2_default", "select_2_value_1", "select_2_value_2"]
-     *  ["--- SCEGLI ---", "Bill Gates", "Steve Jobs"]
+     *  ["--- CHOOSE ---", "Bill Gates", "Steve Jobs"]
      * ]
      * @type {Array}
      */
     originalOptionsValues = [];
 
     /**
-     * Istanzia nuovi oggetti di tipo SelectValidation.
-     * @param selectIDs Un array contenente un identificatore univoco di un select per ogni elemento al suo interno.
-     * Questi identificatori non devono necessariamente essere valori dell'attributo 'id' di un tag HTML, basta che siano univoci.
+     * Instantiates new objects of type SelectValidation.
+     * @param selectIDs An array containing a unique identifier of a select for each element within it.
+     * These identifiers do not necessarily have to be values of the 'id' attribute of an HTML tag, as long as they are unique.
      */
     constructor(selectIDs) {
         this.selectIDs = selectIDs;
@@ -45,8 +45,8 @@ class SelectValidation {
     }
 
     /**
-     * Assegna i valori che sono presenti sulla pagina al momento della chiamata al metodo
-     * agli array 'originalSelectsValue' e 'originalOptionsValues'.
+     * Assigns the values that are present on the page at the time of calling the
+     * function to the 'originalSelectsValue' and 'originalOptionsValues' arrays.
      */
     getSelectValues() {
 
@@ -72,9 +72,9 @@ class SelectValidation {
     }
 
     /**
-     * Verifica che tutti i valori selezionati di tutti i select siano presenti all'interno delle rispettive opzioni.
-     * @returns {boolean} true se il valore selezionato di tutti i select specificati da un identificatore presente
-     * all'interno del campo 'selectIDs' è presente nelle proprie opzioni, false altrimenti.
+     * Verifies that all selected values of all selections are present within their respective options.
+     * @returns {boolean} true if the selected value of all selections specified by an identifier contained
+     * in the 'selectIDs' field is present in its options, false otherwise.
      */
     areValuesInOptions() {
 
@@ -110,11 +110,12 @@ class SelectValidation {
     }
 
     /**
-     * Verifica che il valore selezionato di un singolo select sia presente all'interno delle sue opzioni.
-     * @param selectId L'identificatore univoco corrispondente al select che si vuole validare. Deve essere presente
-     * all'interno del campo 'selectIDs'. Questo identificatore non deve necessariamente corrispondere al valore
-     * dell'attributo 'id' del tag HTML, basta che sia univoco.
-     * @returns {boolean} true se il valore selezionato del select identificato dall'identificatore passato come parametro è presente all'interno delle opzioni disponibile dello stesso select.
+     * Verifies that the selected value of a single select is present within its options.
+     * @param selectId The unique identifier corresponding to the select you want to validate.
+     * It must be contained within the 'selectIDs' field. This identifier does not necessarily
+     * have to correspond to the value of the 'id' attribute of an HTML tag, as long as it is unique.
+     * @returns {boolean} true if the selected value of the select input identified
+     * by the identifier specified as parameter is present within its available options.
      */
     isValueInOptions(selectId) {
 
@@ -153,10 +154,10 @@ class SelectValidation {
     }
 
     /**
-     * Controlla se il valore corrente selezionato di un select sia uguale a quello che era selezionato inizialmente.
-     * @param selectID L'identificatore univoco del select che si vuole controllare.
-     * Non deve necessariamente essere un valore per l'attributo 'id', basta che sia univoco.
-     * @returns {boolean} true se il valore corrente è uguale a quello che aveva quando è stata caricata la pagina.
+     * Checks whether the current selected value of a select is the same as that which was selected when the page was loaded.
+     * @param selectID The unique identifier of the select you want to check.
+     * It doesn't have to be a value of the 'id' attribute of an HTML tag, as long as it is unique.
+     * @returns {boolean} true if the current value is the same as it was when the page was loaded.
      */
     isValueSameAsOriginal(selectID) {
 
