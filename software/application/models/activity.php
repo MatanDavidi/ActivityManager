@@ -153,4 +153,14 @@ class Activity extends Model
 
     }
 
+    /**
+     * Deletes a record from the MySQL table 'lavoro' where the name is equal to the name of an object of type Activity.
+     * @param Activity $activity The data of the activity to delete.
+     * @return bool true if the deletion is successful, false otherwise.
+     */
+    public function deleteActivity(Activity $activity): bool
+    {
+        return $this->deleteModel([$activity->name]);
+    }
+
 }
