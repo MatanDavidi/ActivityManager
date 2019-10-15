@@ -122,9 +122,11 @@ class Activity extends Model
     public function addActivity(Activity $activity): bool
     {
 
+        //Save starting and delivery dates into variables
         $startDate = $activity->startDate;
         $deliveryDate = $activity->deliveryDate;
 
+        //Convert starting and delivery dates to strings
         $startDateString = $startDate->format("Y-m-d");
         $deliveryDateString = $deliveryDate->format("Y-m-d");
 
