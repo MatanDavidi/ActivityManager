@@ -82,7 +82,7 @@ class Model
      * @param array $keys The table's primary key values for a row.
      * @return bool true if the deletion is successful, false otherwise.
      */
-    public function deleteModel(array $keys): bool
+    protected function deleteModel(array $keys): bool
     {
         //Write the beginning of the query to delete from a table in the database
         $query = "DELETE FROM $this->tableName WHERE ";
