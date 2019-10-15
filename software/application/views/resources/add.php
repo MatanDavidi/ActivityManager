@@ -14,7 +14,7 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <form action="<?php echo URL . "resources/nuovo"; ?>" method="post">
+    <form action="<?php echo URL . "resources/add"; ?>" method="post">
         <div class="form-group">
             <label for="nome">Nome: <span class="text-danger">*</span></label>
             <input class="form-control" type="text" name="nome" id="nome" required>

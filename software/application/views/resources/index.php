@@ -15,10 +15,10 @@
 
 <div class="container mt-5 mb-4">
     <div class="row">
-        <a href="<?php echo URL; ?>lavori" class="col-sm-3 mb-2 btn btn-info">
+        <a href="<?php echo URL; ?>activities" class="col-sm-3 mb-2 btn btn-info">
             <i class="ti-agenda"></i> GESTISCI LAVORI
         </a>
-        <a href="<?php echo URL; ?>risorse/aggiungi"
+        <a href="<?php echo URL; ?>resources/add"
            class="col-sm-3 ml-auto mb-2 btn btn-success">
             <i class="ti-plus"></i> REGISTRA RISORSA
         </a>
@@ -28,13 +28,13 @@
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
         <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "resources/dettagli/0"; ?>">
+            <a href="<?php echo URL . "resources/details/0"; ?>">
                 <p class="list-group-item list-group-item-action">Roberto Gervasoni</p>
                 <p class="list-group-item">Costo all'ora: xxx.xx</p>
             </a>
         </div>
         <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "resources/dettagli/0"; ?>">
+            <a href="<?php echo URL . "resources/details/0"; ?>">
                 <p class="list-group-item list-group-item-action">Franco Rezzonico</p>
                 <p class="list-group-item">Costo all'ora: xxx.xx</p>
             </a>

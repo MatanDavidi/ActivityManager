@@ -32,17 +32,17 @@
             <li class="list-group-item">
                 <p>Attività assegnate:</p>
             </li>
-            <a href="<?php echo URL; ?>lavori/dettagli/lavoro 1">
+            <a href="<?php echo URL; ?>activities/details/lavoro 1">
                 <li class="list-group-item list-group-item-action">
                     Lavoro 1
                 </li>
             </a>
-            <a href="<?php echo URL; ?>lavori/dettagli/lavoro 2">
+            <a href="<?php echo URL; ?>activities/details/lavoro 2">
                 <li class="list-group-item list-group-item-action">
                     Lavoro 2
                 </li>
             </a>
-            <a href="<?php echo URL; ?>lavori/dettagli/lavoro 3">
+            <a href="<?php echo URL; ?>activities/details/lavoro 3">
                 <li class="list-group-item list-group-item-action">
                     Lavoro 3
                 </li>
