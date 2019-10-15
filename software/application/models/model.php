@@ -58,7 +58,7 @@ class Model
         $statement = $this->database->prepare($query);
         //Assign to placeholders ':nameN' the value of parameter 'keys'
         for ($i = 0; $i < count($keys); ++$i) {
-            $statement->bindParam(":name$i", $keys[$i]);
+            $statement->bindParam(":key$i", $keys[$i]);
         }
         //Execute the query
         $statement->execute();
