@@ -117,7 +117,7 @@ class Activity extends Model
     /**
      * Inserts a new row into table 'lavoro' of database with data passed as parameter.
      * @param Activity $activity The data to add to the database.
-     * @return bool true if the insert operation is successful, false otherwise
+     * @return bool true if the insert operation is successful, false otherwise.
      */
     public function addActivity(Activity $activity): bool
     {
