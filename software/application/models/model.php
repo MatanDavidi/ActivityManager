@@ -63,7 +63,7 @@ class Model
         //Execute the query
         $statement->execute();
         //Fetch the results
-        $queryResult = $statement->fetchAll();
+        $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         //Return the results
         return $queryResult;
