@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function() {
 
     const todayDate = new Date();
 
@@ -35,7 +35,7 @@ $(document).ready(() => {
         }
     });
 
-    form.on("submit", () => {
+    form.on("submit", function() {
 
         //The value of the activity is valid when it is equal to the value passed by
         // the controller, so it must not be changed from page loading to submit.

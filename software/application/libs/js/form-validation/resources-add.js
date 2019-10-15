@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function () {
 
     let form = $("form");
     form.validate({
@@ -12,7 +12,7 @@ $(document).ready(() => {
             costo: {
                 required: true,
                 min: {
-                    depends: (element) => {
+                    depends: function (element) {
                         return (element.value * 1) < 0;
                     }
                 }
@@ -41,7 +41,7 @@ $(document).ready(() => {
     //Variable that defines if the role has been validated with negative result (therefore it already contains an error message)
     var isRuoloValid = true;
 
-    form.on("submit", (evt) => {
+    form.on("submit", function (evt) {
 
         //Get the value of the selected radio button:
         //Get all the radio buttons related to the role

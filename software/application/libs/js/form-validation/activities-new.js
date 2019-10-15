@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function () {
 
     $("form").validate({
         rules: {
@@ -13,7 +13,7 @@ $(document).ready(() => {
             },
             data_consegna: {
                 required: true,
-                min: () => {
+                min: function () {
                     return $("#data_inizio").val();
                 }
             },
