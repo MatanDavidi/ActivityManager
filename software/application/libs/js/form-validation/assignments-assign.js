@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     let selectIDs = ["#lavoro", "#risorsa"];
     let validator = new SelectValidation(selectIDs);
 
-    $("form").on("submit", function() {
+    $("form").on("submit", function () {
 
         //The value of the work is valid when it is the same as the one passed by
         // the controller, so it must not be changed from the page's loading to submit
