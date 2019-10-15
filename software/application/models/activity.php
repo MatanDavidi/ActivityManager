@@ -132,6 +132,12 @@ class Activity extends Model
     public function addActivity(Activity $activity): bool
     {
 
+        $startDate = $activity->startDate;
+        $deliveryDate = $activity->deliveryDate;
+
+        $startDateString = $startDate->format("Y-m-d");
+        $deliveryDateString = $deliveryDate->format("Y-m-d");
+
         //Write the query that will write into the database.
         $query = "INSERT INTO lavoro(nome, note, data_inizio, data_consegna, ore_preventivate) VALUES (:name, :notes, :startDate, :deliveryDate, :hours)";
         //Prepare the query.
@@ -142,15 +148,18 @@ class Activity extends Model
         $statement->bindParam(":notes", $activity->notes);
         //Replace placeholder ':startDate' with activity starting
         //date taken from field 'startDate' of 'activity' parameter.
-        $statement->bindParam(":startDate", $activity->startDate);
+        $startDate = $activity->startDate;
+        $statement->bindParam(":startDate", $startDateString);
         //Replace placeholder ':deliveryDate' with activity delivery
         //date taken from field 'deliveryDate' of 'activity' parameter.
-        $statement->bindParam(":deliveryDate", $activity->deliveryDate);
+        $statement->bindParam(":deliveryDate", $deliveryDateString);
         //Replace placeholder ':hours' with activity estimated hours
         //taken from field 'estimatedHours' of 'activity' parameter.
         $statement->bindParam(":hours", $activity->estimatedHours);
+
         //Return the result of query execution
-        return $statement->execute();
+        $result = $statement->execute();
+        return $result;
 
     }
 
