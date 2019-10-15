@@ -116,7 +116,6 @@ class Model
 
         $condition = "";
 
-        //Compose the query using
         for ($i = 0; $i < count($keys) - 1; ++$i) {
 
             $condition .= $this->primaryKeyNames[$i] . " = :key$i AND ";
