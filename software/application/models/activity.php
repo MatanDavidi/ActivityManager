@@ -43,7 +43,7 @@ class Activity extends Model
      */
     public function __construct(string $name = null, string $notes = null, DateTime $startDate = null, DateTime $deliveryDate = null, int $estimatedHours = null)
     {
-        parent::__construct("lavoro");
+        parent::__construct("lavoro", ["nome"]);
         $this->name = $name;
         $this->notes = $notes;
         $this->startDate = $startDate;
@@ -92,29 +92,19 @@ class Activity extends Model
      */
     public function getActivityByName(string $name): Activity
     {
-        //TODO: Generalize this method?
-
-        //Write the query to search in the database
-        $query = "SELECT * FROM lavoro WHERE nome = :name";
-        //Prepare the query
-        $statement = $this->database->prepare($query);
-        //Assign to placeholder ':name' the value of parameter 'name'
-        $statement->bindParam(":name", $name);
-        //Execute the query
-        $statement->execute();
-        //Fetch the results
-        $queryResult = $statement->fetchAll();
+        //Use function getModelByKey inherited from superclass Model to get a single Activity by its name.
+        $models = $this->getModelByKey([$name]);
 
         //If a result has been returned
-        if (count($queryResult) > 0) {
+        if (count($models) > 0) {
 
             //Return a new object of type Activity with the result's data
             return new Activity(
-                $queryResult[0]["nome"],
-                $queryResult[0]["note"],
-                DateTime::createFromFormat("Y-m-d", $queryResult[0]["data_inizio"]),
-                DateTime::createFromFormat("Y-m-d", $queryResult[0]["data_consegna"]),
-                intval($queryResult[0]["ore_preventivate"])
+                $models[0]["nome"],
+                $models[0]["note"],
+                DateTime::createFromFormat("Y-m-d", $models[0]["data_inizio"]),
+                DateTime::createFromFormat("Y-m-d", $models[0]["data_consegna"]),
+                intval($models[0]["ore_preventivate"])
             );
 
         }
