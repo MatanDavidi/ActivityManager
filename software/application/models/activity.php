@@ -167,36 +167,51 @@ class Activity extends Model
     public function addActivity(Activity $activity): bool
     {
 
-        //Save starting and delivery dates into variables
-        $startDate = $activity->startDate;
-        $deliveryDate = $activity->deliveryDate;
+        //Check if the values for name, startDate, deliveryDate and estimatedHours are set, if the name isn't empty or a
+        //whitespace and if the number of estimated hours is greater than zero.
+        if (isset($activity->name) &&
+            isset($activity->startDate) &&
+            isset($activity->deliveryDate) &&
+            isset($activity->estimatedHours) &&
+            strlen(trim($activity->name)) > 0 &&
+            $activity->estimatedHours > 0) {
 
-        //Convert starting and delivery dates to strings
-        $startDateString = $startDate->format("Y-m-d");
-        $deliveryDateString = $deliveryDate->format("Y-m-d");
+            //Esegui il metodo normalmente
 
-        //Write the query that will write into the database.
-        $query = "INSERT INTO lavoro(nome, note, data_inizio, data_consegna, ore_preventivate) VALUES (:name, :notes, :startDate, :deliveryDate, :hours)";
-        //Prepare the query.
-        $statement = $this->database->prepare($query);
-        //Replace placeholder ':name' with activity name taken from field 'name' of 'activity' parameter.
-        $statement->bindParam(":name", $activity->name);
-        //Replace placeholder ':notes' with activity notes taken from field 'notes' of 'activity' parameter.
-        $statement->bindParam(":notes", $activity->notes);
-        //Replace placeholder ':startDate' with activity starting
-        //date taken from field 'startDate' of 'activity' parameter.
-        $startDate = $activity->startDate;
-        $statement->bindParam(":startDate", $startDateString);
-        //Replace placeholder ':deliveryDate' with activity delivery
-        //date taken from field 'deliveryDate' of 'activity' parameter.
-        $statement->bindParam(":deliveryDate", $deliveryDateString);
-        //Replace placeholder ':hours' with activity estimated hours
-        //taken from field 'estimatedHours' of 'activity' parameter.
-        $statement->bindParam(":hours", $activity->estimatedHours);
+            //Save starting and delivery dates into variables
+            $startDate = $activity->startDate;
+            $deliveryDate = $activity->deliveryDate;
 
-        //Return the result of query execution
-        $result = $statement->execute();
-        return $result;
+            //Convert starting and delivery dates to strings
+            $startDateString = $startDate->format("Y-m-d");
+            $deliveryDateString = $deliveryDate->format("Y-m-d");
+
+            //Write the query that will write into the database.
+            $query = "INSERT INTO lavoro(nome, note, data_inizio, data_consegna, ore_preventivate) VALUES (:name, :notes, :startDate, :deliveryDate, :hours)";
+            //Prepare the query.
+            $statement = $this->database->prepare($query);
+            //Replace placeholder ':name' with activity name taken from field 'name' of 'activity' parameter.
+            $statement->bindParam(":name", $activity->name);
+            //Replace placeholder ':notes' with activity notes taken from field 'notes' of 'activity' parameter.
+            $statement->bindParam(":notes", $activity->notes);
+            //Replace placeholder ':startDate' with activity starting
+            //date taken from field 'startDate' of 'activity' parameter.
+            $startDate = $activity->startDate;
+            $statement->bindParam(":startDate", $startDateString);
+            //Replace placeholder ':deliveryDate' with activity delivery
+            //date taken from field 'deliveryDate' of 'activity' parameter.
+            $statement->bindParam(":deliveryDate", $deliveryDateString);
+            //Replace placeholder ':hours' with activity estimated hours
+            //taken from field 'estimatedHours' of 'activity' parameter.
+            $statement->bindParam(":hours", $activity->estimatedHours);
+
+            //Return the result of query execution
+            $result = $statement->execute();
+            return $result;
+
+        }
+
+        return false;
 
     }
 
