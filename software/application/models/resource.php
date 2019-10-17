@@ -19,7 +19,7 @@ class Resource extends Model
      * @param string $name The name of this resource.
      * @param float $hourCost The cost per hour of this resource.
      */
-    public function __construct(string $name, float $hourCost)
+    public function __construct(string $name = null, float $hourCost = null)
     {
         parent::__construct("risorsa", ["nome"]);
         $this->name = $name;
