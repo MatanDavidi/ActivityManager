@@ -111,7 +111,7 @@ class Model
             return $statement->execute();
         }
 
-        return null;
+        return false;
 
     }
 
