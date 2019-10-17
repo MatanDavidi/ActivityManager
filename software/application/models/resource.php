@@ -15,15 +15,34 @@ class Resource extends Model
     private $hourCost;
 
     /**
+     * @var string The password that this resource uses to login.
+     */
+    private $password;
+
+    /**
+     * @var string The role this resource has in the application.
+     */
+    private $role;
+
+    /**
+     * The valid values that can be set to field role.
+     */
+    private const ROLE_VALUES = ["amministratore", "utente"];
+
+    /**
      * Resource constructor.
      * @param string $name The name of this resource.
      * @param float $hourCost The cost per hour of this resource.
+     * @param string $password The password that this resource uses to login.
+     * @param string $role The role this resource has in the application.
      */
-    public function __construct(string $name = null, float $hourCost = null)
+    public function __construct(string $name = null, float $hourCost = null, string $password = null, string $role = self::ROLE_VALUES[1])
     {
         parent::__construct("risorsa", ["nome"]);
         $this->name = $name;
         $this->hourCost = $hourCost;
+        $this->password = $password;
+        $this->role = $role;
     }
 
     /**
