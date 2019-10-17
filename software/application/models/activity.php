@@ -167,9 +167,10 @@ class Activity extends Model
     public function addActivity(Activity $activity): bool
     {
 
-        //Check if the values for name, startDate, deliveryDate and estimatedHours are set, if the name isn't empty or a
-        //whitespace and if the number of estimated hours is greater than zero.
-        if (isset($activity->name) &&
+        //Check if the values for the activity and its name, startDate, deliveryDate and estimatedHours are set,
+        // if the name isn't empty or a whitespace and if the number of estimated hours is greater than zero.
+        if (isset($activity) &&
+            isset($activity->name) &&
             isset($activity->startDate) &&
             isset($activity->deliveryDate) &&
             isset($activity->estimatedHours) &&
