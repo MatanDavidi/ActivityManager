@@ -38,13 +38,7 @@ class Resource extends Model
 
         foreach ($models as $model) {
 
-            array_push(
-                $resources,
-                new Resource(
-                    $model["nome"],
-                    $model["costo_ora"]
-                )
-            );
+            array_push($resources, new Resource($model["nome"], $model["costo_ora"]));
 
         }
 
