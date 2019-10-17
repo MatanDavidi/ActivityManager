@@ -54,26 +54,39 @@ class Model
      */
     protected function getModelByKey(array $keys): array
     {
+        $keysValid = true;
 
-        //Write the beginning of the query to search in the database
-        $query = "SELECT * FROM $this->tableName WHERE ";
-
-        //Compose the condition of the query
-        $query .= $this->composePrimaryKeyCondition($keys);
-
-        //Prepare the query
-        $statement = $this->database->prepare($query);
-        //Assign to placeholders ':nameN' the value of parameter 'keys'
-        for ($i = 0; $i < count($keys); ++$i) {
-            $statement->bindParam(":key$i", $keys[$i]);
+        foreach ($keys as $key) {
+            if (!(isset($key) && strlen(trim($key)))) {
+                $keysValid = false;
+            }
         }
-        //Execute the query
-        $statement->execute();
-        //Fetch the results
-        $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        //Return the results
-        return $queryResult;
+        if ($keysValid) {
+
+            //Write the beginning of the query to search in the database
+            $query = "SELECT * FROM $this->tableName WHERE ";
+
+            //Compose the condition of the query
+            $query .= $this->composePrimaryKeyCondition($keys);
+
+            //Prepare the query
+            $statement = $this->database->prepare($query);
+            //Assign to placeholders ':nameN' the value of parameter 'keys'
+            for ($i = 0; $i < count($keys); ++$i) {
+                $statement->bindParam(":key$i", $keys[$i]);
+            }
+            //Execute the query
+            $statement->execute();
+            //Fetch the results
+            $queryResult = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            //Return the results
+            return $queryResult;
+
+        }
+
+        return null;
 
     }
 
