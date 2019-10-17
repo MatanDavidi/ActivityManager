@@ -97,4 +97,47 @@ class Resource extends Model
         return null;
 
     }
+
+    /**
+     * Inserts a new row into table 'risorsa' of database with data passed as parameter.
+     * @param Resource $resource An object of type Resource that contains the data to add to the database.
+     * @return bool true if the insert operation is successful, false otherwise.
+     */
+    public function addResource(Resource $resource): bool
+    {
+
+        //Check if the resource to be added is set, its name and cost per hour have been set and either
+        // both its password and role (with a value that is contained in array ROLE_VALUES) are set or neither.
+        if (isset($resource) &&
+            isset($resource->name) &&
+            strlen(trim($resource->name)) > 0 &&
+            isset($resource->hourCost) &&
+            $resource->hourCost >= 0.0 &&
+            (
+                (
+                    isset($resource->password) &&
+                    strlen(trim($resource->password)) > 0 &&
+                    isset($resource->role) &&
+                    strlen(trim($resource->role)) > 0 &&
+                    in_array($resource->role, self::ROLE_VALUES)
+                ) ||
+                (
+                    (
+                        !isset($resource->password) ||
+                        strlen(trim($resource->password)) == 0
+                    ) &&
+                    (
+                        !isset($resource->role) ||
+                        strlen(trim($resource->role)) == 0
+                    )
+                )
+            )) {
+
+
+        }
+
+        return false;
+
+    }
+
 }
