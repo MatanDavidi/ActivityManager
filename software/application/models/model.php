@@ -54,13 +54,7 @@ class Model
      */
     protected function getModelByKey(array $keys): array
     {
-        $keysValid = true;
-
-        foreach ($keys as $key) {
-            if (!(isset($key) && strlen(trim($key)))) {
-                $keysValid = false;
-            }
-        }
+        $keysValid = $this->areKeysValid($keys);
 
         if ($keysValid) {
 
@@ -97,23 +91,46 @@ class Model
      */
     protected function deleteModel(array $keys): bool
     {
-        //Write the beginning of the query to delete from a table in the database
-        $query = "DELETE FROM $this->tableName WHERE ";
+        $keysValid = $this->areKeysValid($keys);
+        if ($keysValid) {
+            //Write the beginning of the query to delete from a table in the database
+            $query = "DELETE FROM $this->tableName WHERE ";
 
-        //Compose the condition of the query
-        $query .= $this->composePrimaryKeyCondition($keys);
+            //Compose the condition of the query
+            $query .= $this->composePrimaryKeyCondition($keys);
 
-        //Prepare the query
-        $statement = $this->database->prepare($query);
+            //Prepare the query
+            $statement = $this->database->prepare($query);
 
-        //Assign to placeholders ':nameN' the value of parameter 'keys'
-        for ($i = 0; $i < count($keys); ++$i) {
-            $statement->bindParam(":key$i", $keys[$i]);
+            //Assign to placeholders ':nameN' the value of parameter 'keys'
+            for ($i = 0; $i < count($keys); ++$i) {
+                $statement->bindParam(":key$i", $keys[$i]);
+            }
+
+            //Execute the query
+            return $statement->execute();
         }
 
-        //Execute the query
-        return $statement->execute();
+        return null;
 
+    }
+
+    /**
+     * Check if an array contains only values that are not null or whitespace.
+     * @param array $keys The array to check.
+     * @return bool true if the array contains only values that are not null or whitespace.
+     */
+    private function areKeysValid(array $keys)
+    {
+        $keysValid = true;
+
+        foreach ($keys as $key) {
+            if (!(isset($key) && strlen(trim($key)))) {
+                $keysValid = false;
+            }
+        }
+
+        return $keysValid;
     }
 
     /**

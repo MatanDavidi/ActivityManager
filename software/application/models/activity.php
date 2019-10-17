@@ -222,15 +222,7 @@ class Activity extends Model
      */
     public function deleteActivity(Activity $activity): bool
     {
-        //Check if the value for the activity's name has been set and is not empty or a whitespace.
-        if (isset($activity->name) &&
-            strlen(trim($activity->name)) > 0) {
-
-            return $this->deleteModel([$activity->name]);
-
-        }
-
-        return false;
+        return $this->deleteModel([$activity->name]);
     }
 
 }
