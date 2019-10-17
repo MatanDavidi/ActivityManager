@@ -140,10 +140,10 @@ class Activity extends Model
         //Use function getModelByKey inherited from superclass Model to get a single Activity by its name.
         $models = $this->getModelByKey([$name]);
 
-        //If a result has been returned
-        if (count($models) > 0) {
+        //If a valid result has been returned.
+        if (isset($models) && count($models) > 0) {
 
-            //Return a new object of type Activity with the result's data
+            //Return a new object of type Activity with the result's data.
             return new Activity(
                 $models[0]["nome"],
                 $models[0]["note"],
@@ -154,7 +154,7 @@ class Activity extends Model
 
         }
 
-        //If we got to this point, it means a result was not found, so return null
+        //If we got to this point, it means a result was not found, so return null.
         return null;
 
     }
