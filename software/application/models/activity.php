@@ -177,8 +177,6 @@ class Activity extends Model
             strlen(trim($activity->name)) > 0 &&
             $activity->estimatedHours > 0) {
 
-            //Esegui il metodo normalmente
-
             //Save starting and delivery dates into variables
             $startDate = $activity->startDate;
             $deliveryDate = $activity->deliveryDate;
