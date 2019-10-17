@@ -165,4 +165,49 @@ class Activity extends Model
         return $this->deleteModel([$activity->name]);
     }
 
+    /**
+     * Gets the name of this activity.
+     * @return string The name of this activity.
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Gets the notes that may be associated with it.
+     * @return string The notes that may be associated with it.
+     */
+    public function getNotes(): string
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Gets the beginning date of the activity.
+     * @return DateTime The beginning date of the activity.
+     */
+    public function getStartDate(): DateTime
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Gets the delivery date of the activity.
+     * @return DateTime The delivery date of the activity.
+     */
+    public function getDeliveryDate(): DateTime
+    {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * Gets the estimated number of hours that will be spent working on the activity.
+     * @return int The estimated number of hours that will be spent working on the activity.
+     */
+    public function getEstimatedHours(): int
+    {
+        return $this->estimatedHours;
+    }
+
 }
