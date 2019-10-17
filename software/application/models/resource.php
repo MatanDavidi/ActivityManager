@@ -50,4 +50,32 @@ class Resource extends Model
 
     }
 
+    /**
+     * Gets a resource with the specified name.
+     * @param string $name The name for which to search for a resource in the database.
+     * @return Resource An object of type Resource whose fields' values are equal to the data of the
+     * line of the database's 'risorse' table whose name corresponds to the value of parameter 'name'.
+     */
+    public function getResourceByName(string $name): Resource
+    {
+
+        //Use function getModelByKey inherited from superclass Model to get a single Resource by its name.
+        $models = $this->getModelByKey([$name]);
+
+        //If a result has been returned
+        if (isset($models) && count($models) > 0) {
+
+            //Assign to a variable the result's data
+            $model = $models[0];
+
+            //Return a new object of type Resource with the result's data
+            $resource = new Resource($model["nome"], $model["costo_ora"]);
+            return $resource;
+
+        }
+
+        //If we got to this point, it means a result was not found, so return null
+        return null;
+
+    }
 }
