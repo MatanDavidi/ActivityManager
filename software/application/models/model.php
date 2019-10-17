@@ -122,9 +122,12 @@ class Model
      */
     private function areKeysValid(array $keys)
     {
+        //Assume that the array is valid until it is proven invalid.
         $keysValid = true;
 
+        //Loop through the array
         foreach ($keys as $key) {
+            //If a value is null, empty or a whitespace, it is invalid, therefore the entire array is invalid.
             if (!(isset($key) && strlen(trim($key)))) {
                 $keysValid = false;
             }
