@@ -26,5 +26,30 @@ class Resource extends Model
         $this->hourCost = $hourCost;
     }
 
+    /**
+     * Get all resources reading their data from the database.
+     * @return array An array containing a object of type Resource for each line read from the database.
+     */
+    public function getAllResources(): array
+    {
+
+        $models = $this->getAllModels();
+        $resources = [];
+
+        foreach ($models as $model) {
+
+            array_push(
+                $resources,
+                new Resource(
+                    $model["nome"],
+                    $model["costo_ora"]
+                )
+            );
+
+        }
+
+        return $resources;
+
+    }
 
 }
