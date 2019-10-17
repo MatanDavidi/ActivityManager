@@ -222,7 +222,14 @@ class Activity extends Model
      */
     public function deleteActivity(Activity $activity): bool
     {
-        return $this->deleteModel([$activity->name]);
+        if (isset($activity->name) &&
+            strlen(trim($activity->name)) > 0) {
+
+            return $this->deleteModel([$activity->name]);
+
+        }
+
+        return false;
     }
 
 }
