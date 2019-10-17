@@ -1,7 +1,7 @@
 <?php
+require_once "application/models/model.php";
 
-
-class Resource
+class Resource extends Model
 {
 
     /**
@@ -21,6 +21,7 @@ class Resource
      */
     public function __construct(string $name, float $hourCost)
     {
+        parent::__construct("risorsa", ["nome"]);
         $this->name = $name;
         $this->hourCost = $hourCost;
     }
