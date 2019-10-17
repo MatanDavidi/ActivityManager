@@ -32,10 +32,14 @@ class Resource extends Model
      */
     public function getAllResources(): array
     {
-
+        //Get the database's data thanks to superclass 'Model'.
         $models = $this->getAllModels();
+
+        //Instantiates the array that will be returned.
         $resources = [];
 
+        // Loop through each element read from the database and for each of them add an object
+        // of type Resource with the data from the current element from models to array activities.
         foreach ($models as $model) {
 
             array_push($resources, new Resource($model["nome"], $model["costo_ora"]));
