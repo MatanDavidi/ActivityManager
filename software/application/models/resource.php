@@ -166,10 +166,10 @@ class Resource extends Model
             //Prepare the query.
             $statement = $this->database->prepare($query);
 
-            //Bind placeholders to their respective values
-
             //Crypt password
             $securePassword = password_hash($resource->password, PASSWORD_DEFAULT);
+
+            //Bind placeholders to their respective values
 
             //Replace placeholder ':name' with resource name taken from field 'name' of 'resource' parameter.
             $statement->bindParam(":name", $resource->name);
