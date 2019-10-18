@@ -166,4 +166,14 @@ class Resource extends Model
 
     }
 
+    /**
+     * Deletes a record from the MySQL table 'risorsa' where the name is equal to the name of an object of type Resource.
+     * @param Resource $resource The data of the activity to delete.
+     * @return bool true if the deletion is successful, false otherwise.
+     */
+    public function deleteResource(Resource $resource): bool
+    {
+        return $this->deleteModel([$resource->name]);
+    }
+
 }
