@@ -46,6 +46,33 @@ class Resource extends Model
     }
 
     /**
+     * Gets the name of this resource.
+     * @return string The name of this resource.
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Gets the cost per hour of this resource.
+     * @return float The cost per hour of this resource.
+     */
+    public function getHourCost(): float
+    {
+        return $this->hourCost;
+    }
+
+    /**
+     * Gets the role this resource has in the application.
+     * @return string The role this resource has in the application.
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
      * Get all resources reading their data from the database.
      * @return array An array containing a object of type Resource for each line read from the database.
      */
