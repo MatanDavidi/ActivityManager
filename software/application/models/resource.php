@@ -133,6 +133,32 @@ class Resource extends Model
                 )
             )) {
 
+            //Write the query that will write to the database.
+            $query = "INSERT INTO risorsa(nome, costo_ora, password, ruolo) VALUES (:name, :hourCost, :password, :role)";
+            //Prepare the query.
+            $statement = $this->database->prepare($query);
+
+            //Bind placeholders to their respective values
+
+            //Crypt password
+            $securePassword = password_hash($resource->password, PASSWORD_DEFAULT);
+
+            //Replace placeholder ':name' with resource name taken from field 'name' of 'resource' parameter.
+            $statement->bindParam(":name", $resource->name);
+
+            //Replace placeholder ':hourCost' with resource name taken from field 'hourCost' of 'resource' parameter.
+            $statement->bindParam(":hourCost", $resource->hourCost);
+
+            //Replace placeholder ':password' with resource name taken from field 'password' of 'resource' parameter after being encrypted.
+            $statement->bindParam(":password", $securePassword);
+
+            //Replace placeholder ':role' with resource name taken from field 'role' of 'resource' parameter.
+            $statement->bindParam(":role", $resource->role);
+
+            //Execute the query
+            $result = $statement->execute();
+
+            return $result;
 
         }
 
