@@ -225,4 +225,22 @@ class Activity extends Model
         return $this->deleteModel([$activity->name]);
     }
 
+    /**
+     * Checks if an object of type Activity's fields have the same value as the fields of this instance of Activity.
+     * @param Activity $activity The object against which to compare.
+     * @return bool true if the two object's fields have the same value, false otherwise.
+     */
+    public function equals(Activity $activity): bool
+    {
+
+        return
+            $activity->name === $this->name &&
+            $activity->notes === $this->notes &&
+            $activity->startDate === $this->startDate &&
+            $activity->deliveryDate === $this->deliveryDate &&
+            $activity->estimatedHours === $this->estimatedHours;
+
+
+    }
+
 }

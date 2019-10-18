@@ -204,4 +204,18 @@ class Resource extends Model
         return $this->deleteModel([$resource->name]);
     }
 
+    /**
+     * Checks if an object of type Resource's fields have the same value as the fields of this instance of Resource.
+     * @param Resource $resource The object against which to compare.
+     * @return bool true if the two object's fields have the same value, false otherwise.
+     */
+    public function equals(Resource $resource)
+    {
+        return
+            $resource->name === $this->name &&
+            $resource->hourCost === $this->hourCost &&
+            $resource->password === $this->password &&
+            $resource->role === $this->role;
+    }
+
 }
