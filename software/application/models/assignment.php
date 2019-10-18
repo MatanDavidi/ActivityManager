@@ -64,4 +64,37 @@ class Assignment extends Model
 
     }
 
+    /**
+     * Checks if the name of an activity and the name of a resource are associated in the database's 'assegna' table.
+     * Note: this function should be used with parameters taken from a call to function "getActivityByName" and
+     * "getResourceByName" or "getAllActivities" and "getAllResources".
+     * @param Activity $activity The activity from which to take the name to check if it is associated to a resource.
+     * @param Resource $resource The resource from which to take the name to check if it is associated to an activity.
+     * @return bool true if the two names are present on the same row in the table, false otherwise.
+     */
+    public function isAssigned(Activity $activity, Resource $resource): bool
+    {
+
+        //Write the query that will be used to filter the database's data.
+        $query = "SELECT * FROM assegna WHERE nome_lavoro = :activityName AND nome_risorsa = :resourceName";
+        //Prepare the query.
+        $statement = $this->database->prepare($query);
+
+        $activityName = $activity->getName();
+        $resourceName = $resource->getName();
+
+        //Bind the query's parameters to its placeholders.
+        //Bind placeholder ':activityName" to value of field 'name' of parameter activity.
+        $statement->bindParam(":activityName", $activityName);
+        //Bind placeholder ':resourceName" to value of field 'name' of parameter resource.
+        $statement->bindParam(":resourceName", $resourceName);
+
+        //Execute the query
+        $statement->execute();
+
+        //If a row has been returned, that means the resource is assigned to the activity.
+        return count($statement->fetchAll()) === 1;
+
+    }
+
 }
