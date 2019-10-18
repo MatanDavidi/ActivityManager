@@ -65,12 +65,13 @@ class Assignment extends Model
     }
 
     /**
-     * Checks if the name of an activity and the name of a resource are associated in the database's 'assegna' table.
+     * Checks if an activity and a resource are associated in the database's 'assegna' table.
      * Note: this function should be used with parameters taken from a call to function "getActivityByName" and
      * "getResourceByName" or "getAllActivities" and "getAllResources".
      * @param Activity $activity The activity from which to take the name to check if it is associated to a resource.
      * @param Resource $resource The resource from which to take the name to check if it is associated to an activity.
-     * @return bool true if the two names are present on the same row in the table, false otherwise.
+     * @return bool true if the two names are present on the same row in the table and if the values
+     * of the two objects' fields exist in the same row of their respective tables, false otherwise.
      */
     public function isAssigned(Activity $activity, Resource $resource): bool
     {
@@ -92,8 +93,29 @@ class Assignment extends Model
         //Execute the query
         $statement->execute();
 
-        //If a row has been returned, that means the resource is assigned to the activity.
-        return count($statement->fetchAll()) === 1;
+        $isAssigned = false;
+
+        //If a row has been returned
+        if (count($statement->fetchAll()) === 1) {
+
+            $databaseActivity = $activity->getActivityByName($activityName);
+
+            if ($activity->equals($databaseActivity)) {
+
+                $databaseResource = $resource->getResourceByName($resourceName);
+
+                if ($resource->equals($databaseResource)) {
+
+                    $isAssigned = true;
+
+                }
+
+            }
+
+        }
+
+        //If the parameters are equal to their respective database rows, that means the resource is assigned to the activity.
+        return $isAssigned;
 
     }
 
