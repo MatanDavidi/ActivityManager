@@ -112,6 +112,7 @@ class Activity extends Model
         // type Activity with the data from the current element from models to array activities.
         foreach ($models as $model) {
 
+            //Add a new object of type Activity with the model's data to the array
             array_push(
                 $activities,
                 new Activity(

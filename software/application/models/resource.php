@@ -88,6 +88,7 @@ class Resource extends Model
         // of type Resource with the data from the current element from models to array activities.
         foreach ($models as $model) {
 
+            //Add a new object of type Resource with the model's data to the array
             array_push($resources, new Resource($model["nome"], $model["costo_ora"]));
 
         }
