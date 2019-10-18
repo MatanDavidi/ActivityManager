@@ -80,8 +80,9 @@ class Assignment extends Model
         $query = "SELECT * FROM assegna WHERE nome_lavoro = :activityName AND nome_risorsa = :resourceName";
         //Prepare the query.
         $statement = $this->database->prepare($query);
-
+        //Get the activity's name
         $activityName = $activity->getName();
+        //Get the resource's name
         $resourceName = $resource->getName();
 
         //Bind the query's parameters to its placeholders.
@@ -98,14 +99,19 @@ class Assignment extends Model
         //If a row has been returned
         if (count($statement->fetchAll()) === 1) {
 
+            //Get from the database the activity with the same name as activity->getName().
             $databaseActivity = $activity->getActivityByName($activityName);
 
+            //If the values of its fields are the same as the ones of parameter activity
             if ($activity->equals($databaseActivity)) {
 
+                //Get from the database the resource with the same name as resource->getName().
                 $databaseResource = $resource->getResourceByName($resourceName);
 
+                //If the values of its fields are the same as the ones of parameter resource
                 if ($resource->equals($databaseResource)) {
 
+                    //All values correspond and the resource is actually assigned to the activity
                     $isAssigned = true;
 
                 }
