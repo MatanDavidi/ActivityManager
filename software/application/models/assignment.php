@@ -88,7 +88,6 @@ class Assignment extends Model
 
         //If a row has been returned
         if ($model) {
-            echo "The names correspond";
 
             //Get from the database the activity with the same name as activity->getName().
             $databaseActivity = $activity->getActivityByName($activityName);
@@ -96,14 +95,12 @@ class Assignment extends Model
             //If the values of its fields are the same as the ones of parameter activity
             if ($activity->equals($databaseActivity)) {
 
-                echo "The activities are equal";
                 //Get from the database the resource with the same name as resource->getName().
                 $databaseResource = $resource->getResourceByName($resourceName);
 
                 //If the values of its fields are the same as the ones of parameter resource
                 if ($resource->equals($databaseResource)) {
 
-                    echo "The resources are equal!";
                     //All values correspond and the resource is actually assigned to the activity
                     $isAssigned = true;
 
