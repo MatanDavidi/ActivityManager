@@ -115,4 +115,24 @@ class Assignment extends Model
 
     }
 
+    /**
+     * Checks if the values of the fields of this object of type Assignment are valid.
+     * The values are valid when this object is not null and the value that was returned from the call to functions
+     * isValid of this assignment's activity and resource is true. Also, the values of both fields have to be present in
+     * a single row of their respective tables for this object to be valid.
+     * @return bool true if the values of the fields of this object are valid, otherwise false.
+     */
+    public function isValid()
+    {
+        $databaseActivity = $this->activity->getActivityByName($this->activity->getName());
+        $databaseResource = $this->resource->getResourceByName($this->resource->getName());
+
+        return
+            isset($this) &&
+            $this->activity->isValid() &&
+            $this->resource->isValid() &&
+            $this->activity->equals($databaseActivity) &&
+            $this->resource->equals($databaseResource);
+    }
+
 }

@@ -135,30 +135,7 @@ class Resource extends Model
 
         //Check if the resource to be added is set, its name and cost per hour have been set and either
         // both its password and role (with a value that is contained in array ROLE_VALUES) are set or neither.
-        if (isset($resource) &&
-            isset($resource->name) &&
-            strlen(trim($resource->name)) > 0 &&
-            isset($resource->hourCost) &&
-            $resource->hourCost >= 0.0 &&
-            (
-                (
-                    isset($resource->password) &&
-                    strlen(trim($resource->password)) > 0 &&
-                    isset($resource->role) &&
-                    strlen(trim($resource->role)) > 0 &&
-                    in_array($resource->role, self::ROLE_VALUES)
-                ) ||
-                (
-                    (
-                        !isset($resource->password) ||
-                        strlen(trim($resource->password)) == 0
-                    ) &&
-                    (
-                        !isset($resource->role) ||
-                        strlen(trim($resource->role)) == 0
-                    )
-                )
-            )) {
+        if ($this->isValid()) {
 
             //Write the query that will write to the database.
             $query = "INSERT INTO risorsa(nome, costo_ora, password, ruolo) VALUES (:name, :hourCost, :password, :role)";
@@ -215,6 +192,42 @@ class Resource extends Model
             $resource->hourCost === $this->hourCost &&
             $resource->password === $this->password &&
             $resource->role === $this->role;
+    }
+
+    /**
+     * Checks if the values of the fields of this object of type Resource are valid.
+     * The values are valid when the resource is not null, its name and cost per hour are not null and either
+     * both its password and role (with a value that is contained in array ROLE_VALUES) are set or neither.
+     * @return bool true if the values of the fields of this object are valid, otherwise false.
+     */
+    public function isValid(): bool
+    {
+
+        return isset($resource) &&
+            isset($resource->name) &&
+            strlen(trim($resource->name)) > 0 &&
+            isset($resource->hourCost) &&
+            $resource->hourCost >= 0.0 &&
+            (
+                (
+                    isset($resource->password) &&
+                    strlen(trim($resource->password)) > 0 &&
+                    isset($resource->role) &&
+                    strlen(trim($resource->role)) > 0 &&
+                    in_array($resource->role, self::ROLE_VALUES)
+                ) ||
+                (
+                    (
+                        !isset($resource->password) ||
+                        strlen(trim($resource->password)) == 0
+                    ) &&
+                    (
+                        !isset($resource->role) ||
+                        strlen(trim($resource->role)) == 0
+                    )
+                )
+            );
+
     }
 
 }

@@ -170,13 +170,7 @@ class Activity extends Model
 
         //Check if the values for the activity and its name, startDate, deliveryDate and estimatedHours are set,
         // if the name isn't empty or a whitespace and if the number of estimated hours is greater than zero.
-        if (isset($activity) &&
-            isset($activity->name) &&
-            isset($activity->startDate) &&
-            isset($activity->deliveryDate) &&
-            isset($activity->estimatedHours) &&
-            strlen(trim($activity->name)) > 0 &&
-            $activity->estimatedHours > 0) {
+        if ($this->isValid()) {
 
             //Save starting and delivery dates into variables
             $startDate = $activity->startDate;
@@ -238,6 +232,26 @@ class Activity extends Model
             $activity->startDate == $this->startDate &&
             $activity->deliveryDate == $this->deliveryDate &&
             $activity->estimatedHours === $this->estimatedHours;
+    }
+
+    /**
+     * Checks if the values of the fields of this object of type Activity are valid.
+     * The values are valid when the activity and its name, startDate, deliveryDate and estimatedHours are not null, if
+     * the name isn't empty or a whitespace, the start date is before or on the same day as the delivery date and the
+     * number of estimated hours is greater than zero.
+     * @return bool true if the values of the fields of this object are valid, otherwise false.
+     */
+    public function isValid(): bool
+    {
+        return
+            isset($this) &&
+            isset($this->name) &&
+            isset($this->startDate) &&
+            isset($this->deliveryDate) &&
+            isset($this->estimatedHours) &&
+            strlen(trim($this->name)) > 0 &&
+            $this->startDate <= $this->deliveryDate &&
+            $this->estimatedHours > 0;
     }
 
 }
