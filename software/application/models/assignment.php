@@ -116,6 +116,24 @@ class Assignment extends Model
     }
 
     /**
+     * Inserts a new row into table 'assegna' of database with data passed as parameter.
+     * @param Assignment $assignment An object of type Assignment that contains the data to add to the database.
+     * @return bool true if the insert operation is successful, false otherwise.
+     */
+    public function addAssignment(Assignment $assignment): bool
+    {
+        //Check if the assignment and its values (Activity and Resource) are not null, this includes all fields of both
+        //the assignment's activity and resource.
+        //Also, check if the values of the fields of both activity and resource are present in a single row of the database.
+        if ($this->isValid()) {
+
+            //Insert a new row into table 'assegna' using inherited function "addModel".
+            return $this->addModel([$assignment->activity->getName(), $assignment->resource->getName()]);
+
+        }
+        return false;
+    }
+    /**
      * Checks if the values of the fields of this object of type Assignment are valid.
      * The values are valid when this object is not null and the value that was returned from the call to functions
      * isValid of this assignment's activity and resource is true. Also, the values of both fields have to be present in
