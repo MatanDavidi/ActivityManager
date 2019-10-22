@@ -139,18 +139,18 @@ class Activity extends Model
     public function getActivityByName(string $name): Activity
     {
         //Use function getModelByKey inherited from superclass Model to get a single Activity by its name.
-        $models = $this->getModelByKey([$name]);
+        $model = $this->getModelByKey([$name]);
 
         //If a valid result has been returned.
-        if (isset($models) && count($models) > 0) {
+        if ($model) {
 
             //Return a new object of type Activity with the result's data.
             return new Activity(
-                $models[0]["nome"],
-                $models[0]["note"],
-                DateTime::createFromFormat("Y-m-d", $models[0]["data_inizio"]),
-                DateTime::createFromFormat("Y-m-d", $models[0]["data_consegna"]),
-                intval($models[0]["ore_preventivate"])
+                $model["nome"],
+                $model["note"],
+                DateTime::createFromFormat("Y-m-d", $model["data_inizio"]),
+                DateTime::createFromFormat("Y-m-d", $model["data_consegna"]),
+                intval($model["ore_preventivate"])
             );
 
         }

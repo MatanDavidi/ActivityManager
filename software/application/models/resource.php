@@ -107,13 +107,12 @@ class Resource extends Model
     {
 
         //Use function getModelByKey inherited from superclass Model to get a single Resource by its name.
-        $models = $this->getModelByKey([$name]);
+        $model = $this->getModelByKey([$name]);
 
         //If a result has been returned
-        if (isset($models) && count($models) > 0) {
+        if ($model) {
 
             //Assign to a variable the result's data
-            $model = $models[0];
 
             //Return a new object of type Resource with the result's data
             $resource = new Resource($model["nome"], $model["costo_ora"]);
