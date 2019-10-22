@@ -159,13 +159,24 @@ class Model
     {
         //Assume that the array is valid until it is proven invalid.
         $keysValid = true;
+        if (count($keys) == count($this->primaryKeyNames)) {
 
-        //Loop through the array
-        foreach ($keys as $key) {
-            //If a value is null, empty or a whitespace, it is invalid, therefore the entire array is invalid.
-            if (!(isset($key) && strlen(trim($key)))) {
-                $keysValid = false;
+            //Loop through the array
+            foreach ($keys as $key) {
+
+                //If a value is null, empty or a whitespace, it is invalid, therefore the entire array is invalid.
+                if (!(isset($key) && strlen(trim($key)) == 0)) {
+
+                    $keysValid = false;
+
+                }
+
             }
+
+        } else {
+
+            $keysValid = false;
+
         }
 
         return $keysValid;
