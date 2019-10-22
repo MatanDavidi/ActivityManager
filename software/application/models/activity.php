@@ -232,15 +232,12 @@ class Activity extends Model
      */
     public function equals(Activity $activity): bool
     {
-
         return
             $activity->name === $this->name &&
             $activity->notes === $this->notes &&
             $activity->startDate == $this->startDate &&
             $activity->deliveryDate == $this->deliveryDate &&
             $activity->estimatedHours === $this->estimatedHours;
-
-
     }
 
 }
