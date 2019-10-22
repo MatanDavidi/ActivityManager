@@ -204,7 +204,13 @@ class Activity extends Model
      */
     public function deleteActivity(Activity $activity): bool
     {
-        return $this->deleteModel([$activity->name]);
+        //If the activity is valid and its values are present in a single row of table 'lavoro' of the database, delete.
+        if ($activity->isValid()) {
+            if ($activity->equals($this->getActivityByName($activity->getName()))) {
+                return $this->deleteModel([$activity->name]);
+            }
+        }
+        return false;
     }
 
     /**
