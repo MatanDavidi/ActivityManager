@@ -133,6 +133,21 @@ class Assignment extends Model
         }
         return false;
     }
+
+    /**
+     * Deletes a record from the MySQL table 'assegna' where the name is equal to the name of an object of type Assignment.
+     * @param Assignment $assignment The data of the assignment to delete.
+     * @return bool true if the deletion is successful, false otherwise.
+     */
+    public function deleteAssignment(Assignment $assignment): bool
+    {
+        //If the assignment is valid and its values are present in a single row of table 'assegna' of the database, delete.
+        if ($assignment->isValid()) {
+            return $this->deleteModel([$assignment->activity, $assignment->resource]);
+        }
+        return false;
+    }
+
     /**
      * Checks if the values of the fields of this object of type Assignment are valid.
      * The values are valid when this object is not null and the value that was returned from the call to functions
