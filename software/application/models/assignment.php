@@ -76,28 +76,19 @@ class Assignment extends Model
     public function isAssigned(Activity $activity, Resource $resource): bool
     {
 
-        //Write the query that will be used to filter the database's data.
-        $query = "SELECT * FROM assegna WHERE nome_lavoro = :activityName AND nome_risorsa = :resourceName";
-        //Prepare the query.
-        $statement = $this->database->prepare($query);
         //Get the activity's name
         $activityName = $activity->getName();
         //Get the resource's name
         $resourceName = $resource->getName();
 
-        //Bind the query's parameters to its placeholders.
-        //Bind placeholder ':activityName" to value of field 'name' of parameter activity.
-        $statement->bindParam(":activityName", $activityName);
-        //Bind placeholder ':resourceName" to value of field 'name' of parameter resource.
-        $statement->bindParam(":resourceName", $resourceName);
-
-        //Execute the query
-        $statement->execute();
+        //Get row of table 'assegna' where resource is assigned to activity.
+        $model = $this->getModelByKey([$activityName, $resourceName]);
 
         $isAssigned = false;
 
         //If a row has been returned
-        if (count($statement->fetchAll()) === 1) {
+        if ($model) {
+            echo "The names correspond";
 
             //Get from the database the activity with the same name as activity->getName().
             $databaseActivity = $activity->getActivityByName($activityName);
@@ -105,12 +96,14 @@ class Assignment extends Model
             //If the values of its fields are the same as the ones of parameter activity
             if ($activity->equals($databaseActivity)) {
 
+                echo "The activities are equal";
                 //Get from the database the resource with the same name as resource->getName().
                 $databaseResource = $resource->getResourceByName($resourceName);
 
                 //If the values of its fields are the same as the ones of parameter resource
                 if ($resource->equals($databaseResource)) {
 
+                    echo "The resources are equal!";
                     //All values correspond and the resource is actually assigned to the activity
                     $isAssigned = true;
 
