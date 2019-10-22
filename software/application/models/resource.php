@@ -138,7 +138,7 @@ class Resource extends Model
         if ($this->isValid()) {
 
             //Crypt password
-            $securePassword = password_hash($resource->password, PASSWORD_DEFAULT);
+            $securePassword = password_hash($resource->password, PASSWORD_BCRYPT);
 
             //Insert a new row into table 'risorsa' using inherited function "addModel".
             return $this->addModel([$resource->name, $resource->hourCost, $securePassword, $resource->role]);
