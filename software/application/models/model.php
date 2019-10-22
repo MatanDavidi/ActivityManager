@@ -86,6 +86,40 @@ class Model
     }
 
     /**
+     * Inserts a model into the MySQL table whose name corresponds to the value of field tableName.
+     * @param array $keys An array that contains an element of type string for each primary key defined inside array primaryKeyNames.
+     * @return bool true if the insertion was successful, false otherwise.
+     */
+    protected function addModel(array $keys): bool
+    {
+        //See if there's an invalid key in the array
+        $keysValid = $this->areKeysValid($keys);
+        if ($keysValid) {
+            //Write the query that will write into the database
+            $query = "INSERT INTO $this->tableName(" . implode(", ", $this->primaryKeyNames) . ") VALUES (";
+
+            //Loop each element of array keys and create a placeholder for each of them
+            for ($i = 0; $i < count($keys) - 1; ++$i) {
+                $query .= ":key$i, ";
+            }
+            $query .= ":key" . count($keys) - 1 . ")";
+
+            //Prepare the statement
+            $statement = $this->database->prepare($query);
+
+            //Bind each placeholder to its respective key
+            for ($i = 0; $i < count($keys); ++$i) {
+                $statement->bindParam(":key$i", $keys[$i]);
+            }
+
+            //Execute the statement
+            return $statement->execute();
+        }
+
+        return false;
+    }
+
+    /**
      * Deletes a record from the MySQL table whose name is equal to the value of field 'tableName'.
      * @param array $keys The table's primary key values for a row.
      * @return bool true if the deletion is successful, false otherwise.

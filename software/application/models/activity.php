@@ -180,28 +180,16 @@ class Activity extends Model
             $startDateString = $startDate->format("Y-m-d");
             $deliveryDateString = $deliveryDate->format("Y-m-d");
 
-            //Write the query that will write into the database.
-            $query = "INSERT INTO lavoro(nome, note, data_inizio, data_consegna, ore_preventivate) VALUES (:name, :notes, :startDate, :deliveryDate, :hours)";
-            //Prepare the query.
-            $statement = $this->database->prepare($query);
-            //Replace placeholder ':name' with activity name taken from field 'name' of 'activity' parameter.
-            $statement->bindParam(":name", $activity->name);
-            //Replace placeholder ':notes' with activity notes taken from field 'notes' of 'activity' parameter.
-            $statement->bindParam(":notes", $activity->notes);
-            //Replace placeholder ':startDate' with activity starting
-            //date taken from field 'startDate' of 'activity' parameter.
-            $startDate = $activity->startDate;
-            $statement->bindParam(":startDate", $startDateString);
-            //Replace placeholder ':deliveryDate' with activity delivery
-            //date taken from field 'deliveryDate' of 'activity' parameter.
-            $statement->bindParam(":deliveryDate", $deliveryDateString);
-            //Replace placeholder ':hours' with activity estimated hours
-            //taken from field 'estimatedHours' of 'activity' parameter.
-            $statement->bindParam(":hours", $activity->estimatedHours);
-
-            //Return the result of query execution
-            $result = $statement->execute();
-            return $result;
+            //Insert a new row into table 'lavoro' using inherited function "addModel".
+            return $this->addModel(
+                [
+                    $activity->name,
+                    $activity->notes,
+                    $startDateString,
+                    $deliveryDateString,
+                    $activity->estimatedHours
+                ]
+            );
 
         }
 
