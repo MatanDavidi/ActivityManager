@@ -73,6 +73,7 @@ class Assignment extends Model
             //Get the resource with the same name as the current model.
             $modelResource = $baseResource->getResourceByName($model["nome_risorsa"]);
 
+            //Only if both the model's activity and resource are not null, can we add the element to the array
             if (isset($modelActivity) &&
                 isset($modelResource)) {
                 //Add a new object of type Assignment with the model's data to the array.
