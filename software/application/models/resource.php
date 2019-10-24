@@ -171,7 +171,7 @@ class Resource extends Model
      * @param Resource $resource The object against which to compare.
      * @return bool true if the two object's fields have the same value, false otherwise.
      */
-    public function equals(Resource $resource)
+    public function equals(Resource $resource): bool
     {
         return
             $resource->name === $this->name &&
