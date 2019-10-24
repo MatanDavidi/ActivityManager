@@ -116,8 +116,6 @@ class Model
 
             $ad = $statement->execute();
 
-            var_dump($statement->errorInfo());
-
             //Execute the statement
             return $ad;
 
