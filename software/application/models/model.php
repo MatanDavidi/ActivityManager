@@ -77,7 +77,11 @@ class Model
             $queryResult = $statement->fetch(PDO::FETCH_ASSOC);
 
             //Return the results
-            return $queryResult;
+            if (is_array($queryResult)) {
+                return $queryResult;
+            } else {
+                return null;
+            }
 
         }
 
@@ -95,6 +99,7 @@ class Model
         //See if there's an invalid key in the array
         $keysValid = $this->areKeysValid($keys);
         if ($keysValid) {
+
             //Write the query that will write into the database
             $query = "INSERT INTO $this->tableName(" . implode(", ", $this->primaryKeyNames) . ") VALUES (";
 
