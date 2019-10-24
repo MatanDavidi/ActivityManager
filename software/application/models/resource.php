@@ -193,14 +193,18 @@ class Resource extends Model
      * Checks if an object of type Resource's fields have the same value as the fields of this instance of Resource.
      * @param Resource $resource The object against which to compare.
      * @return bool true if the two object's fields have the same value, false otherwise.
+     * Particularly, the password has to be the same hash.
      */
     public function equals(Resource $resource): bool
     {
-        return
-            $resource->name === $this->name &&
-            $resource->hourCost === $this->hourCost &&
-            $resource->password === $this->password &&
-            $resource->role === $this->role;
+        if (isset($resource)) {
+            return
+                $resource->name === $this->name &&
+                $resource->hourCost === $this->hourCost &&
+                $resource->password === $this->password &&
+                $resource->role === $this->role;
+        }
+        return false;
     }
 
     /**
