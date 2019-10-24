@@ -134,7 +134,8 @@ class Activity extends Model
      * Gets an activity with the specified name.
      * @param string $name The name for which to search for a job in the database.
      * @return Activity An object of type Activity whose fields' values are equal to the data of the
-     * line of the database's 'lavoro' table whose name corresponds to the value of parameter 'name'.
+     * line of the database's 'lavoro' table whose name corresponds to the value of parameter 'name'
+     * or NULL if no activity could be found.
      */
     public function getActivityByName(string $name): Activity
     {

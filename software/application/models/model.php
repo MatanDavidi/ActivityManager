@@ -49,9 +49,9 @@ class Model
     /**
      * Gets a single model identified by its primary key.
      * @param array $keys The table's primary key values for a row.
-     * @return array The results of the select query as a bidimensional array containing
-     * one or zero rows of the table with name tableName or null if the array of primary
-     * key's values is invalid (it contains values that are null, empty or whitespaces).
+     * @return array The results of the select query as an array containing an element for each
+     * field of the table with name tableName or NULL if the array of primary key's values is
+     * invalid (it contains values that are null, empty or whitespaces) or no model is found.
      */
     protected function getModelByKey(array $keys): array
     {

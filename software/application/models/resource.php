@@ -101,7 +101,8 @@ class Resource extends Model
      * Gets a resource with the specified name.
      * @param string $name The name for which to search for a resource in the database.
      * @return Resource An object of type Resource whose fields' values are equal to the data of the
-     * line of the database's 'risorse' table whose name corresponds to the value of parameter 'name'.
+     * line of the database's 'risorse' table whose name corresponds to the value of parameter 'name'
+     * or NULL if no resource could be found.
      */
     public function getResourceByName(string $name): Resource
     {
@@ -182,7 +183,7 @@ class Resource extends Model
     /**
      * Checks if the values of the fields of this object of type Resource are valid.
      * The values are valid when the resource is not null, its name and cost per hour are not null and either
-     * both its password and role (with a value that is contained in array ROLE_VALUES) are set or neither.
+     * both its password and role (with a value that is contained in array ROLE_VALUES) are not null or neither.
      * @return bool true if the values of the fields of this object are valid, otherwise false.
      */
     public function isValid(): bool
