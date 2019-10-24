@@ -93,43 +93,50 @@ class Assignment extends Model
      */
     public function isAssigned(Activity $activity, Resource $resource): bool
     {
+        //Check if activity and resource are valid
+        if ($activity->isValid() &&
+            $resource->isValid()) {
 
-        //Get the activity's name
-        $activityName = $activity->getName();
-        //Get the resource's name
-        $resourceName = $resource->getName();
+            //Get the activity's name
+            $activityName = $activity->getName();
+            //Get the resource's name
+            $resourceName = $resource->getName();
 
-        //Get row of table 'assegna' where resource is assigned to activity.
-        $model = $this->getModelByKey([$activityName, $resourceName]);
+            //Get row of table 'assegna' where resource is assigned to activity.
+            $model = $this->getModelByKey([$activityName, $resourceName]);
 
-        $isAssigned = false;
+            $isAssigned = false;
 
-        //If a row has been returned
-        if ($model) {
+            //If a row has been returned
+            if ($model) {
 
-            //Get from the database the activity with the same name as activity->getName().
-            $databaseActivity = $activity->getActivityByName($activityName);
+                //Get from the database the activity with the same name as activity->getName().
+                $databaseActivity = $activity->getActivityByName($activityName);
 
-            //If the values of its fields are the same as the ones of parameter activity
-            if ($activity->equals($databaseActivity)) {
+                //If the values of its fields are the same as the ones of parameter activity
+                if ($activity->equals($databaseActivity)) {
 
-                //Get from the database the resource with the same name as resource->getName().
-                $databaseResource = $resource->getResourceByName($resourceName);
+                    //Get from the database the resource with the same name as resource->getName().
+                    $databaseResource = $resource->getResourceByName($resourceName);
 
-                //If the values of its fields are the same as the ones of parameter resource
-                if ($resource->equals($databaseResource)) {
+                    //If the values of its fields are the same as the ones of parameter resource
+                    if ($resource->equals($databaseResource)) {
 
-                    //All values correspond and the resource is actually assigned to the activity
-                    $isAssigned = true;
+                        //All values correspond and the resource is actually assigned to the activity
+                        $isAssigned = true;
+
+                    }
 
                 }
 
             }
 
+            //If the parameters are equal to their respective database rows, that means the resource is assigned to the activity.
+            return $isAssigned;
+
         }
 
-        //If the parameters are equal to their respective database rows, that means the resource is assigned to the activity.
-        return $isAssigned;
+        return false;
 
     }
 
@@ -143,7 +150,7 @@ class Assignment extends Model
         //Check if the assignment and its values (Activity and Resource) are not null, this includes all fields of both
         //the assignment's activity and resource.
         //Also, check if the values of the fields of both activity and resource are present in a single row of the database.
-        if ($this->isValid()) {
+        if ($assignment->isValid()) {
 
             //Insert a new row into table 'assegna' using inherited function "addModel".
             return $this->addModel([$assignment->activity->getName(), $assignment->resource->getName()]);
