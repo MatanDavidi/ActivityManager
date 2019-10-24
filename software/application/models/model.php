@@ -96,32 +96,27 @@ class Model
      */
     protected function addModel(array $keys): bool
     {
-        //See if there's an invalid key in the array
-        $keysValid = $this->areKeysValid($keys);
-        if ($keysValid) {
+        //Write the query that will write into the database
+        $query = "INSERT INTO $this->tableName(" . implode(", ", $this->primaryKeyNames) . ") VALUES (";
 
-            //Write the query that will write into the database
-            $query = "INSERT INTO $this->tableName(" . implode(", ", $this->primaryKeyNames) . ") VALUES (";
+        //Loop each element of array keys and create a placeholder for each of them
+        for ($i = 0; $i < count($keys) - 1; ++$i) {
+            $query .= ":key$i, ";
+        }
+        $query .= ":key" . count($keys) - 1 . ")";
 
-            //Loop each element of array keys and create a placeholder for each of them
-            for ($i = 0; $i < count($keys) - 1; ++$i) {
-                $query .= ":key$i, ";
-            }
-            $query .= ":key" . count($keys) - 1 . ")";
+        //Prepare the statement
+        $statement = $this->database->prepare($query);
 
-            //Prepare the statement
-            $statement = $this->database->prepare($query);
-
-            //Bind each placeholder to its respective key
-            for ($i = 0; $i < count($keys); ++$i) {
-                $statement->bindParam(":key$i", $keys[$i]);
-            }
-
-            //Execute the statement
-            return $statement->execute();
+        //Bind each placeholder to its respective key
+        for ($i = 0; $i < count($keys); ++$i) {
+            $statement->bindParam(":key$i", $keys[$i]);
         }
 
-        return false;
+        $asd = $statement->execute();
+        var_dump($statement->errorInfo());
+        //Execute the statement
+        return $asd;
     }
 
     /**
@@ -131,60 +126,23 @@ class Model
      */
     protected function deleteModel(array $keys): bool
     {
-        $keysValid = $this->areKeysValid($keys);
-        if ($keysValid) {
-            //Write the beginning of the query to delete from a table in the database
-            $query = "DELETE FROM $this->tableName WHERE ";
+        //Write the beginning of the query to delete from a table in the database
+        $query = "DELETE FROM $this->tableName WHERE ";
 
-            //Compose the condition of the query
-            $query .= $this->composePrimaryKeyCondition($keys);
+        //Compose the condition of the query
+        $query .= $this->composePrimaryKeyCondition($keys);
 
-            //Prepare the query
-            $statement = $this->database->prepare($query);
+        //Prepare the query
+        $statement = $this->database->prepare($query);
 
-            //Assign to placeholders ':nameN' the value of parameter 'keys'
-            for ($i = 0; $i < count($keys); ++$i) {
-                $statement->bindParam(":key$i", $keys[$i]);
-            }
-
-            //Execute the query
-            return $statement->execute();
+        //Assign to placeholders ':nameN' the value of parameter 'keys'
+        for ($i = 0; $i < count($keys); ++$i) {
+            $statement->bindParam(":key$i", $keys[$i]);
         }
 
-        return false;
+        //Execute the query
+        return $statement->execute();
 
-    }
-
-    /**
-     * Check if an array contains only values that are not null or whitespace.
-     * @param array $keys The array to check.
-     * @return bool true if the array contains only values that are not null or whitespace.
-     */
-    private function areKeysValid(array $keys)
-    {
-        //Assume that the array is valid until it is proven invalid.
-        $keysValid = true;
-        if (count($keys) == count($this->primaryKeyNames)) {
-
-            //Loop through the array
-            foreach ($keys as $key) {
-
-                //If a value is null, empty or a whitespace, it is invalid, therefore the entire array is invalid.
-                if (!(isset($key) || strlen(trim($key)) == 0)) {
-
-                    $keysValid = false;
-
-                }
-
-            }
-
-        } else {
-
-            $keysValid = false;
-
-        }
-
-        return $keysValid;
     }
 
     /**
