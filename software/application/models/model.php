@@ -17,6 +17,11 @@ class Model
     private $primaryKeyNames;
 
     /**
+     * @var array The name of all table fields.
+     */
+    private $fields;
+
+    /**
      * @var PDO The connection to the database.
      */
     protected $database;
@@ -25,11 +30,13 @@ class Model
      * Constructor function for class Model.
      * @param $tableName string The name of the table to manage with this instance of class Model.
      * @param $primaryKeyNames array The name of the table fields that correspond to the table's primary key.
+     * @param array $fields The name of all table fields.
      */
-    public function __construct(string $tableName, array $primaryKeyNames)
+    public function __construct(string $tableName, array $primaryKeyNames, array $fields)
     {
         $this->tableName = $tableName;
         $this->primaryKeyNames = $primaryKeyNames;
+        $this->fields = $fields;
         $this->database = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";", DB_USERNAME, DB_PASSWORD);
     }
 
@@ -83,32 +90,41 @@ class Model
 
     /**
      * Inserts a model into the MySQL table whose name corresponds to the value of field tableName.
-     * @param array $keys An array that contains an element of type string for each primary key defined inside array primaryKeyNames.
+     * @param array $values An array that contains an element of type string for each value defined inside array fields.
      * @return bool true if the insertion was successful, false otherwise.
      */
-    protected function addModel(array $keys): bool
+    protected function addModel(array $values): bool
     {
-        //Write the query that will write into the database
-        $query = "INSERT INTO $this->tableName(" . implode(", ", $this->primaryKeyNames) . ") VALUES (";
+        if (count($this->fields) == count($values)) {
 
-        //Loop each element of array keys and create a placeholder for each of them
-        for ($i = 0; $i < count($keys) - 1; ++$i) {
-            $query .= ":key$i, ";
+            //Write the query that will write into the database
+            $query = "INSERT INTO $this->tableName(" . implode(", ", $this->fields) . ") VALUES (";
+
+            //Loop each element of array keys and create a placeholder for each of them
+            for ($i = 0; $i < count($values) - 1; ++$i) {
+                $query .= ":value$i, ";
+            }
+            $query .= ":value" . (count($values) - 1) . ")";
+
+            //Prepare the statement
+            $statement = $this->database->prepare($query);
+
+            //Bind each placeholder to its respective key
+            for ($i = 0; $i < count($values); ++$i) {
+                $statement->bindParam(":value$i", $values[$i]);
+            }
+
+            $ad = $statement->execute();
+
+            var_dump($statement->errorInfo());
+
+            //Execute the statement
+            return $ad;
+
         }
-        $query .= ":key" . (count($keys) - 1) . ")";
 
-        print $query;
+        return false;
 
-        //Prepare the statement
-        $statement = $this->database->prepare($query);
-
-        //Bind each placeholder to its respective key
-        for ($i = 0; $i < count($keys); ++$i) {
-            $statement->bindParam(":key$i", $keys[$i]);
-        }
-
-        //Execute the statement
-        return $statement->execute();
     }
 
     /**
@@ -118,22 +134,28 @@ class Model
      */
     protected function deleteModel(array $keys): bool
     {
-        //Write the beginning of the query to delete from a table in the database
-        $query = "DELETE FROM $this->tableName WHERE ";
+        if (count($this->primaryKeyNames) == count($keys)) {
 
-        //Compose the condition of the query
-        $query .= $this->composePrimaryKeyCondition($keys);
+            //Write the beginning of the query to delete from a table in the database
+            $query = "DELETE FROM $this->tableName WHERE ";
 
-        //Prepare the query
-        $statement = $this->database->prepare($query);
+            //Compose the condition of the query
+            $query .= $this->composePrimaryKeyCondition($keys);
 
-        //Assign to placeholders ':nameN' the value of parameter 'keys'
-        for ($i = 0; $i < count($keys); ++$i) {
-            $statement->bindParam(":key$i", $keys[$i]);
+            //Prepare the query
+            $statement = $this->database->prepare($query);
+
+            //Assign to placeholders ':nameN' the value of parameter 'keys'
+            for ($i = 0; $i < count($keys); ++$i) {
+                $statement->bindParam(":key$i", $keys[$i]);
+            }
+
+            //Execute the query
+            return $statement->execute();
+
         }
 
-        //Execute the query
-        return $statement->execute();
+        return false;
 
     }
 
