@@ -170,7 +170,7 @@ class Model
             foreach ($keys as $key) {
 
                 //If a value is null, empty or a whitespace, it is invalid, therefore the entire array is invalid.
-                if (!(isset($key) && strlen(trim($key)) == 0)) {
+                if (!(isset($key) || strlen(trim($key)) == 0)) {
 
                     $keysValid = false;
 
