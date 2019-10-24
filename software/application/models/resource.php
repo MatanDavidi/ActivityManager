@@ -167,6 +167,27 @@ class Resource extends Model
     }
 
     /**
+     * Checks if a resource's name and password correspond to those read from the database.
+     * @param string $name The name with which to login.
+     * @param string $password The password with wich to login.
+     * @return bool true if the resource's name and password correspond
+     * to those of an existing resource in the database, false otherwise.
+     */
+    public function login(string $name, string $password): bool
+    {
+
+        $databaseResource = $this->getResourceByName($name);
+        if (isset($databaseResource)) {
+
+            return password_verify($password, $databaseResource->password);
+
+        }
+
+        return false;
+
+    }
+
+    /**
      * Checks if an object of type Resource's fields have the same value as the fields of this instance of Resource.
      * @param Resource $resource The object against which to compare.
      * @return bool true if the two object's fields have the same value, false otherwise.
