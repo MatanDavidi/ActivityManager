@@ -43,7 +43,7 @@ class Activity extends Model
      */
     public function __construct(string $name = null, string $notes = null, DateTime $startDate = null, DateTime $deliveryDate = null, int $estimatedHours = null)
     {
-        parent::__construct("lavoro", ["nome"]);
+        parent::__construct("lavoro", ["nome"], ["nome", "note", "data_inizio", "data_consegna", "ore_preventivate"]);
         $this->name = $name;
         $this->notes = $notes;
         $this->startDate = $startDate;

@@ -23,7 +23,7 @@ class Assignment extends Model
      */
     public function __construct(Activity $activity = null, Resource $resource = null)
     {
-        parent::__construct("assegna", ["nome_lavoro", "nome_risorsa"]);
+        parent::__construct("assegna", ["nome_lavoro", "nome_risorsa"], ["nome_lavoro", "nome_risorsa"]);
         $this->activity = $activity;
         $this->resource = $resource;
     }

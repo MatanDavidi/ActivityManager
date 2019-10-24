@@ -38,7 +38,7 @@ class Resource extends Model
      */
     public function __construct(string $name = null, float $hourCost = null, string $password = null, string $role = self::ROLE_VALUES[1])
     {
-        parent::__construct("risorsa", ["nome"]);
+        parent::__construct("risorsa", ["nome"], ["nome", "costo_ora", "password", "ruolo"]);
         $this->name = $name;
         $this->hourCost = $hourCost;
         $this->password = $password;
