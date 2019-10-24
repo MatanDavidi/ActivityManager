@@ -136,7 +136,7 @@ class Resource extends Model
 
         //Check if the resource to be added is set, its name and cost per hour have been set and either
         // both its password and role (with a value that is contained in array ROLE_VALUES) are set or neither.
-        if ($this->isValid()) {
+        if ($resource->isValid()) {
 
             //Crypt password
             $securePassword = password_hash($resource->password, PASSWORD_BCRYPT);
