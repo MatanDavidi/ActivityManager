@@ -114,10 +114,8 @@ class Model
                 $statement->bindParam(":value$i", $values[$i]);
             }
 
-            $ad = $statement->execute();
-
             //Execute the statement
-            return $ad;
+            return $statement->execute();
 
         }
 
