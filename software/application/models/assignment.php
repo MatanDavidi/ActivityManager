@@ -32,7 +32,7 @@ class Assignment extends Model
      * Gets the activity to which the resource is assigned.
      * @return Activity The activity to which the resource is assigned.
      */
-    public function getActivity(): Activity
+    public function getActivity(): ?Activity
     {
         return $this->activity;
     }
@@ -41,7 +41,7 @@ class Assignment extends Model
      * Gets the resource assigned to the activity.
      * @return Resource The resource assigned to the activity.
      */
-    public function getResource(): Resource
+    public function getResource(): ?Resource
     {
         return $this->resource;
     }

@@ -49,7 +49,7 @@ class Resource extends Model
      * Gets the name of this resource.
      * @return string The name of this resource.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -58,7 +58,7 @@ class Resource extends Model
      * Gets the cost per hour of this resource.
      * @return float The cost per hour of this resource.
      */
-    public function getHourCost(): float
+    public function getHourCost(): ?float
     {
         return $this->hourCost;
     }
@@ -67,7 +67,7 @@ class Resource extends Model
      * Gets the role this resource has in the application.
      * @return string The role this resource has in the application.
      */
-    public function getRole(): string
+    public function getRole(): ?string
     {
         return $this->role;
     }
@@ -104,14 +104,14 @@ class Resource extends Model
      * line of the database's 'risorse' table whose name corresponds to the value of parameter 'name'
      * or NULL if no resource could be found.
      */
-    public function getResourceByName(string $name): Resource
+    public function getResourceByName(string $name): ?Resource
     {
 
         //Use function getModelByKey inherited from superclass Model to get a single Resource by its name.
         $model = $this->getModelByKey([$name]);
 
         //If a result has been returned
-        if ($model) {
+        if (isset($model)) {
 
             //Assign to a variable the result's data
 

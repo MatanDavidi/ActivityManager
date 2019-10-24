@@ -55,7 +55,7 @@ class Activity extends Model
      * Gets the name of this activity.
      * @return string The name of this activity.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -64,7 +64,7 @@ class Activity extends Model
      * Gets the notes that may be associated with it.
      * @return string The notes that may be associated with it.
      */
-    public function getNotes(): string
+    public function getNotes(): ?string
     {
         return $this->notes;
     }
@@ -73,7 +73,7 @@ class Activity extends Model
      * Gets the beginning date of the activity.
      * @return DateTime The beginning date of the activity.
      */
-    public function getStartDate(): DateTime
+    public function getStartDate(): ?DateTime
     {
         return $this->startDate;
     }
@@ -82,7 +82,7 @@ class Activity extends Model
      * Gets the delivery date of the activity.
      * @return DateTime The delivery date of the activity.
      */
-    public function getDeliveryDate(): DateTime
+    public function getDeliveryDate(): ?DateTime
     {
         return $this->deliveryDate;
     }
@@ -137,13 +137,13 @@ class Activity extends Model
      * line of the database's 'lavoro' table whose name corresponds to the value of parameter 'name'
      * or NULL if no activity could be found.
      */
-    public function getActivityByName(string $name): Activity
+    public function getActivityByName(string $name): ?Activity
     {
         //Use function getModelByKey inherited from superclass Model to get a single Activity by its name.
         $model = $this->getModelByKey([$name]);
 
         //If a valid result has been returned.
-        if ($model) {
+        if (isset($model)) {
 
             //Return a new object of type Activity with the result's data.
             return new Activity(

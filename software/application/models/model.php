@@ -53,7 +53,7 @@ class Model
      * field of the table with name tableName or NULL if the array of primary key's values is
      * invalid (it contains values that are null, empty or whitespaces) or no model is found.
      */
-    protected function getModelByKey(array $keys): array
+    protected function getModelByKey(array $keys): ?array
     {
         $keysValid = $this->areKeysValid($keys);
 
