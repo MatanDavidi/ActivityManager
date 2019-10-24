@@ -188,28 +188,28 @@ class Resource extends Model
      */
     public function isValid(): bool
     {
-
-        return isset($resource) &&
-            isset($resource->name) &&
-            strlen(trim($resource->name)) > 0 &&
-            isset($resource->hourCost) &&
-            $resource->hourCost >= 0.0 &&
+        return
+            isset($this) &&
+            isset($this->name) &&
+            strlen(trim($this->name)) > 0 &&
+            isset($this->hourCost) &&
+            $this->hourCost >= 0.0 &&
             (
                 (
-                    isset($resource->password) &&
-                    strlen(trim($resource->password)) > 0 &&
-                    isset($resource->role) &&
-                    strlen(trim($resource->role)) > 0 &&
-                    in_array($resource->role, self::ROLE_VALUES)
+                    isset($this->password) &&
+                    strlen(trim($this->password)) > 0 &&
+                    isset($this->role) &&
+                    strlen(trim($this->role)) > 0 &&
+                    in_array($this->role, self::ROLE_VALUES)
                 ) ||
                 (
                     (
-                        !isset($resource->password) ||
-                        strlen(trim($resource->password)) == 0
+                        is_null($this->password) ||
+                        strlen(trim($this->password)) == 0
                     ) &&
                     (
-                        !isset($resource->role) ||
-                        strlen(trim($resource->role)) == 0
+                        is_null($this->role) ||
+                        strlen(trim($this->role)) == 0
                     )
                 )
             );
