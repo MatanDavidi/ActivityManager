@@ -78,7 +78,7 @@ class WorkHours extends Model
                         $modelActivity,
                         $modelResource,
                         DateTime::createFromFormat("Y-m-d", $model["data"]),
-                        intval($model["ore_lavoro"])
+                        intval($model["numero_ore"])
                     )
                 );
             }
