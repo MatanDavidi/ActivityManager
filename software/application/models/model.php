@@ -55,37 +55,29 @@ class Model
      */
     protected function getModelByKey(array $keys): ?array
     {
-        $keysValid = $this->areKeysValid($keys);
+        //Write the beginning of the query to search in the database
+        $query = "SELECT * FROM $this->tableName WHERE ";
 
-        if ($keysValid) {
+        //Compose the condition of the query
+        $query .= $this->composePrimaryKeyCondition($keys);
 
-            //Write the beginning of the query to search in the database
-            $query = "SELECT * FROM $this->tableName WHERE ";
-
-            //Compose the condition of the query
-            $query .= $this->composePrimaryKeyCondition($keys);
-
-            //Prepare the query
-            $statement = $this->database->prepare($query);
-            //Assign to placeholders ':nameN' the value of parameter 'keys'
-            for ($i = 0; $i < count($keys); ++$i) {
-                $statement->bindParam(":key$i", $keys[$i]);
-            }
-            //Execute the query
-            $statement->execute();
-            //Fetch the results
-            $queryResult = $statement->fetch(PDO::FETCH_ASSOC);
-
-            //Return the results
-            if (is_array($queryResult)) {
-                return $queryResult;
-            } else {
-                return null;
-            }
-
+        //Prepare the query
+        $statement = $this->database->prepare($query);
+        //Assign to placeholders ':nameN' the value of parameter 'keys'
+        for ($i = 0; $i < count($keys); ++$i) {
+            $statement->bindParam(":key$i", $keys[$i]);
         }
+        //Execute the query
+        $statement->execute();
+        //Fetch the results
+        $queryResult = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return null;
+        //Return the results
+        if (is_array($queryResult)) {
+            return $queryResult;
+        } else {
+            return null;
+        }
 
     }
 
@@ -103,7 +95,9 @@ class Model
         for ($i = 0; $i < count($keys) - 1; ++$i) {
             $query .= ":key$i, ";
         }
-        $query .= ":key" . count($keys) - 1 . ")";
+        $query .= ":key" . (count($keys) - 1) . ")";
+
+        print $query;
 
         //Prepare the statement
         $statement = $this->database->prepare($query);
@@ -113,10 +107,8 @@ class Model
             $statement->bindParam(":key$i", $keys[$i]);
         }
 
-        $asd = $statement->execute();
-        var_dump($statement->errorInfo());
         //Execute the statement
-        return $asd;
+        return $statement->execute();
     }
 
     /**
