@@ -182,15 +182,22 @@ class Assignment extends Model
      */
     public function isValid()
     {
-        $databaseActivity = $this->activity->getActivityByName($this->activity->getName());
-        $databaseResource = $this->resource->getResourceByName($this->resource->getName());
-
-        return
-            isset($this) &&
+        if (isset($this->activity) &&
+            isset($this->resource) &&
             $this->activity->isValid() &&
-            $this->resource->isValid() &&
-            $this->activity->equals($databaseActivity) &&
-            $this->resource->equals($databaseResource);
+            $this->resource->isValid()) {
+
+            $databaseActivity = $this->activity->getActivityByName($this->activity->getName());
+            $databaseResource = $this->resource->getResourceByName($this->resource->getName());
+
+            return
+                isset($this) &&
+                $this->activity->equals($databaseActivity) &&
+                $this->resource->equals($databaseResource);
+
+        }
+
+        return false;
     }
 
 }
