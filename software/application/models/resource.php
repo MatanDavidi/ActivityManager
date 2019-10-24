@@ -175,14 +175,16 @@ class Resource extends Model
      */
     public function login(string $name, string $password): bool
     {
-
+        //Get the resource whose name is equal to parameter name
         $databaseResource = $this->getResourceByName($name);
+        //Check if a result was returned
         if (isset($databaseResource)) {
-
+            //Check if the value of parameter 'password' and the hash read from the database correspond
             return password_verify($password, $databaseResource->password);
 
         }
 
+        //If no result was found, return false
         return false;
 
     }
