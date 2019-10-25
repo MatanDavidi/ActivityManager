@@ -149,4 +149,92 @@ class WorkHours extends Model
         return 0;
 
     }
+
+    /**
+     * Gets all work hours, with date and number of hours, of a single resource on a single activity.
+     * @param Activity $activity The activity on which the resource has worked.
+     * @param Resource $resource The resource that worked on the activity.
+     * @return array An array of objects of type WorkHours, containing one element for each row of table 'ore_lavoro' of
+     * the database whose activity and resource name correspond to the values of field 'name' of the parameters passed
+     * to this function.
+     */
+    public function getWorkHours(Activity $activity, Resource $resource): array
+    {
+        //The array that will contain the values to return
+        $workHoursArray = [];
+
+        //Check if activity and resource are valid
+        if ($activity->isValid() &&
+            $resource->isValid()) {
+
+            //Get the activity's name
+            $activityName = $activity->getName();
+            //Get the resource's name
+            $resourceName = $resource->getName();
+
+            //Create the query
+            $query = "SELECT * FROM ore_lavoro WHERE nome_lavoro = :activity AND nome_risorsa = :resource";
+
+            //Prepare the query
+            $statement = $this->database->prepare($query);
+
+            //Bind query placeholders to their respective values:
+            //Bind placeholder :activity to value of 'name' field of parameter 'activity'
+            $statement->bindParam(":activity", $activityName);
+            //Bind placeholder :resource to value of 'name' field of parameter 'resource'
+            $statement->bindParam(":resource", $resourceName);
+
+            //Execute the statement
+            if ($statement->execute()) {
+
+                //Fetch the statement's results
+                $models = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                //If one or more rows have been returned
+                if (count($models) > 0) {
+
+                    //Loop each returned row and for each add an object of type WorkHours to array workHours.
+                    foreach ($models as $model) {
+
+                        //Get from the database the activity with the same name as activity->getName().
+                        $databaseActivity = $activity->getActivityByName($model["nome_lavoro"]);
+
+                        //If the values of its fields are the same as the ones of parameter activity
+                        if ($activity->equals($databaseActivity)) {
+
+                            //Get from the database the resource with the same name as resource->getName().
+                            $databaseResource = $resource->getResourceByName($model["nome_risorsa"]);
+
+                            //If the values of its fields are the same as the ones of parameter resource
+                            if ($resource->equals($databaseResource)) {
+
+                                //All values correspond and the resource is actually assigned to
+                                //the activity: create an object with values read from database.
+                                $workHours = new WorkHours
+                                (
+                                    $activity,
+                                    $resource,
+                                    DateTime::createFromFormat("Y-m-d", $model["data"]),
+                                    intval($model["numero_ore"])
+                                );
+
+                                //Add the object to the array
+                                array_push($workHoursArray, $workHours);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        //Return array
+        return $workHoursArray;
+
+    }
 }
