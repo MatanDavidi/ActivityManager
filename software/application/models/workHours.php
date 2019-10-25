@@ -35,7 +35,11 @@ class WorkHours extends Model
      */
     public function __construct(Activity $activity = null, Resource $resource = null, DateTime $date = null, int $hoursNumber = null)
     {
-        parent::__construct("ore_lavoro", ["nome_lavoro", "nome_risorsa"], ["nome_lavoro", "nome_risorsa", "data", "numero_ore"]);
+        parent::__construct(
+            "ore_lavoro",
+            ["nome_lavoro", "nome_risorsa", "data", "numero_ore"],
+            ["nome_lavoro", "nome_risorsa", "data", "numero_ore"]
+        );
         $this->activity = $activity;
         $this->resource = $resource;
         $this->date = $date;
