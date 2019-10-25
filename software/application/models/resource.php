@@ -209,8 +209,10 @@ class Resource extends Model
 
     /**
      * Checks if the values of the fields of this object of type Resource are valid.
-     * The values are valid when the resource is not null, its name and cost per hour are not null and either
-     * both its password and role (with a value that is contained in array ROLE_VALUES) are not null or neither.
+     * The values are valid when all of the following conditions are true:
+     * - the resource is not null
+     * - its name and cost per hour are not null
+     * - either both its password and role (with a value that is contained in array ROLE_VALUES) are not null or neither.
      * @return bool true if the values of the fields of this object are valid, otherwise false.
      */
     public function isValid(): bool

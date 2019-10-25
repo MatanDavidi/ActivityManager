@@ -233,9 +233,11 @@ class Activity extends Model
 
     /**
      * Checks if the values of the fields of this object of type Activity are valid.
-     * The values are valid when the activity and its name, startDate, deliveryDate and estimatedHours are not null, if
-     * the name isn't empty or a whitespace, the start date is before or on the same day as the delivery date and the
-     * number of estimated hours is greater than zero.
+     * The values are valid when all of the following conditions are true:
+     * - the activity and its name, startDate, deliveryDate and estimatedHours are not null
+     * - the name isn't empty or a whitespace
+     * - the start date is before or on the same day as the delivery date
+     * - the number of estimated hours is greater than zero.
      * @return bool true if the values of the fields of this object are valid, otherwise false.
      */
     public function isValid(): bool

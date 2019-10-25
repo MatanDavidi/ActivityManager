@@ -172,7 +172,10 @@ class Assignment extends Model
     {
         //If the assignment is valid and its values are present in a single row of table 'assegna' of the database, delete.
         if ($assignment->isValid()) {
+
+            //Delete a row from table 'assegna' using inherited function "deleteModel".
             return $this->deleteModel([$assignment->activity->getName(), $assignment->resource->getName()]);
+
         }
         return false;
     }

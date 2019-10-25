@@ -7,7 +7,7 @@ class WorkHours extends Model
 {
 
     /**
-     * @var Activity The activity for which the resource has worked.
+     * @var Activity The activity on which the resource has worked.
      */
     private $activity;
 
@@ -61,7 +61,7 @@ class WorkHours extends Model
         $baseResource = new Resource();
 
         // Loop through each element read from the database and for each of them add an object of
-        // type Assignment with the data from the current element from models to array activities.
+        // type WorkHours with the data from the current element from models to array activities.
         foreach ($models as $model) {
 
             //Get the activity with the same name as the current model.
