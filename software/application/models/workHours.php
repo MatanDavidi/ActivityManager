@@ -237,4 +237,40 @@ class WorkHours extends Model
         return $workHoursArray;
 
     }
+    /**
+     * Checks if the values of the fields of this object of type Assignment are valid.
+     * The values are valid when all of the following conditions are true:
+     * - the value of fields 'activity', 'resource', 'date' and 'hoursNumber' is not null
+     * - the value of field 'hoursNumber' is greater than zero
+     * - the call to functions "isValid" of both activity and resource is true
+     * - the values of the fields of both activity and resource are equal to those in the row of their respective table
+     * whose name is equal to the value of their 'name' field.
+     * - the activity and resource are assigned inside table 'assegna' of the database
+     * @return bool true if this instance of WorkHours is valid, false otherwise.
+     */
+    public function isValid(): bool
+    {
+        if (isset($this->activity) &&
+            isset($this->resource) &&
+            $this->activity->isValid() &&
+            $this->resource->isValid()) {
+
+            $baseAssignment = new Assignment();
+            $databaseActivity = $this->activity->getActivityByName($this->activity->getName());
+            $databaseResource = $this->resource->getResourceByName($this->resource->getName());
+
+            return
+                isset($this->date) &&
+                isset($this->hoursNumber) &&
+                intval($this->hoursNumber) > 0 &&
+                $this->activity->equals($databaseActivity) &&
+                $this->resource->equals($databaseResource) &&
+                $baseAssignment->isAssigned($this->activity, $this->resource);
+
+        }
+
+        return false;
+
+    }
+
 }
