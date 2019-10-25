@@ -263,6 +263,31 @@ class WorkHours extends Model
         return false;
 
     }
+
+    /**
+     * Deletes a record from the MySQL table 'ore_lavoro' where the name is equal to the name of an object of type WorkHours.
+     * @param WorkHours $workHours The data of the assignment to delete.
+     * @return bool true if the deletion is successful, false otherwise.
+     */
+    public function deleteWorkHours(WorkHours $workHours): bool
+    {
+        //Check if the work hours to be added to the database are valid
+        if ($workHours->isValid()) {
+
+            //Delete a row from table 'ore_lavoro' using inherited function "deleteModel".
+            return $this->deleteModel(
+                [
+                    $workHours->activity->getName(),
+                    $workHours->resource->getName(),
+                    $workHours->date->format("Y-m-d"),
+                    $workHours->hoursNumber]);
+
+        }
+
+        return false;
+
+    }
+
     /**
      * Checks if the values of the fields of this object of type Assignment are valid.
      * The values are valid when all of the following conditions are true:
