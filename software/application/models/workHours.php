@@ -237,6 +237,32 @@ class WorkHours extends Model
         return $workHoursArray;
 
     }
+
+    /**
+     * Inserts a new row into table 'ore_lavoro' of database with data passed as parameter.
+     * @param WorkHours $workHours An object of type WorkHours that contains the data to add to the database.
+     * @return bool true if the insert operation is successful, false otherwise.
+     */
+    public function addWorkHours(WorkHours $workHours): bool
+    {
+        //Check if the work hours to be added to the database are valid
+        if ($workHours->isValid()) {
+
+            //Insert a new row into table 'ore_lavoro' using inherited function "addModel".
+            return $this->addModel(
+                [
+                    $workHours->activity->getName(),
+                    $workHours->resource->getName(),
+                    $workHours->date->format("Y-m-d"),
+                    $workHours->hoursNumber
+                ]
+            );
+
+        }
+
+        return false;
+
+    }
     /**
      * Checks if the values of the fields of this object of type Assignment are valid.
      * The values are valid when all of the following conditions are true:
