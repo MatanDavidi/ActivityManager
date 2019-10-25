@@ -2,6 +2,7 @@
 require_once "application/models/model.php";
 require_once "application/models/activity.php";
 require_once "application/models/resource.php";
+require_once "application/models/assignment.php";
 
 class WorkHours extends Model
 {
@@ -44,6 +45,42 @@ class WorkHours extends Model
         $this->resource = $resource;
         $this->date = $date;
         $this->hoursNumber = $hoursNumber;
+    }
+
+    /**
+     * Gets the activity on which the resource has worked.
+     * @return Activity The activity on which the resource has worked.
+     */
+    public function getActivity(): ?Activity
+    {
+        return $this->activity;
+    }
+
+    /**
+     * Gets the resource that worked on the activity.
+     * @return Resource The resource that worked on the activity.
+     */
+    public function getResource(): ?Resource
+    {
+        return $this->resource;
+    }
+
+    /**
+     * Gets the date on which the work took place.
+     * @return DateTime The date on which the work took place.
+     */
+    public function getDate(): ?DateTime
+    {
+        return $this->date;
+    }
+
+    /**
+     * Gets the number of hours the resource has worked on the activity for.
+     * @return int The number of hours the resource has worked on the activity for.
+     */
+    public function getHoursNumber(): ?int
+    {
+        return $this->hoursNumber;
     }
 
     /**
