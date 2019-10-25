@@ -76,7 +76,7 @@ class WorkHours extends Model
             //Only if both the model's activity and resource are not null, can we add the element to the array
             if (isset($modelActivity) &&
                 isset($modelResource)) {
-                //Add a new object of type Assignment with the model's data to the array.
+                //Add a new object of type WorkHours with the model's data to the array.
                 array_push($workHours,
                     new WorkHours(
                         $modelActivity,
