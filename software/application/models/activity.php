@@ -224,8 +224,8 @@ class Activity extends Model
             return
                 $activity->name === $this->name &&
                 $activity->notes === $this->notes &&
-                $activity->startDate == $this->startDate &&
-                $activity->deliveryDate == $this->deliveryDate &&
+                $activity->startDate->format("Y-m-d") == $this->startDate->format("Y-m-d") &&
+                $activity->deliveryDate->format("Y-m-d") == $this->deliveryDate->format("Y-m-d") &&
                 $activity->estimatedHours === $this->estimatedHours;
         }
         return false;
