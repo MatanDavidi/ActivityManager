@@ -243,7 +243,6 @@ class Activity extends Model
     public function isValid(): bool
     {
         return
-            isset($this) &&
             isset($this->name) &&
             isset($this->startDate) &&
             isset($this->deliveryDate) &&

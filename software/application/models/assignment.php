@@ -198,7 +198,6 @@ class Assignment extends Model
             $databaseResource = $this->resource->getResourceByName($this->resource->getName());
 
             return
-                isset($this) &&
                 $this->activity->equals($databaseActivity) &&
                 $this->resource->equals($databaseResource);
 

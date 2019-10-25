@@ -218,7 +218,6 @@ class Resource extends Model
     public function isValid(): bool
     {
         return
-            isset($this) &&
             isset($this->name) &&
             strlen(trim($this->name)) > 0 &&
             isset($this->hourCost) &&
