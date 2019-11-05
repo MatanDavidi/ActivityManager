@@ -12,7 +12,7 @@ class Controller
      * @param array $parameters Any parameters you want to send to the action as an array.
      * This parameter is optional and has a default value of an empty array, which means that no parameters are passed.
      */
-    public function redirect(string $controller, string $action = "index", Array $parameters = Array())
+    protected function redirect(string $controller, string $action = "index", Array $parameters = Array())
     {
         //Thanks to Robert Pitt for answering the question at https://stackoverflow.com/questions/4979614/redirection-php-inside-mvc
 
@@ -34,14 +34,11 @@ class Controller
      * @param string $input The input string to be sanitized.
      * @return string The sanitized input string.
      */
-    public function sanitizeInput(string $input): string
+    protected function sanitizeInput(string $input): string
     {
         $input = trim($input);
         $input = filter_var($input, FILTER_SANITIZE_STRING);
-//        $input = filter_var($input, FILTER_FLAG_STRIP_HIGH);
-//        $input = filter_var($input, FILTER_FLAG_STRIP_LOW);
         return $input;
-
     }
 
 }
