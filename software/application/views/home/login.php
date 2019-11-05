@@ -31,7 +31,11 @@
                 <input class="btn_1 btn-block" type="submit" value="Accedi">
             </form>
         </div>
+        <?php if (isset($err_msg)): ?>
+            <p class="text-danger"><?php echo $err_msg; ?></p>
+        <?php endif; ?>
     </div>
 </div>
 
+<script src="/application/libs/js/additional-methods.min.js"></script>
 <script src="/application/libs/js/form-validation/home-login.js"></script>
