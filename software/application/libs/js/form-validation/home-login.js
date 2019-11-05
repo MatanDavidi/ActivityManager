@@ -6,6 +6,9 @@ $(document).ready(function () {
                 required: true,
                 maxlength: {
                     param: 255
+                },
+                pattern: {
+                    param: /^[a-zàéèìòùäëïöüâêîôûßñç&@0-9,._' ]+$/i
                 }
             },
             password: {
@@ -18,7 +21,8 @@ $(document).ready(function () {
         messages: {
             nome: {
                 required: "Inserire un nome utente",
-                maxlength: "Inserire un nome utente più corto di 256 caratteri"
+                maxlength: "Inserire un nome utente più corto di 256 caratteri",
+                pattern: "Il nome utente inserito contiene caratteri non validi"
             },
             password: {
                 required: "Inserire una password",
