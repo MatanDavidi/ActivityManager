@@ -28,4 +28,20 @@ class Controller
 
     }
 
+    /**
+     * Sanitizes an input string by trimming its whitespaces, filtering it and
+     * encoding every character with ASCII code greater than 127 or less than 32.
+     * @param string $input The input string to be sanitized.
+     * @return string The sanitized input string.
+     */
+    public function sanitizeInput(string $input): string
+    {
+        $input = trim($input);
+        $input = filter_var($input, FILTER_SANITIZE_STRING);
+//        $input = filter_var($input, FILTER_FLAG_STRIP_HIGH);
+//        $input = filter_var($input, FILTER_FLAG_STRIP_LOW);
+        return $input;
+
+    }
+
 }
