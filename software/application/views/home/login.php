@@ -33,3 +33,5 @@
         </div>
     </div>
 </div>
+
+<script src="/application/libs/js/form-validation/home-login.js"></script>
