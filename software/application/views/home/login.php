@@ -18,9 +18,9 @@
         <div class="col-lg-12">
             <form action="<?php echo URL; ?>home/login" method="post">
                 <div class="form-group">
-                    <label for="name">Nome:</label>
+                    <label for="nome">Nome:</label>
                     <input class="form-control"
-                           type="text" name="name" id="name">
+                           type="text" name="nome" id="nome">
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
