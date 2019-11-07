@@ -1,3 +1,12 @@
+<?php
+if ($_SERVER["REQUEST_URI"] !== "/home/login") {
+    if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+        header("Location: " . URL . "home");
+        die();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
