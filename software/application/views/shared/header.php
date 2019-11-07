@@ -111,6 +111,11 @@
                             </li>
                         </ul>
                     </div>
+                    <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
+                        <div class="d-none d-lg-block">
+                            <a class="btn btn-danger" href="<?php echo URL . "home/logout"; ?>">LOGOUT</a>
+                        </div>
+                    <?php endif; ?>
                     <div class="social_icon d-none d-lg-block">
                         <a href="https://www.github.com/MatanDavidi"><i class="ti-github"></i></a>
                     </div>
