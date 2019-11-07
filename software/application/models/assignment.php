@@ -87,6 +87,52 @@ class Assignment extends Model
     }
 
     /**
+     * Gets all activities assigned to a resource by reading them from table 'assegna' of the database.
+     * @param Resource $resource The resource to which the activities have to be assigned.
+     * @return array An array containing an object of type Activity for each activity to which the resource is assigned the resource.
+     */
+    public function getActivitiesAssignedToResource(Resource $resource): array
+    {
+        //Initialize the returned array
+        $assignments = [];
+
+        //Check if the resource is valid
+        if ($resource->isValid()) {
+
+            //Save to a variable the resource's name
+            $resourceName = $resource->getName();
+            //Write the query
+            $query = "SELECT nome_lavoro FROM assegna WHERE nome_risorsa = :resource";
+            //Prepare the query's statement
+            $statement = $this->database->prepare($query);
+            //Bind placeholder ":resource" to the resource's name
+            $statement->bindParam(":resource", $resourceName);
+            //If the statement's execution was successful
+            if ($statement->execute()) {
+
+                //Create empty activity to use its functions
+                $baseActivity = new Activity();
+                //Fetch the statement's execution's results
+                $results = $statement->fetchAll(PDO::FETCH_NUM);
+
+                //Loop through all results
+                foreach ($results as $result) {
+
+                    //Get the activity with the same name as the current result
+                    $activity = $baseActivity->getActivityByName($result[0]);
+                    //Add the resource to the array
+                    array_push($assignments, $activity);
+
+                }
+
+            }
+
+        }
+
+        return $assignments;
+    }
+
+    /**
      * Checks if an activity and a resource are associated in the database's 'assegna' table.
      * Note: this function should be used with parameters taken from a call to function "getActivityByName" and
      * "getResourceByName" or "getAllActivities" and "getAllResources".
