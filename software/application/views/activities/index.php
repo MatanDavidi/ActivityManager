@@ -23,59 +23,36 @@
         </a>
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 1</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 2</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 3</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 4</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 5</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "activities/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Lavoro 6</p>
-                <p class="list-group-item">Data di inizio: dd.mm.yyyy</p>
-                <p class="list-group-item">Data di consegna: dd.mm.yyyy</p>
-                <p class="list-group-item">Ore di lavoro preventivate: xxx</p>
-                <p class="list-group-item">Collaboratori assegnati: xx</p>
-            </a>
-        </div>
+        <?php if (count($activities) > 0): ?>
+            <?php foreach ($activities as $activity): ?>
+                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                    <a href="<?php echo URL . "activities/details/" . $activity->getName(); ?>">
+                        <p class="list-group-item list-group-item-action"><?php echo $activity->getName(); ?></p>
+                        <p class="list-group-item">Data di inizio:
+                            <?php
+                            $startDate = $activity->getStartDate();
+                            echo $startDate->format("d.m.Y");
+                            ?></p>
+                        <p class="list-group-item">Data di consegna:
+                            <?php
+                            $startDate = $activity->getDeliveryDate();
+                            echo $startDate->format("d.m.Y");
+                            ?></p>
+                        <p class="list-group-item">Ore di lavoro
+                            preventivate: <?php echo $activity->getEstimatedHours(); ?></p>
+                        <p class="list-group-item">Collaboratori assegnati:
+                            <?php
+                            $baseAssignment = new Assignment();
+                            $assignedResources = $baseAssignment->getResourcesAssignedToActivity($activity);
+                            echo count($assignedResources);
+                            ?></p>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12 text-center">
+                <p class="text-primary">Non è stato trovato nessun lavoro.</p>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
