@@ -133,6 +133,53 @@ class Assignment extends Model
     }
 
     /**
+     * Gets all resources assigned to an activity by reading them from table 'assegna' of the database.
+     * @param Activity $activity The activity to which the resources have to be assigned.
+     * @return array An array containing an object of type Resource for each resource that's assigned to the activity.
+     */
+    public function getResourcesAssignedToActivity(Activity $activity): array
+    {
+        //Initialize the returned array
+        $resources = [];
+
+        //Check if the activity is valid
+        if ($activity->isValid()) {
+
+            //Save to a variable the activity's name
+            $activityName = $activity->getName();
+            //Write the query
+            $query = "SELECT nome_risorsa FROM assegna WHERE nome_lavoro = :activity";
+            //Prepare the query's statement
+            $statement = $this->database->prepare($query);
+            //Bind placeholder ":activity" to the activity's name
+            $statement->bindParam(":activity", $activityName);
+            //If the statement's execution was successful
+            if ($statement->execute()) {
+
+                //Create empty resource to use its functions
+                $baseResource = new Resource();
+                //Fetch the statement's execution's results
+                $results = $statement->fetchAll(PDO::FETCH_NUM);
+
+                //Loop through all results
+                foreach ($results as $result) {
+
+                    //Get the resource with the same name as the current result
+                    $resource = $baseResource->getResourceByName($result[0]);
+
+                    //Add the resource to the array
+                    array_push($resources, $resource);
+
+                }
+
+            }
+
+        }
+
+        return $resources;
+    }
+
+    /**
      * Checks if an activity and a resource are associated in the database's 'assegna' table.
      * Note: this function should be used with parameters taken from a call to function "getActivityByName" and
      * "getResourceByName" or "getAllActivities" and "getAllResources".
