@@ -1,4 +1,7 @@
 <?php
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 // carico il file di configurazione
 require 'application/config/config.php';
