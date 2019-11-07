@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function login()
     {
+        //If the user has already logged in, redirect him without showing login page
+        if (isset($_SESSION["userName"]) && isset($_SESSION["userRole"])) {
+
+            $this->redirect("activities");
+
+        }
 
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
@@ -42,6 +48,12 @@ class HomeController extends Controller
             //If the user exists
             if ($baseResource->login($username, $password)) {
 
+                //Get all user's data
+                $user = $baseResource->getResourceByName($username);
+                //Add username and role to session
+                $_SESSION["userName"] = $username;
+                $_SESSION["userRole"] = $user->getRole();
+
                 //Redirect them to the activities' page
                 $this->redirect("activities");
 
@@ -56,6 +68,14 @@ class HomeController extends Controller
             }
 
         }
+
+    }
+
+    public function logout()
+    {
+
+        session_destroy();
+        $this->redirect("home");
 
     }
 
