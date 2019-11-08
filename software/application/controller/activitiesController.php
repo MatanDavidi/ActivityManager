@@ -1,7 +1,7 @@
 <?php
 
 require_once "application/controller/controller.php";
-require_once "application/models/assignment.php";
+require_once "application/models/workHours.php";
 
 class ActivitiesController extends Controller
 {
@@ -39,9 +39,27 @@ class ActivitiesController extends Controller
         $name = urldecode($name);
         $activity = new Activity();
         $activity = $activity->getActivityByName($name);
-        if (is_null($activity)) {   
+        if (is_null($activity)) {
             $this->redirect("activities");
         }
+
+        $baseAssignment = new Assignment();
+        $assignedResources = $baseAssignment->getResourcesAssignedToActivity($activity);
+        $resourcesNumber = count($assignedResources);
+
+        $baseWorkHours = new WorkHours();
+        $assignedWorkHours = $baseWorkHours->getWorkHoursByActivity($activity);
+        $workHoursCosts = [];
+        $totalCost = 0.0;
+        foreach ($assignedWorkHours as $workHour) {
+
+            $resource = $workHour->getResource();
+            $cost = ($resource->getHourCost() * $workHour->getHoursNumber());
+            array_push($workHoursCosts, $cost);
+            $totalCost += $cost;
+
+        }
+
         require "application/views/shared/header.php";
         require "application/views/activities/details.php";
         require "application/views/shared/footer.php";
