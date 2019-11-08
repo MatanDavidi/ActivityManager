@@ -26,20 +26,27 @@
         <?php if (count($activities) > 0): ?>
             <?php foreach ($activities as $activity): ?>
                 <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-                    <a href="<?php echo URL . "activities/details/" . $activity->getName(); ?>">
-                        <p class="list-group-item list-group-item-action"><?php echo $activity->getName(); ?></p>
-                        <p class="list-group-item">Data di inizio:
+                    <a href="<?php echo URL . "activities/details/" . urlencode($activity->getName()); ?>">
+                        <p class="list-group-item list-group-item-action">
+                            <?php echo $activity->getName(); ?>
+                        </p>
+                        <p class="list-group-item">
+                            Data di inizio:
                             <?php
                             $startDate = $activity->getStartDate();
                             echo $startDate->format("d.m.Y");
-                            ?></p>
-                        <p class="list-group-item">Data di consegna:
+                            ?>
+                        </p>
+                        <p class="list-group-item">
+                            Data di consegna:
                             <?php
                             $startDate = $activity->getDeliveryDate();
                             echo $startDate->format("d.m.Y");
-                            ?></p>
-                        <p class="list-group-item">Ore di lavoro
-                            preventivate: <?php echo $activity->getEstimatedHours(); ?></p>
+                            ?>
+                        </p>
+                        <p class="list-group-item">
+                            Ore di lavoro preventivate: <?php echo $activity->getEstimatedHours(); ?>
+                        </p>
                         <p class="list-group-item">Collaboratori assegnati:
                             <?php
                             $baseAssignment = new Assignment();
