@@ -120,7 +120,31 @@ class ActivitiesController extends Controller
 
         } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            //TODO: Add database logic
+            //Check if the POST values are present
+            if (isset($_POST["nome"]) &&
+                isset($_POST["note"]) &&
+                isset($_POST["data_inizio"]) &&
+                isset($_POST["data_consegna"]) &&
+                isset($_POST["ore"])) {
+
+                //Save all POST values to their respective variable
+                $name = $this->sanitizeInput($_POST["nome"]);
+                $startDate = $this->sanitizeInput($_POST["data_inizio"]);
+                $startDate = DateTime::createFromFormat("Y-m-d", $startDate);
+                $deliveryDate = $this->sanitizeInput($_POST["data_consegna"]);
+                $deliveryDate = DateTime::createFromFormat("Y-m-d", $deliveryDate);
+                $hoursNumber = intval($_POST["ore"]);
+                $notes = $this->sanitizeInput($_POST["note"]);
+
+                //Create a new object of type Activity with the POST values
+                $activity = new Activity($name, $notes, $startDate, $deliveryDate, $hoursNumber);
+
+                //Add the activity to the database
+                $activity->addActivity($activity);
+                //Redirect to the list of activities
+                $this->redirect("activities");
+
+            }
 
         }
 
