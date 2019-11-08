@@ -50,4 +50,5 @@
     </form>
 </div>
 
+<script src="/application/libs/js/additional-methods.min.js"></script>
 <script src="/application/libs/js/form-validation/activities-new.js"></script>
