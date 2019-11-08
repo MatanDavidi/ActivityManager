@@ -24,7 +24,8 @@
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
         <?php if (count($activities) > 0): ?>
-            <?php foreach ($activities as $activity): ?>
+            <?php for ($i = 0; $i < count($activities); ++$i): ?>
+                <?php $activity = $activities[$i]; ?>
                 <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
                     <a href="<?php echo URL . "activities/details/" . urlencode($activity->getName()); ?>">
                         <p class="list-group-item list-group-item-action">
@@ -49,13 +50,12 @@
                         </p>
                         <p class="list-group-item">Collaboratori assegnati:
                             <?php
-                            $baseAssignment = new Assignment();
-                            $assignedResources = $baseAssignment->getResourcesAssignedToActivity($activity);
-                            echo count($assignedResources);
-                            ?></p>
+                            echo $assignedResourcesCounts[$i];
+                            ?>
+                        </p>
                     </a>
                 </div>
-            <?php endforeach; ?>
+            <?php endfor; ?>
         <?php else: ?>
             <div class="col-12 text-center">
                 <p class="text-primary">Non è stato trovato nessun lavoro.</p>

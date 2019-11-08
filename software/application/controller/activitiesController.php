@@ -25,6 +25,16 @@ class ActivitiesController extends Controller
             $activities = $baseAssignment->getActivitiesAssignedToResource($resource);
         }
 
+        $assignedResourcesCounts = [];
+        foreach ($activities as $activity) {
+
+            $baseAssignment = new Assignment();
+            $assignedResources = $baseAssignment->getResourcesAssignedToActivity($activity);
+            $resourcesNumber = count($assignedResources);
+            array_push($assignedResourcesCounts, $resourcesNumber);
+
+        }
+
         require "application/views/shared/header.php";
         require "application/views/activities/index.php";
         require "application/views/shared/footer.php";
