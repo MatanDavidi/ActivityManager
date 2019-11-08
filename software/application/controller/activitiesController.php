@@ -46,21 +46,54 @@ class ActivitiesController extends Controller
      */
     public function details(string $name)
     {
+        //If the user isn't logged in, redirect them to the homepage
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        //Decode the name passed as parameter (in case, for example, of values containing spaces)
         $name = urldecode($name);
+
+        //Get the data of the activity to display
         $activity = new Activity();
         $activity = $activity->getActivityByName($name);
+        //If it is null redirect the user to the list of activities
         if (is_null($activity)) {
             $this->redirect("activities");
         }
 
+        //Get the resource that corresponds to the one the user logged in with
+        $loginResource = new Resource();
+        $loginResource = $loginResource->getResourceByName($_SESSION["userName"]);
+
+        //Get the assigned resources
         $baseAssignment = new Assignment();
         $assignedResources = $baseAssignment->getResourcesAssignedToActivity($activity);
         $resourcesNumber = count($assignedResources);
 
+        //Variable that defines if the user that is currently logged in can view the details page or not.
+        //If the user is an administrator or they're assigned to the activity, they can view the page.
+        $canResourceView = ($loginResource->getRole() == "amministratore" ? true : false);
+
+        //To check that, loop all assigned resources and see if one of them is the same as the one that logged in
+        for ($i = 0; !$canResourceView && $i < count($assignedResources); ++$i) {
+            $assignedResource = $assignedResources[$i];
+            if ($assignedResource->equals($loginResource)) {
+                $canResourceView = true;
+            }
+        }
+
+        //If the user cannot view the page, redirect them to the activities list
+        if (!$canResourceView) {
+            $this->redirect("activities");
+        }
+
+        //Get the work hours assigned to this activity
         $baseWorkHours = new WorkHours();
         $assignedWorkHours = $baseWorkHours->getWorkHoursByActivity($activity);
         $workHoursCosts = [];
         $totalCost = 0.0;
+        //Loop through each of them to calculate the costs
         foreach ($assignedWorkHours as $workHour) {
 
             $resource = $workHour->getResource();
