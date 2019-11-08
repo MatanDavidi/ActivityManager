@@ -53,15 +53,19 @@ class Application
             require './application/controller/' . $this->url_controller . '.php';
             $this->url_controller = new $this->url_controller();
             if (method_exists($this->url_controller, $this->url_action)) {
-                if (isset($this->url_parameter_3)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2,
-                        $this->url_parameter_3);
-                } elseif (isset($this->url_parameter_2)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2);
-                } elseif (isset($this->url_parameter_1)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1);
-                } else {
-                    $this->url_controller->{$this->url_action}();
+                try {
+                    if (isset($this->url_parameter_3)) {
+                        $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2,
+                            $this->url_parameter_3);
+                    } elseif (isset($this->url_parameter_2)) {
+                        $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2);
+                    } elseif (isset($this->url_parameter_1)) {
+                        $this->url_controller->{$this->url_action}($this->url_parameter_1);
+                    } else {
+                        $this->url_controller->{$this->url_action}();
+                    }
+                } catch (ArgumentCountError $ace) {
+                    $this->url_controller->index();
                 }
             } else {
                 $this->url_controller->index();
