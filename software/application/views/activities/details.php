@@ -21,14 +21,37 @@
     </div>
     <div class="row border border-dark rounded p-3">
         <div class="col-12">
-            <h1 class="text-center">Lavoro 0</h1>
+            <h1 class="text-center"><?php echo $activity->getName() ?></h1>
+            <p class="text-center text-dark"><?php echo $activity->getNotes(); ?></p>
         </div>
         <div class="col-lg-4 col-xs-12 border border-info p-1 text-center">
-            <p>Data di inizio: dd.mm.yyyy</p>
-            <p>Data di consegna: dd.mm.yyyy</p>
-            <p>Ore di lavoro preventivate: xxx</p>
-            <p>Numero di risorse assegnate: xx</p>
-            <p>Costo complessivo: xxx.xx CHF</p>
+            <p>
+                Data di inizio:
+                <?php
+                $startDate = $activity->getStartDate();
+                echo $startDate->format("d.m.Y");
+                ?>
+            </p>
+            <p>
+                Data di consegna:
+                <?php
+                $deliveryDate = $activity->getDeliveryDate();
+                echo $deliveryDate->format("d.m.Y");
+                ?>
+            </p>
+            <p>
+                Ore di lavoro preventivate:
+                <?php echo $activity->getEstimatedHours(); ?>
+            </p>
+            <p>
+                Numero di risorse assegnate:
+                <?php
+                echo $resourcesNumber;
+                ?>
+            </p>
+            <p>
+                Costo complessivo: <?php echo $totalCost; ?> CHF
+            </p>
         </div>
         <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
             <a href="<?php echo URL . "assignments"; ?>"
@@ -51,12 +74,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Roberto Gervasoni</th>
-                    <td>25.03.2017</td>
-                    <td>8</td>
-                    <td>175.35 CHF</td>
-                </tr>
+                <?php for ($i = 0; $i < count($assignedWorkHours); ++$i): ?>
+                    <?php
+                    $workHours = $assignedWorkHours[$i];
+                    $workHoursCost = $workHoursCosts[$i];
+                    $resource = $workHours->getResource();
+                    $resourceName = $resource->getName();
+                    ?>
+                    <tr>
+                        <th scope="row">
+                            <a href="<?php echo URL . "resources/details/" . urlencode($resourceName); ?>">
+                                <?php
+                                echo $resourceName;
+                                ?>
+                            </a>
+                        </th>
+                        <td>
+                            <?php
+                            $date = $workHours->getDate();
+                            echo $date->format("d.m.Y");
+                            ?>
+                        </td>
+                        <td><?php echo $workHours->getHoursNumber(); ?></td>
+                        <td><?php echo $workHoursCost; ?> CHF</td>
+                    </tr>
+                <?php endfor; ?>
                 </tbody>
             </table>
         </div>
