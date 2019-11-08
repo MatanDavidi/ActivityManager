@@ -38,32 +38,37 @@ class HomeController extends Controller
 
         } else {
 
-            //Get the input data:
-            //Sanitizes and saves to a variable the username
-            $username = $this->sanitizeInput($_POST["nome"]);
-            //Sanitizes and saves to a variable the password
-            $password = $this->sanitizeInput($_POST["password"]);
-            //Create and empty resource to use its functions
-            $baseResource = new Resource();
-            //If the user exists
-            if ($baseResource->login($username, $password)) {
+            if (isset($_POST["nome"]) &&
+                isset($_POST["password"])) {
 
-                //Get all user's data
-                $user = $baseResource->getResourceByName($username);
-                //Add username and role to session
-                $_SESSION["userName"] = $username;
-                $_SESSION["userRole"] = $user->getRole();
+                //Get the input data:
+                //Sanitizes and saves to a variable the username
+                $username = $this->sanitizeInput($_POST["nome"]);
+                //Sanitizes and saves to a variable the password
+                $password = $this->sanitizeInput($_POST["password"]);
+                //Create and empty resource to use its functions
+                $baseResource = new Resource();
+                //If the user exists
+                if ($baseResource->login($username, $password)) {
 
-                //Redirect them to the activities' page
-                $this->redirect("activities");
+                    //Get all user's data
+                    $user = $baseResource->getResourceByName($username);
+                    //Add username and role to session
+                    $_SESSION["userName"] = $username;
+                    $_SESSION["userRole"] = $user->getRole();
 
-            } else {
+                    //Redirect them to the activities' page
+                    $this->redirect("activities");
 
-                //Bring them back to the login form and show an error message
-                $err_msg = "Il nome utente o la password inseriti non sono validi";
-                require "application/views/shared/header.php";
-                require "application/views/home/login.php";
-                require "application/views/shared/footer.php";
+                } else {
+
+                    //Bring them back to the login form and show an error message
+                    $err_msg = "Il nome utente o la password inseriti non sono validi";
+                    require "application/views/shared/header.php";
+                    require "application/views/home/login.php";
+                    require "application/views/shared/footer.php";
+
+                }
 
             }
 
@@ -71,6 +76,9 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * Logs out the user by destroying all data registered in the session. Afterwards, redirects them to the homepage.
+     */
     public function logout()
     {
 
