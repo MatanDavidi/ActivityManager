@@ -30,9 +30,18 @@ class ActivitiesController extends Controller
         require "application/views/shared/footer.php";
     }
 
-    public function details(string $nome)
+    /**
+     * Shows the activity's details page containing a single activity's details.
+     * @param string $name The name of the activity of which to show the details.
+     */
+    public function details(string $name)
     {
-
+        $name = urldecode($name);
+        $activity = new Activity();
+        $activity = $activity->getActivityByName($name);
+        if (is_null($activity)) {   
+            $this->redirect("activities");
+        }
         require "application/views/shared/header.php";
         require "application/views/activities/details.php";
         require "application/views/shared/footer.php";
