@@ -276,6 +276,62 @@ class WorkHours extends Model
     }
 
     /**
+     * Gets all hours during which any resource has worked on an activity.
+     * @param Activity $activity The activity for which to filter the work hours.
+     * @return array An array containing an object of type WorkHours for each row of table
+     * 'ore_lavoro' of the database whose activity corresponds to the one passed as parameter.
+     */
+    public function getWorkHoursByActivity(Activity $activity): array
+    {
+        //The array that will contain the values to return
+        $workHours = [];
+
+        //Check if the activity is valid
+        if ($activity->isValid()) {
+
+            //Get the activity's name
+            $activityName = $activity->getName();
+            //Write the query with which to read from the database
+            $query = "SELECT * FROM ore_lavoro WHERE nome_lavoro = :activity AND numero_ore";
+            //Prepare the statement
+            $statement = $this->database->prepare($query);
+            //Bind placeholder ':activity' to the name of the activity
+            $statement->bindParam(":activity", $activityName);
+            //If the statement's execution was successful
+            if ($statement->execute()) {
+
+                //Create an empty resource to use its functions
+                $baseResource = new Resource();
+                //Fetch all results of the statement's execution
+                $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+                //Loop through each result that was returned from the statement's execution
+                foreach ($results as $result) {
+
+                    //Get the resource assigned to the current work hours
+                    $resource = $baseResource->getResourceByName($result["nome_risorsa"]);
+                    //Create an object of type DateTime from the current work hours' date string
+                    $date = DateTime::createFromFormat("Y-m-d", $result["data"]);
+                    //Get the current work hours' hours number
+                    $hoursNumber = intval($result["numero_ore"]);
+
+                    //Create a new object of type WorkHours
+                    $workHoursResult = new WorkHours($activity, $resource, $date, $hoursNumber);
+
+                    //Add the object to the array
+                    array_push($workHours, $workHoursResult);
+
+                }
+
+            }
+
+        }
+
+        //Return the array
+        return $workHours;
+
+    }
+
+    /**
      * Inserts a new row into table 'ore_lavoro' of database with data passed as parameter.
      * @param WorkHours $workHours An object of type WorkHours that contains the data to add to the database.
      * @return bool true if the insert operation is successful, false otherwise.
