@@ -195,7 +195,7 @@ class WorkHours extends Model
      * the database whose activity and resource name correspond to the values of field 'name' of the parameters passed
      * to this function.
      */
-    public function getWorkHours(Activity $activity, Resource $resource): array
+    public function getWorkHoursOfResourceOnActivity(Activity $activity, Resource $resource): array
     {
         //The array that will contain the values to return
         $workHoursArray = [];
