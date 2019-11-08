@@ -17,7 +17,7 @@ class Application
             // remove the '/' character from the end of the string
             $url = rtrim($_GET['url'], '/');
             // remove any illegal characters from the string
-            $url = filter_var($url, FILTER_SANITIZE_URL);
+            // $url = filter_var($url, FILTER_SANITIZE_URL);
             //split an array based on character '/'
             $url = explode('/', $url);
 
