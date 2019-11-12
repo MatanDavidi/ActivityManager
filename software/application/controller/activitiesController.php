@@ -112,6 +112,14 @@ class ActivitiesController extends Controller
     public function new()
     {
 
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
+            $this->redirect("activities");
+        }
+
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             require "application/views/shared/header.php";
