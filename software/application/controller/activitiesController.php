@@ -146,10 +146,22 @@ class ActivitiesController extends Controller
                 //Create a new object of type Activity with the POST values
                 $activity = new Activity($name, $notes, $startDate, $deliveryDate, $hoursNumber);
 
-                //Add the activity to the database
-                $activity->addActivity($activity);
-                //Redirect to the list of activities
-                $this->redirect("activities");
+                //Add the activity to the database, if the operation is successful, redirect the user to the activities list, otherwise show them an error message
+                if ($activity->addActivity($activity)) {
+                    //Redirect to the list of activities
+                    $this->redirect("activities");
+                } else {
+
+                    $err_msg = "Impossibile aggiungere il lavoro specificato";
+                    require "application/views/shared/header.php";
+                    require "application/views/activities/new.php";
+                    require "application/views/shared/footer.php";
+
+                }
+
+            } else {
+
+                $this->redirect("activities", "new");
 
             }
 
