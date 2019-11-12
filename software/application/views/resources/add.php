@@ -42,6 +42,9 @@
                 </label>
             </div>
         </div>
+        <?php if (isset($err_msg)): ?>
+            <p class="text-danger font-weight-bolder"><?php echo $err_msg; ?></p>
+        <?php endif; ?>
         <div class="row col-12 mx-0 px-0 mt-5">
             <div class="col-xs-12 col-lg-6 px-0">
                 <a href="<?php echo URL . "resources"; ?>" class="btn btn-danger btn-block">
