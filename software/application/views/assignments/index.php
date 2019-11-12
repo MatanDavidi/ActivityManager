@@ -4,7 +4,9 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6">
                 <div class="breadcrumb_tittle">
-                    <p>Assegna una risorsa al lavoro 'Lavoro 0'</p>
+                    <p>
+                        Assegna una risorsa al lavoro '<?php echo $activity->getName(); ?>'
+                    </p>
                     <h2>Assegnazione</h2>
                 </div>
             </div>
@@ -14,11 +16,12 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <form action="<?php echo URL . "assignments/assign/"; ?>" method="post">
+    <form action="<?php echo URL . "assignments/assign/" . urlencode($activity->getName()); ?>" method="post">
         <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
             <select class="wide disabled" name="lavoro" id="lavoro" required>
-                <option value="Lavoro 0" selected>Lavoro 0</option>
+                <option value="<?php echo $activity->getName(); ?>"
+                        selected><?php echo $activity->getName(); ?></option>
             </select>
             <div class="error-container"></div>
         </div>
@@ -26,14 +29,19 @@
             <label for="risorsa">Risorsa:</label>
             <select class="wide" name="risorsa" id="risorsa">
                 <option value="">-- SCEGLI --</option>
-                <option value="Roberto Gervasoni">Roberto Gervasoni</option>
-                <option value="Franco Rezzonico">Franco Rezzonico</option>
+                <?php foreach ($resources as $resource): ?>
+                    <option value="<?php echo $resource->getName(); ?>"><?php echo $resource->getName(); ?></option>
+                <?php endforeach; ?>
             </select>
             <div class="error-container"></div>
         </div>
+        <?php if (isset($err_msg)): ?>
+            <p class="text-danger font-weight-bolder"><?php echo $err_msg; ?></p>
+        <?php endif; ?>
         <div class="row col-12 mx-0 px-0 mt-5">
             <div class="col-xs-12 col-lg-6 px-0">
-                <a href="<?php echo URL . "activities/dettagli/0"; ?>" class="btn btn-danger btn-block">
+                <a href="<?php echo URL . "activities/details/" . $activity->getName(); ?>"
+                   class="btn btn-danger btn-block">
                     <i class="ti-close"></i> ANNULLA
                 </a>
             </div>
