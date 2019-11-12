@@ -1,13 +1,26 @@
 <?php
 
 require_once "application/controller/controller.php";
+require_once "application/models/assignment.php";
 
 class ResourcesController extends Controller
 {
 
     public function index()
     {
+        if (!(isset($_SESSION["userRole"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
 
+        $baseResource = new Resource();
+
+        if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
+            $resources = $baseResource->getAllResources();
+        } else {
+            $resources = [$baseResource->getResourceByName($_SESSION["userName"])];
+        }
+
+        $resourcesCount = count($resources);
         require "application/views/shared/header.php";
         require "application/views/resources/index.php";
         require "application/views/shared/footer.php";
