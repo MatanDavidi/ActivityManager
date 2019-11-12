@@ -41,16 +41,19 @@ class AssignmentsController extends Controller
             require "application/views/shared/footer.php";
 
         } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+            //Check if a value for both the activity and the resource's names has been passed
             if (isset($_POST["lavoro"]) && isset($_POST["risorsa"])) {
-
+                //Check if the value that was passed for the activity's name is the same as the one passed as parameter
                 if ($_POST["lavoro"] === $activityName) {
 
+                    //Save the resource's name to a variable
                     $resourceName = $this->sanitizeInput($_POST["risorsa"]);
 
+                    //Get the activity and resource with the same name as the values passed from the form
                     $activity = $baseActivity->getActivityByName($activityName);
                     $resource = $baseResource->getResourceByName($resourceName);
 
+                    //If such an activity and resource exist, add a new assignment to the database
                     if (!is_null($activity) && !is_null($resource)) {
 
                         $assignment = new Assignment($activity, $resource);
@@ -66,6 +69,7 @@ class AssignmentsController extends Controller
 
             }
 
+            //If something went wrong, show the 'assignments/index' view with an error message
             $err_msg = "Impossibile assegnare la risorsa al lavoro";
             require "application/views/shared/header.php";
             require "application/views/assignments/index.php";
