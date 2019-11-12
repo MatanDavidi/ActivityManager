@@ -41,8 +41,8 @@
                         <p class="list-group-item">
                             Data di consegna:
                             <?php
-                            $startDate = $activity->getDeliveryDate();
-                            echo $startDate->format("d.m.Y");
+                            $deliveryDate = $activity->getDeliveryDate();
+                            echo $deliveryDate->format("d.m.Y");
                             ?>
                         </p>
                         <p class="list-group-item">
