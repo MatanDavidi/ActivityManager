@@ -32,13 +32,15 @@
                 Ruolo: <span class="text-danger">(obbligatorio se il campo 'password' è stato riempito)</span>
             </label>
             <div class="radio">
-                <label for="amministratore">
-                    <input type="radio" name="ruolo" id="amministratore" value="amministratore">Amministratore
+                <label for="<?php echo Resource::ADMINISTRATOR_ROLE; ?>">
+                    <input type="radio" name="ruolo" id="<?php echo Resource::ADMINISTRATOR_ROLE; ?>"
+                           value="<?php echo Resource::ADMINISTRATOR_ROLE; ?>">Amministratore
                 </label>
             </div>
             <div class="radio">
-                <label for="utente">
-                    <input type="radio" name="ruolo" id="utente" value="utente" checked>Utente
+                <label for="<?php echo Resource::USER_ROLE; ?>">
+                    <input type="radio" name="ruolo" id="<?php echo Resource::USER_ROLE; ?>"
+                           value="<?php echo Resource::USER_ROLE; ?>" checked>Utente
                 </label>
             </div>
         </div>
