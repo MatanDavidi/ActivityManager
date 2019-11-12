@@ -6,6 +6,9 @@ require_once "application/models/assignment.php";
 class ResourcesController extends Controller
 {
 
+    /**
+     * Shows view "Resources/index", with a list of all resources that the user has permission to see.
+     */
     public function index()
     {
 
@@ -32,6 +35,10 @@ class ResourcesController extends Controller
 
     }
 
+    /**
+     * Shows the resource's details page containing a single resource's details.
+     * @param string $name The name of the resource of which to show the details.
+     */
     public function details(string $name)
     {
 
@@ -76,6 +83,10 @@ class ResourcesController extends Controller
 
     }
 
+    /**
+     * Depending on the request method, either shows the page containing the form to add a new
+     * resource to the database (GET) or adds a resource to table 'risorsa' of the database (POST).
+     */
     public function add()
     {
 

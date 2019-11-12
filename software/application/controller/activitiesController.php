@@ -115,6 +115,10 @@ class ActivitiesController extends Controller
 
     }
 
+    /**
+     * Depending on the request method, either shows the page containing the form to add a new
+     * activity to the database (GET) or adds an activity to table 'lavoro' of the database (POST).
+     */
     public function new()
     {
 
