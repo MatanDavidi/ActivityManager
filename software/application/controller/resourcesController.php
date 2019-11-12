@@ -30,7 +30,39 @@ class ResourcesController extends Controller
     public function details(string $name)
     {
 
-        //TODO: Add database logic
+        //If the user isn't logged in, redirect them to the homepage
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        //Decode the name passed as parameter (in case, for example, of values containing spaces)
+        $name = urldecode($name);
+
+        //Get the data of the resource to display
+        $resource = new Resource();
+        $resource = $resource->getResourceByName($name);
+        //If it is null redirect the user to the list of activities
+        if (is_null($resource)) {
+            $this->redirect("resources");
+        }
+
+        //Get the resource that corresponds to the one the user logged in with
+        $loginResource = new Resource();
+        $loginResource = $loginResource->getResourceByName($_SESSION["userName"]);
+
+        //If the user that logged in is not an administrator and is not the resource
+        //of which they requested the details, they have no permission to view the
+        //page, so redirect them to the resources list
+        if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE && !$resource->equals($loginResource)) {
+
+            $this->redirect("resources");
+
+        }
+
+        $baseAssignment = new Assignment();
+        $assignedActivities = $baseAssignment->getActivitiesAssignedToResource($resource);
+        $assignedActivitiesCount = count($assignedActivities);
+
         require "application/views/shared/header.php";
         require "application/views/resources/details.php";
         require "application/views/shared/footer.php";
