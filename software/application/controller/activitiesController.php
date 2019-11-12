@@ -130,7 +130,6 @@ class ActivitiesController extends Controller
 
             //Check if the POST values are present
             if (isset($_POST["nome"]) &&
-                isset($_POST["note"]) &&
                 isset($_POST["data_inizio"]) &&
                 isset($_POST["data_consegna"]) &&
                 isset($_POST["ore"])) {
