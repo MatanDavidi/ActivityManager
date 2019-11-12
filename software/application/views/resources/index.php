@@ -26,20 +26,26 @@
         <?php endif; ?>
     </div>
     <div class="row">
-        <p class="text-info mt-auto">Numero di risorse registrate: xx</p>
+        <p class="text-info mt-auto">Numero di risorse registrate: <?php echo $resourcesCount; ?></p>
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "resources/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Roberto Gervasoni</p>
-                <p class="list-group-item">Costo all'ora: xxx.xx</p>
-            </a>
-        </div>
-        <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
-            <a href="<?php echo URL . "resources/details/0"; ?>">
-                <p class="list-group-item list-group-item-action">Franco Rezzonico</p>
-                <p class="list-group-item">Costo all'ora: xxx.xx</p>
-            </a>
-        </div>
+        <?php if (count($resources)): ?>
+            <?php foreach ($resources as $resource): ?>
+                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                    <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
+                        <p class="list-group-item list-group-item-action">
+                            <?php echo $resource->getName(); ?>
+                        </p>
+                        <p class="list-group-item">
+                            Costo all'ora: <?php echo $resource->getHourCost(); ?>
+                        </p>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="col-12 text-center">
+                <p class="text-primary">Non è stata trovata nessuna risorsa.</p>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
