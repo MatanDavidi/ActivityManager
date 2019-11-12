@@ -15,7 +15,7 @@ class ActivitiesController extends Controller
             $this->redirect("home");
         }
 
-        if ($_SESSION["userRole"] == "amministratore") {
+        if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
             $baseActivity = new Activity();
             $activities = $baseActivity->getAllActivities();
         } else {
@@ -73,7 +73,7 @@ class ActivitiesController extends Controller
 
         //Variable that defines if the user that is currently logged in can view the details page or not.
         //If the user is an administrator or they're assigned to the activity, they can view the page.
-        $canResourceView = ($loginResource->getRole() == "amministratore" ? true : false);
+        $canResourceView = ($loginResource->getRole() == Resource::ADMINISTRATOR_ROLE ? true : false);
 
         //To check that, loop all assigned resources and see if one of them is the same as the one that logged in
         for ($i = 0; !$canResourceView && $i < count($assignedResources); ++$i) {

@@ -25,16 +25,26 @@ class Resource extends Model
     private $role;
 
     /**
+     * The value for the admins' role in table 'risorsa' of the database.
+     */
+    public const ADMINISTRATOR_ROLE = "amministratore";
+
+    /**
+     * The value for the regular users' role in table 'risorsa' of the database.
+     */
+    public const USER_ROLE = "utente";
+
+    /**
      * The valid values that can be set to field role.
      */
-    private const ROLE_VALUES = ["amministratore", "utente"];
+    private const ROLE_VALUES = [self::ADMINISTRATOR_ROLE, self::USER_ROLE];
 
     /**
      * Resource constructor.
      * @param string $name The name of this resource.
      * @param float $hourCost The cost per hour of this resource.
      * @param string $password The password that this resource uses to login.
-     * @param string $role The role this resource has in the application.
+     * @param string $role The role this resource has in the application. The default value is "utente".
      */
     public function __construct(string $name = null, float $hourCost = null, string $password = null, string $role = self::ROLE_VALUES[1])
     {
