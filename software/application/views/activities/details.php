@@ -55,7 +55,7 @@
         </div>
         <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
             <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
-                <a href="<?php echo URL . "assignments"; ?>"
+                <a href="<?php echo URL . "assignments/assign/" . $activity->getName(); ?>"
                    class="btn btn-success btn-block">
                     <i class="ti-plus"></i> ASSEGNA RISORSA
                 </a>

@@ -14,7 +14,7 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <form action="<?php echo URL . "assignments/assegna"; ?>" method="post">
+    <form action="<?php echo URL . "assignments/assign/"; ?>" method="post">
         <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
             <select class="wide disabled" name="lavoro" id="lavoro" required>
