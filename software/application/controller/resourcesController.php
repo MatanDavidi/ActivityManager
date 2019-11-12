@@ -56,8 +56,37 @@ class ResourcesController extends Controller
 
         } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            //TODO: Add database logic
-            $this->redirect("resources");
+            //Check if the POST values are present
+            if (isset($_POST["nome"]) && isset($_POST["costo"])) {
+
+                //Save all POST values to their respective variable
+                $name = $this->sanitizeInput($_POST["nome"]);
+                $cost = floatval($_POST["costo"]);
+                $password = $this->sanitizeInput($_POST["password"]);
+                $role = $this->sanitizeInput($_POST["ruolo"]);
+
+                //Create a new object of type Resource with the POST values
+                $resource = new Resource($name, $cost, $password, $role);
+
+                //Add the resource to the database, if the operation is successful, redirect
+                //the user to the resources list, otherwise show them an error message
+                if ($resource->addResource($resource)) {
+                    //Redirect to the list of activities
+                    $this->redirect("resources");
+                } else {
+
+                    $err_msg = "Impossibile aggiungere la risorsa specificata";
+                    require "application/views/shared/header.php";
+                    require "application/views/resources/add.php";
+                    require "application/views/shared/footer.php";
+
+                }
+
+            } else {
+
+                $this->redirect("resources", "add");
+
+            }
 
         }
 
