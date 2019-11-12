@@ -141,7 +141,7 @@ class ActivitiesController extends Controller
                 $deliveryDate = $this->sanitizeInput($_POST["data_consegna"]);
                 $deliveryDate = DateTime::createFromFormat("Y-m-d", $deliveryDate);
                 $hoursNumber = intval($_POST["ore"]);
-                $notes = $this->sanitizeInput($_POST["note"]);
+                $notes = (isset($_POST["note"]) ? $this->sanitizeInput($_POST["note"]) : null);
 
                 //Create a new object of type Activity with the POST values
                 $activity = new Activity($name, $notes, $startDate, $deliveryDate, $hoursNumber);
