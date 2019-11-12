@@ -54,10 +54,12 @@
             </p>
         </div>
         <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
-            <a href="<?php echo URL . "assignments"; ?>"
-               class="btn btn-success btn-block">
-                <i class="ti-plus"></i> ASSEGNA RISORSA
-            </a>
+            <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
+                <a href="<?php echo URL . "assignments"; ?>"
+                   class="btn btn-success btn-block">
+                    <i class="ti-plus"></i> ASSEGNA RISORSA
+                </a>
+            <?php endif; ?>
             <a href="<?php echo URL . "workHours"; ?>"
                class="btn btn-success btn-block">
                 <i class="ti-time"></i> REGISTRA LAVORO
