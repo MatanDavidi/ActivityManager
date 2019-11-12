@@ -11,10 +11,13 @@ class ActivitiesController extends Controller
      */
     public function index()
     {
+        //If the user hasn't logged in, redirect them to the homepage
         if (!(isset($_SESSION["userRole"]) && isset($_SESSION["userRole"]))) {
             $this->redirect("home");
         }
 
+        //If the user has the role of administrator, show them all
+        //activities, otherwise show them only the ones they're assigned to
         if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
             $baseActivity = new Activity();
             $activities = $baseActivity->getAllActivities();
@@ -25,7 +28,10 @@ class ActivitiesController extends Controller
             $activities = $baseAssignment->getActivitiesAssignedToResource($resource);
         }
 
+        //Array that will contain all numbers of resources assigned to each
         $assignedResourcesCounts = [];
+        //Loop through the activities that will be shown and, for each
+        //of them, count the number of resources assigned to it
         foreach ($activities as $activity) {
 
             $baseAssignment = new Assignment();
@@ -112,10 +118,12 @@ class ActivitiesController extends Controller
     public function new()
     {
 
+        //If the user hasn't logged in, redirect them to the homepage
         if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
             $this->redirect("home");
         }
 
+        //If the user doesn't have the role of administrator, redirect them to the page containing the list of resources
         if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
             $this->redirect("activities");
         }

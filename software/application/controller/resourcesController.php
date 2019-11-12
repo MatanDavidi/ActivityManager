@@ -8,18 +8,23 @@ class ResourcesController extends Controller
 
     public function index()
     {
+
+        //If the user hasn't logged in, redirect them to the homepage
         if (!(isset($_SESSION["userRole"]) && isset($_SESSION["userRole"]))) {
             $this->redirect("home");
         }
 
+        //Create an empty object of type Resource to use its functions
         $baseResource = new Resource();
 
+        //If the user has the role of administrator, show them all resources, otherwise show them only themselves
         if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
             $resources = $baseResource->getAllResources();
         } else {
             $resources = [$baseResource->getResourceByName($_SESSION["userName"])];
         }
 
+        //Count the number of resources that will be shown
         $resourcesCount = count($resources);
         require "application/views/shared/header.php";
         require "application/views/resources/index.php";
@@ -59,8 +64,10 @@ class ResourcesController extends Controller
 
         }
 
+        //Get the activities to which this resource is assigned
         $baseAssignment = new Assignment();
         $assignedActivities = $baseAssignment->getActivitiesAssignedToResource($resource);
+        //Count the number of activities to which this resource is assigned
         $assignedActivitiesCount = count($assignedActivities);
 
         require "application/views/shared/header.php";
@@ -72,10 +79,12 @@ class ResourcesController extends Controller
     public function add()
     {
 
+        //If the user hasn't logged in, redirect them to the homepage
         if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
             $this->redirect("home");
         }
 
+        //If the user doesn't have the role of administrator, redirect them to the page containing the list of resources
         if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
             $this->redirect("resources");
         }
