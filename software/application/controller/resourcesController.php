@@ -40,6 +40,14 @@ class ResourcesController extends Controller
     public function add()
     {
 
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
+            $this->redirect("resources");
+        }
+
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
             require "application/views/shared/header.php";
