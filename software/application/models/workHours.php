@@ -409,7 +409,9 @@ class WorkHours extends Model
                 intval($this->hoursNumber) > 0 &&
                 $this->activity->equals($databaseActivity) &&
                 $this->resource->equals($databaseResource) &&
-                $baseAssignment->isAssigned($this->activity, $this->resource);
+                $baseAssignment->isAssigned($this->activity, $this->resource) &&
+                $this->date >= $databaseActivity->getStartDate() &&
+                $this->date <= $this->activity->getDeliveryDate();
 
         }
 
