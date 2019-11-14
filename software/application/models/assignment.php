@@ -185,8 +185,7 @@ class Assignment extends Model
      * "getResourceByName" or "getAllActivities" and "getAllResources".
      * @param Activity $activity The activity from which to take the name to check if it is associated to a resource.
      * @param Resource $resource The resource from which to take the name to check if it is associated to an activity.
-     * @return bool true if the two names are present on the same row in the table and if the values
-     * of the two objects' fields exist in the same row of their respective tables, false otherwise.
+     * @return bool true if the two names are present on the same row in the table, false otherwise.
      */
     public function isAssigned(Activity $activity, Resource $resource): bool
     {
@@ -202,34 +201,8 @@ class Assignment extends Model
             //Get row of table 'assegna' where resource is assigned to activity.
             $model = $this->getModelByKey([$activityName, $resourceName]);
 
-            $isAssigned = false;
-
-            //If a row has been returned
-            if ($model) {
-
-                //Get from the database the activity with the same name as activity->getName().
-                $databaseActivity = $activity->getActivityByName($activityName);
-
-                //If the values of its fields are the same as the ones of parameter activity
-                if ($activity->equals($databaseActivity)) {
-
-                    //Get from the database the resource with the same name as resource->getName().
-                    $databaseResource = $resource->getResourceByName($resourceName);
-
-                    //If the values of its fields are the same as the ones of parameter resource
-                    if ($resource->equals($databaseResource)) {
-
-                        //All values correspond and the resource is actually assigned to the activity
-                        $isAssigned = true;
-
-                    }
-
-                }
-
-            }
-
-            //If the parameters are equal to their respective database rows, that means the resource is assigned to the activity.
-            return $isAssigned;
+            //If a row has been returned, that means that the activity and resource exist on same row of table 'assegna'
+            return isset($model);
 
         }
 
