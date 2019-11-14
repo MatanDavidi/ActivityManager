@@ -13,21 +13,27 @@ class AssignmentsController extends Controller
      */
     public function assign(string $activityName)
     {
+        //Check if the user has logged in, otherwise send them back to homepage
         if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
             $this->redirect("home");
         }
 
+        //Check if the user has permission to view this page, otherwise send them back to the activity's details page
         if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
             $this->redirect("activities", "details", [$activityName]);
         }
 
+        //Decode the activity's name from the URL
         $activityName = urldecode($activityName);
 
+        //Create two empty objects of type Activity e Resource respectively
         $baseActivity = new Activity();
         $baseResource = new Resource();
 
+        //If the request method is get, show them the page, otherwise add an assignment to the database
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
+            //TODO: Add comments
             $activity = $baseActivity->getActivityByName($activityName);
 
             if (is_null($activity)) {
