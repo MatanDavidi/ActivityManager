@@ -5,7 +5,7 @@ require_once "application/controller/controller.php";
 class WorkHoursController extends Controller
 {
 
-    public function index()
+    public function register(string $activityName)
     {
 
         require "application/views/shared/header.php";
@@ -14,10 +14,8 @@ class WorkHoursController extends Controller
 
     }
 
-    public function register()
     {
 
-        $this->redirect("activities", "dettagli", Array(0));
 
     }
 
