@@ -65,15 +65,22 @@ class Application
                         $this->url_controller->{$this->url_action}();
                     }
                 } catch (ArgumentCountError $ace) {
-                    $this->url_controller->index();
+                    require "application/controller/errorCodeController.php";
+                    ErrorCodeController::error404();
                 }
             } else {
-                $this->url_controller->index();
+
+                if (strlen($this->url_action) == 0 && method_exists($this->url_controller, "index")) {
+                    $this->url_controller->index();
+                } else {
+                    require "application/controller/errorCodeController.php";
+                    ErrorCodeController::error404();
+                }
+
             }
         } else {
-            require './application/controller/homeController.php';
-            $home = new HomeController();
-            $home->index();
+            require "application/controller/errorCodeController.php";
+            ErrorCodeController::error404();
         }
     }
 }
