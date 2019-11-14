@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     const todayDate = new Date();
 
@@ -11,7 +11,10 @@ $(document).ready(function() {
         rules: {
             data: {
                 required: true,
-                max: todayDate.toISOString()
+                max: todayDate.toISOString(),
+                pattern: {
+                    param: /^\d{4}\-\d{1,2}\-\d{1,2}$/
+                }
             },
             numeroOre: {
                 required: true,
@@ -21,10 +24,13 @@ $(document).ready(function() {
         },
         messages: {
             data: {
+                date: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                dateISO: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                pattern: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
                 required: "Inserire una data valida",
                 max:
                     "La data di lavoro non può essere maggiore di quella di oggi. " +
-                    "Inserire un valore minore o uguale a " + todayDate.toLocaleDateString()
+                    "Inserire un valore minore o uguale a " + todayDate.toLocaleDateString(),
             }
             ,
             numeroOre: {
@@ -35,7 +41,7 @@ $(document).ready(function() {
         }
     });
 
-    form.on("submit", function() {
+    form.on("submit", function () {
 
         //The value of the activity is valid when it is equal to the value passed by
         // the controller, so it must not be changed from page loading to submit.
