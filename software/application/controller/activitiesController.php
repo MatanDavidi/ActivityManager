@@ -97,6 +97,7 @@ class ActivitiesController extends Controller
         //Get the work hours assigned to this activity
         $baseWorkHours = new WorkHours();
         $assignedWorkHours = $baseWorkHours->getWorkHoursByActivity($activity);
+        $totalWorkHours = 0;
         $workHoursCosts = [];
         $totalCost = 0.0;
         //Loop through each of them to calculate the costs
@@ -106,7 +107,14 @@ class ActivitiesController extends Controller
             $cost = ($resource->getHourCost() * $workHour->getHoursNumber());
             array_push($workHoursCosts, $cost);
             $totalCost += $cost;
+            $totalWorkHours += $workHour->getHoursNumber();
 
+        }
+
+        if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
+            $resources = $baseAssignment->getResourcesAssignedToActivity($activity);
+        } elseif ($_SESSION["userRole"] == Resource::USER_ROLE) {
+            $resources = [$loginResource->getResourceByName($_SESSION["userName"])];
         }
 
         require "application/views/shared/header.php";
