@@ -29,7 +29,7 @@
         <p class="text-info mt-auto">Numero di risorse registrate: <?php echo $resourcesCount; ?></p>
     </div>
     <div class="row border border-dark rounded pt-3 pb-3">
-        <?php if (count($resources)): ?>
+        <?php if (count($resources) > 0): ?>
             <?php foreach ($resources as $resource): ?>
                 <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
                     <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
