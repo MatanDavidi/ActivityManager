@@ -295,7 +295,7 @@ class WorkHours extends Model
             //Get the activity's name
             $activityName = $activity->getName();
             //Write the query with which to read from the database
-            $query = "SELECT * FROM ore_lavoro WHERE nome_lavoro = :activity AND numero_ore";
+            $query = "SELECT * FROM ore_lavoro WHERE nome_lavoro = :activity ORDER BY data, nome_risorsa";
             //Prepare the statement
             $statement = $this->database->prepare($query);
             //Bind placeholder ':activity' to the name of the activity
