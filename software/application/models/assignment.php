@@ -96,32 +96,36 @@ class Assignment extends Model
         //Initialize the returned array
         $assignments = [];
 
-        //Check if the resource is valid
-        if ($resource->isValid()) {
+        if (!is_null($this->database)) {
 
-            //Save to a variable the resource's name
-            $resourceName = $resource->getName();
-            //Write the query
-            $query = "SELECT nome_lavoro FROM assegna WHERE nome_risorsa = :resource";
-            //Prepare the query's statement
-            $statement = $this->database->prepare($query);
-            //Bind placeholder ":resource" to the resource's name
-            $statement->bindParam(":resource", $resourceName);
-            //If the statement's execution was successful
-            if ($statement->execute()) {
+            //Check if the resource is valid
+            if ($resource->isValid()) {
 
-                //Create empty activity to use its functions
-                $baseActivity = new Activity();
-                //Fetch the statement's execution's results
-                $results = $statement->fetchAll(PDO::FETCH_NUM);
+                //Save to a variable the resource's name
+                $resourceName = $resource->getName();
+                //Write the query
+                $query = "SELECT nome_lavoro FROM assegna WHERE nome_risorsa = :resource";
+                //Prepare the query's statement
+                $statement = $this->database->prepare($query);
+                //Bind placeholder ":resource" to the resource's name
+                $statement->bindParam(":resource", $resourceName);
+                //If the statement's execution was successful
+                if ($statement->execute()) {
 
-                //Loop through all results
-                foreach ($results as $result) {
+                    //Create empty activity to use its functions
+                    $baseActivity = new Activity();
+                    //Fetch the statement's execution's results
+                    $results = $statement->fetchAll(PDO::FETCH_NUM);
 
-                    //Get the activity with the same name as the current result
-                    $activity = $baseActivity->getActivityByName($result[0]);
-                    //Add the resource to the array
-                    array_push($assignments, $activity);
+                    //Loop through all results
+                    foreach ($results as $result) {
+
+                        //Get the activity with the same name as the current result
+                        $activity = $baseActivity->getActivityByName($result[0]);
+                        //Add the resource to the array
+                        array_push($assignments, $activity);
+
+                    }
 
                 }
 
@@ -142,33 +146,37 @@ class Assignment extends Model
         //Initialize the returned array
         $resources = [];
 
-        //Check if the activity is valid
-        if ($activity->isValid()) {
+        if (!is_null($this->database)) {
 
-            //Save to a variable the activity's name
-            $activityName = $activity->getName();
-            //Write the query
-            $query = "SELECT nome_risorsa FROM assegna WHERE nome_lavoro = :activity";
-            //Prepare the query's statement
-            $statement = $this->database->prepare($query);
-            //Bind placeholder ":activity" to the activity's name
-            $statement->bindParam(":activity", $activityName);
-            //If the statement's execution was successful
-            if ($statement->execute()) {
+            //Check if the activity is valid
+            if ($activity->isValid()) {
 
-                //Create empty resource to use its functions
-                $baseResource = new Resource();
-                //Fetch the statement's execution's results
-                $results = $statement->fetchAll(PDO::FETCH_NUM);
+                //Save to a variable the activity's name
+                $activityName = $activity->getName();
+                //Write the query
+                $query = "SELECT nome_risorsa FROM assegna WHERE nome_lavoro = :activity";
+                //Prepare the query's statement
+                $statement = $this->database->prepare($query);
+                //Bind placeholder ":activity" to the activity's name
+                $statement->bindParam(":activity", $activityName);
+                //If the statement's execution was successful
+                if ($statement->execute()) {
 
-                //Loop through all results
-                foreach ($results as $result) {
+                    //Create empty resource to use its functions
+                    $baseResource = new Resource();
+                    //Fetch the statement's execution's results
+                    $results = $statement->fetchAll(PDO::FETCH_NUM);
 
-                    //Get the resource with the same name as the current result
-                    $resource = $baseResource->getResourceByName($result[0]);
+                    //Loop through all results
+                    foreach ($results as $result) {
 
-                    //Add the resource to the array
-                    array_push($resources, $resource);
+                        //Get the resource with the same name as the current result
+                        $resource = $baseResource->getResourceByName($result[0]);
+
+                        //Add the resource to the array
+                        array_push($resources, $resource);
+
+                    }
 
                 }
 

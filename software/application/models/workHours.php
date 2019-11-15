@@ -140,7 +140,8 @@ class WorkHours extends Model
     public function getWorkHoursNumberByDate(Activity $activity, Resource $resource, DateTime $date): int
     {
         //Check if activity and resource are valid
-        if ($activity->isValid() &&
+        if (!is_null($this->database) &&
+            $activity->isValid() &&
             $resource->isValid()) {
 
             //Get the activity's name
@@ -201,7 +202,8 @@ class WorkHours extends Model
         $workHoursArray = [];
 
         //Check if activity and resource are valid
-        if ($activity->isValid() &&
+        if (!is_null($this->database) &&
+            $activity->isValid() &&
             $resource->isValid()) {
 
             //Get the activity's name
@@ -287,7 +289,8 @@ class WorkHours extends Model
         $workHours = [];
 
         //Check if the activity is valid
-        if ($activity->isValid()) {
+        if (!is_null($this->database) &&
+            $activity->isValid()) {
 
             //Get the activity's name
             $activityName = $activity->getName();
