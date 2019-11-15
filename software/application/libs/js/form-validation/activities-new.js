@@ -8,7 +8,7 @@ $(document).ready(function () {
                     param: 255
                 },
                 pattern: {
-                    param: /^[a-zàéèìòùäëïöüâêîôûßñç&@0-9,._' ]+$/i
+                    param: /^[a-zàéèìòùäëïöüâêîôûßñç&@0-9,.\-_' ]+$/i
                 }
             },
             data_inizio: {
