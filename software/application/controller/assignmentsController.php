@@ -33,15 +33,18 @@ class AssignmentsController extends Controller
         //If the request method is get, show them the page, otherwise add an assignment to the database
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
-            //TODO: Add comments
+            //Get the activity on which the resource has worked
             $activity = $baseActivity->getActivityByName($activityName);
 
+            //If there's no activity with that name, redirect the user to the list of activities
             if (is_null($activity)) {
                 $this->redirect("activities");
             }
 
+            //Get all resources to show them on the page
             $resources = $baseResource->getAllResources();
 
+            //Show the page
             require "application/views/shared/header.php";
             require "application/views/assignments/index.php";
             require "application/views/shared/footer.php";
@@ -65,6 +68,8 @@ class AssignmentsController extends Controller
                         $assignment = new Assignment($activity, $resource);
                         if ($assignment->addAssignment($assignment)) {
 
+                            //If the insertion was successful, redirect the user to the page containing the activity's
+                            //details
                             $this->redirect("activities", "details", [urlencode($activityName)]);
 
                         }
