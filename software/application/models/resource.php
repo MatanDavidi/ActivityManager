@@ -46,7 +46,7 @@ class Resource extends Model
      * @param string $password The password that this resource uses to login.
      * @param string $role The role this resource has in the application. The default value is "utente".
      */
-    public function __construct(string $name = null, float $hourCost = null, string $password = null, string $role = self::ROLE_VALUES[1])
+    public function __construct(string $name = null, float $hourCost = null, ?string $password = null, ?string $role = self::ROLE_VALUES[1])
     {
         parent::__construct("risorsa", ["nome"], ["nome", "costo_ora", "password", "ruolo"]);
         $this->name = $name;
