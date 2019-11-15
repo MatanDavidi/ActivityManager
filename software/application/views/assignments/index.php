@@ -19,7 +19,7 @@
     <form action="<?php echo URL . "assignments/assign/" . urlencode($activity->getName()); ?>" method="post">
         <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
-            <select class="wide disabled" name="lavoro" id="lavoro" required>
+            <select class="wide disabled" name="lavoro" id="lavoro" required disabled>
                 <option value="<?php echo $activity->getName(); ?>"
                         selected><?php echo $activity->getName(); ?></option>
             </select>
