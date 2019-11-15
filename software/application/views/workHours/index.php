@@ -19,7 +19,7 @@
     <form action="<?php echo URL . "workHours/register/" . urlencode($activity->getName()); ?>" method="post">
         <div id="lavoroSelect" class="form-group">
             <label for="lavoro">Lavoro:</label>
-            <select class="wide disabled" name="lavoro" id="lavoro" required disabled>
+            <select class="wide disabled" name="lavoro" id="lavoro" required readonly>
                 <option value="<?php echo $activity->getName() ?>" selected>
                     <?php echo $activity->getName(); ?>
                 </option>
@@ -37,7 +37,7 @@
                     id="risorsa"
                     required
                 <?php if ($_SESSION["userRole"] == Resource::USER_ROLE) {
-                    echo "disabled";
+                    echo "readonly";
                 } ?>>
                 <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
                     <option value="">--- SCEGLI ---</option>
