@@ -142,7 +142,7 @@
                 <?php else: ?>
                     <tr>
                         <th class="text-center" colspan="4">
-                            <p class="text-primary">Non è state trovata alcuna ore di lavoro.</p>
+                            <p class="text-primary">Non è state trovata alcuna ora di lavoro.</p>
                         </th>
                     </tr>
                 <?php endif; ?>
