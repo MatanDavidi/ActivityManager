@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" href="<?php echo URL; ?>">
-                        <img src="/application/libs/img/logo.png" alt="logo"/>
+                        <h4 class="text-light btn-link">Vai alla home</h4>
                     </a>
                     <button
                             class="navbar-toggler"
@@ -83,41 +83,38 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
                             id="navbarSupportedContent"
                     >
                         <ul class="navbar-nav align-items-center">
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo URL; ?>">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="services.html">services</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="blog.html">Blog</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a
-                                        class="nav-link dropdown-toggle"
-                                        href="blog.html"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                >
-                                    Pages
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="project.html">project</a>
-                                    <a class="dropdown-item" href="single-blog.html"
-                                    >Single blog</a
+                            <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
+                                <li class="list-item">
+                                    <a class="nav-link" href="<?php echo URL . "activities"; ?>">Lavori</a>
+                                </li>
+                                <li class="list-item">
+                                    <a class="nav-link" href="<?php echo URL . "resources"; ?>">Risorse</a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if (
+                                $_SERVER["REQUEST_URI"] !== "/home/login" &&
+                                $_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
+                                <li class="nav-item dropdown">
+                                    <a
+                                            class="nav-link dropdown-toggle"
+                                            id="navbarDropdown"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
                                     >
-                                    <a class="dropdown-item" href="elements.html">Elements</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
+                                        Gestione
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?php echo URL . "activities/new"; ?>">
+                                            Aggiungi un lavoro
+                                        </a>
+                                        <a class="dropdown-item" href="<?php echo URL . "resources/add"; ?>">
+                                            Registra una risorsa
+                                        </a>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
