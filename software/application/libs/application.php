@@ -15,9 +15,11 @@ class Application
         if (isset($_GET['url'])) {
 
             // remove the '/' character from the end of the string
-            $url = rtrim($_GET['url'], '/');
+            // $url = rtrim($_GET['url'], '/');
+            $url = trim($_SERVER["REQUEST_URI"], '/');
+            $url = trim($_SERVER["REQUEST_URI"], '/');
             // remove any illegal characters from the string
-            // $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = filter_var($url, FILTER_SANITIZE_URL);
             //split an array based on character '/'
             $url = explode('/', $url);
 
