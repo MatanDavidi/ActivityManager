@@ -71,7 +71,6 @@ class Application
                     ErrorCodeController::error404();
                 }
             } else {
-
                 if (strlen($this->url_action) == 0 && method_exists($this->url_controller, "index")) {
                     $this->url_controller->index();
                 } else {
@@ -81,8 +80,14 @@ class Application
 
             }
         } else {
-            require "application/controller/errorCodeController.php";
-            ErrorCodeController::error404();
+            if (strlen($this->url_controller) == 0) {
+                require "application/controller/homeController.php";
+                $homeController = new HomeController();
+                $homeController->index();
+            } else {
+                require "application/controller/errorCodeController.php";
+                ErrorCodeController::error404();
+            }
         }
     }
 }
