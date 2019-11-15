@@ -70,7 +70,7 @@
             </a>
         </div>
         <!-- Risorse assegnate-->
-        <div class="col-6 mt-3">
+        <div class="col-xs-12 col-lg-6 mt-lg-3 card">
             <table class="table table-responsive-sm">
                 <thead>
                 <tr>
@@ -103,7 +103,7 @@
             </table>
         </div>
         <!-- Ore di lavoro-->
-        <div class="col-6 mt-3">
+        <div class="col-xs-12 col-lg-6 mt-3 card">
             <table class="table table-responsive-sm">
                 <thead>
                 <tr>
