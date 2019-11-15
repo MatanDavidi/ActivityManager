@@ -5,7 +5,6 @@ $(document).ready(function () {
     let form = $("form");
 
     let selectIDs = ["#lavoro", "#risorsa"];
-    let validator = new SelectValidation(selectIDs);
 
     form.validate({
         rules: {
@@ -18,8 +17,7 @@ $(document).ready(function () {
             },
             numeroOre: {
                 required: true,
-                min:
-                    1
+                min: 1
             }
         },
         messages: {
@@ -40,6 +38,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    let validator = new SelectValidation(selectIDs);
 
     form.on("submit", function () {
 
