@@ -2,7 +2,7 @@
 <section class="breadcrumb breadcrumb_bg align-items-center">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="breadcrumb_tittle">
                     <p>
                         Assegna una risorsa al lavoro '<?php echo $activity->getName(); ?>'
