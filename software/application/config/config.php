@@ -17,7 +17,7 @@ ini_set("display_errors", 1);
 /**
  * Configurazione di : URL del progetto
  */
-define('URL', 'http://gestione-lavoro.com/');
+define('URL', 'https://www.gestione-lavoro.com/');
 
 define("DB_HOST", "127.0.0.1");
 define("DB_PORT", 3306);
