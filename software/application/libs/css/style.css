@@ -6631,3 +6631,11 @@ h6 {
   background-color: #f8f9fa;
 
 }
+
+/* Thanks to https://css-tricks.com/almanac/properties/t/text-overflow/ */
+.overflow-ellipse {
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}

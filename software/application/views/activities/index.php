@@ -30,7 +30,10 @@
                 <?php $activity = $activities[$i]; ?>
                 <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
                     <a href="<?php echo URL . "activities/details/" . urlencode($activity->getName()); ?>">
-                        <p class="list-group-item list-group-item-action">
+                        <p class="list-group-item list-group-item-action overflow-hidden overflow-ellipse"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="<?php echo $activity->getName(); ?>">
                             <?php echo $activity->getName(); ?>
                         </p>
                         <p class="list-group-item">
