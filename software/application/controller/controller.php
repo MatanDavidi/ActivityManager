@@ -29,8 +29,7 @@ class Controller
     }
 
     /**
-     * Sanitizes an input string by trimming its whitespaces, filtering it and
-     * encoding every character with ASCII code greater than 127 or less than 32.
+     * Sanitizes an input string by trimming its whitespaces, filtering it.
      * @param string $input The input string to be sanitized.
      * @return string The sanitized input string.
      */
