@@ -78,19 +78,23 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
                         <span class="ti-menu"></span>
                     </button>
 
-                    <div
-                            class="collapse navbar-collapse main-menu-item justify-content-center"
-                            id="navbarSupportedContent"
-                    >
+                    <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                         id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
-                            <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
-                                <li class="list-item">
+                            <li class="list-item">
+                                <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
                                     <a class="nav-link" href="<?php echo URL . "activities"; ?>">Lavori</a>
-                                </li>
-                                <li class="list-item">
+                                <?php else: ?>
+                                    <div class="invisible nav-link"></div>
+                                <?php endif; ?>
+                            </li>
+                            <li class="list-item">
+                                <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
                                     <a class="nav-link" href="<?php echo URL . "resources"; ?>">Risorse</a>
-                                </li>
-                            <?php endif; ?>
+                                <?php else: ?>
+                                    <div class="invisible nav-link"></div>
+                                <?php endif; ?>
+                            </li>
                             <?php if (
                                 $_SERVER["REQUEST_URI"] !== "/home/login" &&
                                 $_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
