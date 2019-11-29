@@ -71,83 +71,89 @@
         </div>
         <!-- Risorse assegnate-->
         <div class="col-xs-12 col-lg-6 mt-lg-3 card">
-            <table class="table table-responsive-sm">
-                <thead>
-                <tr>
-                    <th scope="col">Nome risorsa</th>
-                    <th scope="col">Costo all'ora</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php if (count($assignedResources) > 0): ?>
-                    <?php foreach ($assignedResources as $resource) : ?>
-                        <tr>
-                            <th scope="row">
-                                <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
-                                    <?php
-                                    echo $resource->getName();
-                                    ?>
-                                </a>
-                            </th>
-                            <td><?php echo $resource->getHourCost(); ?> CHF</td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
+            <div class="card-body">
+                <h4 class="card-title">Risorse assegnate</h4>
+                <table class="table table-responsive-sm">
+                    <thead>
                     <tr>
-                        <th class="text-center" colspan="4">
-                            <p class="text-primary">Non è stata trovata alcuna risorsa assegnata a questo lavoro.</p>
-                        </th>
+                        <th scope="col">Nome risorsa</th>
+                        <th scope="col">Costo all'ora</th>
                     </tr>
-                <?php endif; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php if (count($assignedResources) > 0): ?>
+                        <?php foreach ($assignedResources as $resource) : ?>
+                            <tr>
+                                <th scope="row">
+                                    <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
+                                        <?php
+                                        echo $resource->getName();
+                                        ?>
+                                    </a>
+                                </th>
+                                <td><?php echo $resource->getHourCost(); ?> CHF</td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <th class="text-center" colspan="4">
+                                <p class="text-primary">Non è stata trovata alcuna risorsa assegnata a questo lavoro.</p>
+                            </th>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- Ore di lavoro-->
         <div class="col-xs-12 col-lg-6 mt-3 card">
-            <table class="table table-responsive-sm">
-                <thead>
-                <tr>
-                    <th scope="col">Nome risorsa</th>
-                    <th scope="col">Data lavoro</th>
-                    <th scope="col">Ore lavoro</th>
-                    <th scope="col">Costo</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php if (count($assignedWorkHours) > 0): ?>
-                    <?php for ($i = 0; $i < count($assignedWorkHours); ++$i): ?>
-                        <?php
-                        $workHours = $assignedWorkHours[$i];
-                        $workHoursCost = $workHoursCosts[$i];
-                        $resource = $workHours->getResource();
-                        ?>
-                        <tr>
-                            <th scope="row">
-                                <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
-                                    <?php
-                                    echo $resource->getName();
-                                    ?>
-                                </a>
-                            </th>
-                            <td>
-                                <?php
-                                $date = $workHours->getDate();
-                                echo $date->format("d.m.Y");
-                                ?>
-                            </td>
-                            <td><?php echo $workHours->getHoursNumber(); ?></td>
-                            <td><?php echo $workHoursCost; ?> CHF</td>
-                        </tr>
-                    <?php endfor; ?>
-                <?php else: ?>
+            <div class="card-body">
+                <h4 class="card-title">Ore di lavoro registrate</h4>
+                <table class="table table-responsive-sm">
+                    <thead>
                     <tr>
-                        <th class="text-center" colspan="4">
-                            <p class="text-primary">Non è state trovata alcuna ora di lavoro.</p>
-                        </th>
+                        <th scope="col">Nome risorsa</th>
+                        <th scope="col">Data lavoro</th>
+                        <th scope="col">Ore lavoro</th>
+                        <th scope="col">Costo</th>
                     </tr>
-                <?php endif; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php if (count($assignedWorkHours) > 0): ?>
+                        <?php for ($i = 0; $i < count($assignedWorkHours); ++$i): ?>
+                            <?php
+                            $workHours = $assignedWorkHours[$i];
+                            $workHoursCost = $workHoursCosts[$i];
+                            $resource = $workHours->getResource();
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
+                                        <?php
+                                        echo $resource->getName();
+                                        ?>
+                                    </a>
+                                </th>
+                                <td>
+                                    <?php
+                                    $date = $workHours->getDate();
+                                    echo $date->format("d.m.Y");
+                                    ?>
+                                </td>
+                                <td><?php echo $workHours->getHoursNumber(); ?></td>
+                                <td><?php echo $workHoursCost; ?> CHF</td>
+                            </tr>
+                        <?php endfor; ?>
+                    <?php else: ?>
+                        <tr>
+                            <th class="text-center" colspan="4">
+                                <p class="text-primary">Non è state trovata alcuna ora di lavoro.</p>
+                            </th>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
