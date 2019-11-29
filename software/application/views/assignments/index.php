@@ -30,7 +30,9 @@
             <select class="wide" name="risorsa" id="risorsa">
                 <option value="">-- SCEGLI --</option>
                 <?php foreach ($resources as $resource): ?>
-                    <option value="<?php echo $resource->getName(); ?>"><?php echo $resource->getName(); ?></option>
+                    <?php if (!is_null($resource)): ?>
+                        <option value="<?php echo $resource->getName(); ?>"><?php echo $resource->getName(); ?></option>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </select>
             <div class="error-container"></div>
