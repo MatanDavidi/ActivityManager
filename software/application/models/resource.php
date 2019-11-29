@@ -123,8 +123,6 @@ class Resource extends Model
         //If a result has been returned
         if (isset($model)) {
 
-            //Assign to a variable the result's data
-
             //Return a new object of type Resource with the result's data
             $resource = new Resource($model["nome"], $model["costo_ora"], $model["password"], $model["ruolo"]);
             return $resource;
