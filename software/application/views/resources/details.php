@@ -29,7 +29,7 @@
         </div>
         <div class="col-12">
             <p class="text-info">
-                Costo all'ora: <?php echo $resource->getHourCost(); ?>
+                Costo all'ora: <?php echo number_format($resource->getHourCost(), 2); ?>
             </p>
             <p class="text-info">
                 Ruolo: <?php echo $resource->getRole(); ?>

@@ -54,7 +54,7 @@
                 ?>
             </p>
             <p>
-                Costo complessivo: <?php echo $totalCost; ?> CHF
+                Costo complessivo: <?php echo number_format($totalCost, 2); ?> CHF
             </p>
         </div>
         <div class="col-xs-12 col-lg-4 ml-auto mt-lg-auto mt-2">
@@ -91,7 +91,7 @@
                                         ?>
                                     </a>
                                 </th>
-                                <td><?php echo $resource->getHourCost(); ?> CHF</td>
+                                <td><?php echo number_format($resource->getHourCost(), 2); ?> CHF</td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -141,7 +141,7 @@
                                     ?>
                                 </td>
                                 <td><?php echo $workHours->getHoursNumber(); ?></td>
-                                <td><?php echo $workHoursCost; ?> CHF</td>
+                                <td><?php echo number_format($workHoursCost, 2); ?> CHF</td>
                             </tr>
                         <?php endfor; ?>
                     <?php else: ?>

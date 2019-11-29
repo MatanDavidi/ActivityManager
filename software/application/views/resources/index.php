@@ -40,7 +40,7 @@
                             <?php echo $resource->getName(); ?>
                         </p>
                         <p class="list-group-item">
-                            Costo all'ora: <?php echo $resource->getHourCost(); ?>
+                            Costo all'ora: <?php echo number_format($resource->getHourCost(), 2); ?>
                         </p>
                     </a>
                 </div>
