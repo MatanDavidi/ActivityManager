@@ -244,10 +244,6 @@ class Resource extends Model
                 ) ||
                 (
                     (
-                        is_null($this->password) ||
-                        strlen(trim($this->password)) == 0
-                    ) &&
-                    (
                         is_null($this->role) ||
                         strlen(trim($this->role)) == 0
                     )
