@@ -16,11 +16,11 @@
 <div class="container mt-5 mb-4">
     <div class="row">
         <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
-            <a href="<?php echo URL; ?>activities/new" class="col-sm-3 mb-2 btn btn-success">
+            <a href="<?php echo URL . "activities/new"; ?>" class="col-sm-3 mb-2 btn btn-success">
                 <i class="ti-plus"></i> NUOVO LAVORO
             </a>
         <?php endif; ?>
-        <a href="<?php echo URL; ?>resources" class="col-sm-3 mb-2 ml-auto btn btn-danger">
+        <a href="<?php echo URL . "resources"; ?>" class="col-sm-3 mb-2 ml-auto btn btn-danger">
             <i class="ti-user"></i> GESTISCI RISORSE
         </a>
     </div>
