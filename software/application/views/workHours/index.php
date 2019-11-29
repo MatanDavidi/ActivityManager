@@ -50,6 +50,7 @@
         <div class="form-group">
             <label for="data">Data:</label>
             <input class="form-control" type="date" name="data" id="data" required>
+            <p class="text-monospace">(<?php echo $activity->getStartDate()->format("d.m.Y"); ?> - <?php echo $activity->getDeliveryDate()->format("d.m.Y"); ?>)</p>
         </div>
         <div class="form-group">
             <label for="numeroOre">Numero di ore di lavoro:</label>
