@@ -6639,3 +6639,7 @@ h6 {
   white-space: nowrap;
 
 }
+
+.breadcrumb {
+  height: 250px;
+}
