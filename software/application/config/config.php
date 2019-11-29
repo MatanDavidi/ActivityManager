@@ -21,8 +21,8 @@ define('URL', 'https://www.gestione-lavoro.com/');
 
 define("DB_HOST", "127.0.0.1");
 define("DB_PORT", 3306);
-define("DB_USERNAME", "root");
-define("DB_PASSWORD", "");
+define("DB_USERNAME", "gestore");
+define("DB_PASSWORD", "gestore");
 define("DB_NAME", "gestione_lavoro");
 
 
