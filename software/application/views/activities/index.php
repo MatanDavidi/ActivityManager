@@ -31,7 +31,7 @@
         <?php if (count($activities) > 0): ?>
             <?php for ($i = 0; $i < count($activities); ++$i): ?>
                 <?php $activity = $activities[$i]; ?>
-                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12 mb-3">
                     <a href="<?php echo URL . "activities/details/" . urlencode($activity->getName()); ?>">
                         <p class="list-group-item list-group-item-action overflow-hidden overflow-ellipse"
                            data-toggle="tooltip"
