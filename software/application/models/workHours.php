@@ -348,7 +348,7 @@ class WorkHours extends Model
             //The month's format has to follow the format "YYYY-MM"
             if (preg_match("/^\d{4}\-\d{1,2}$/", $month)) {
                 //Write the query
-                $query = "SELECT * FROM ore_lavoro WHERE data LIKE '$month-%'";
+                $query = "SELECT * FROM ore_lavoro WHERE data LIKE '$month-%' ORDER BY data, nome_risorsa";
                 //Prepare the query
                 $statement = $this->database->prepare($query);
                 //If the statement could be executed
@@ -395,7 +395,7 @@ class WorkHours extends Model
             //Create the query
             $query =
                 "SELECT * FROM ore_lavoro " .
-                "WHERE nome_risorsa = :resource AND data = :date";
+                "WHERE nome_risorsa = :resource AND data = :date ORDER BY data, nome_risorsa";
 
             //Prepare the statement
             $statement = $this->database->prepare($query);
