@@ -36,7 +36,7 @@
     <div class="row border border-dark rounded pt-3 pb-3">
         <?php if (count($resources) > 0): ?>
             <?php foreach ($resources as $resource): ?>
-                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="activity-table col-xl-2 col-md-4 col-sm-6 col-xs-12 mb-3">
                     <a href="<?php echo URL . "resources/details/" . urlencode($resource->getName()); ?>">
                         <p class="list-group-item list-group-item-action overflow-hidden overflow-ellipse"
                            data-toggle="tooltip"
