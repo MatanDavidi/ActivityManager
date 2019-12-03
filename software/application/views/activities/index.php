@@ -19,6 +19,9 @@
             <a href="<?php echo URL . "activities/new"; ?>" class="col-sm-3 mb-2 btn btn-success">
                 <i class="ti-plus"></i> NUOVO LAVORO
             </a>
+            <a href="<?php echo URL . "workHours/monthlyReport"; ?>" class="col-sm-3 mb-2 ml-auto btn btn-info">
+                <i class="ti-archive"></i> RESOCONTO MENSILE
+            </a>
         <?php endif; ?>
         <a href="<?php echo URL . "resources"; ?>" class="col-sm-3 mb-2 ml-auto btn btn-danger">
             <i class="ti-user"></i> GESTISCI RISORSE

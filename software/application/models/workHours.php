@@ -335,6 +335,102 @@ class WorkHours extends Model
     }
 
     /**
+     * Gets a month's work hours by reading them from the database.
+     * @param string $month A string containing the month to request in the following format: "YYYY-MM". i. e. "2019-11".
+     * @return string A JSON encoded string containing the data of each work hour that was found for the specified month.
+     */
+    public function getWorkHoursByMonth(string $month): string
+    {
+        //Instantiate the array that will be turned into a JSON string and then returned
+        $workHoursReturn = [];
+        //Attempt a query only if a connection with the database can be established
+        if (!is_null($this->database)) {
+            //The month's format has to follow the format "YYYY-MM"
+            if (preg_match("/^\d{4}\-\d{1,2}$/", $month)) {
+                //Write the query
+                $query = "SELECT * FROM ore_lavoro WHERE data LIKE '$month-%'";
+                //Prepare the query
+                $statement = $this->database->prepare($query);
+                //If the statement could be executed
+                if ($statement->execute()) {
+                    //Fetch the query's results
+                    $workHoursArrays = $statement->fetchAll(PDO::FETCH_ASSOC);
+                    //Loop through each returned row
+                    foreach ($workHoursArrays as $workHoursArray) {
+                        $resource = new Resource();
+                        $resource = $resource->getResourceByName($workHoursArray["nome_risorsa"]);
+                        //Calculate the cost of the work hours
+                        $workHoursArray["costo"] = round($resource->getHourCost() * $workHoursArray["numero_ore"], 3);
+                        //Add the current work hours array to the global array (that will later be encoded into JSON)
+                        array_push($workHoursReturn, $workHoursArray);
+
+                    }
+                }
+            }
+        }
+        //Encode the global array to JSON and return the encoded string
+        return json_encode($workHoursReturn);
+    }
+
+    /**
+     * Get all work hours of a resource on a specific date.
+     * @param Resource $resource The resource of which to find the work hours.
+     * @param DateTime $date The date on which to find the work hours.
+     * @return string A JSON encoded string containing the data of each
+     * work hour that was found for the specified resource and date.
+     */
+    public function getWorkHoursByDate(Resource $resource, DateTime $date): string
+    {
+        //Instantiate the array that will be turned into a JSON string and then returned
+        $workHoursReturn = [];
+        //Attempt a query only if a connection with the database can be established and the resource is valid
+        if (!is_null($this->database) &&
+            $resource->isValid()) {
+
+            //Get the resource's name
+            $resourceName = $resource->getName();
+            //Format the DateTime object as a MySQL string
+            $dateString = $date->format("Y-m-d");
+
+            //Create the query
+            $query =
+                "SELECT * FROM ore_lavoro " .
+                "WHERE nome_risorsa = :resource AND data = :date";
+
+            //Prepare the statement
+            $statement = $this->database->prepare($query);
+
+            //Bind query placeholders to their respective values:
+            //Bind placeholder :resource to value of 'name' field of parameter 'resource'
+            $statement->bindParam(":resource", $resourceName);
+            //Bind placeholder :resource to MySQL-formatted value of parameter 'date'
+            $statement->bindParam(":date", $dateString);
+
+            //Execute the statement
+            if ($statement->execute()) {
+                $workHoursFetch = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                //Create an empty object of type Activity to use its functions
+                $baseActivity = new Activity();
+
+                //Loop through each returned row
+                foreach ($workHoursFetch as $workHour) {
+
+                    //Calculate and add to result the work hour's cost
+                    $workHour["costo"] = round($resource->getHourCost() * $workHour["numero_ore"], 3);
+                    //Add the current work hours array to the global array (that will later be encoded into JSON)
+                    array_push($workHoursReturn, $workHour);
+
+                }
+
+            }
+        }
+        //Encode the global array to JSON and return the encoded string
+        return json_encode($workHoursReturn);
+
+    }
+
+    /**
      * Inserts a new row into table 'ore_lavoro' of database with data passed as parameter.
      * @param WorkHours $workHours An object of type WorkHours that contains the data to add to the database.
      * @return bool true if the insert operation is successful, false otherwise.

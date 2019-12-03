@@ -149,4 +149,102 @@ class WorkHoursController extends Controller
 
     }
 
+    /**
+     * Depending on request method either shows the page with the monthly report
+     * form (GET) or gets the work hours of the specified month (POST).
+     */
+    public function monthlyReport()
+    {
+
+        //Check if the user has logged in, otherwise send him back to homepage
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        //If the user does not have the role of administrator, they do not have
+        //permission to view the page, redirect them to the activities list
+        if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
+            $this->redirect("activites");
+        }
+
+        //If the user has not submitted the form yet, show them the page
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+            require "application/views/shared/header.php";
+            require "application/views/workHours/monthlyReport.php";
+            require "application/views/shared/footer.php";
+
+        } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            //If the user has submitted the form, fetch the monthly report's data
+            $month = $this->sanitizeInput($_POST["mese"]);
+            $workHours = new WorkHours();
+            echo $workHours->getWorkHoursByMonth($month);
+
+        }
+
+    }
+
+    /**
+     *
+     */
+    public function dailyReport()
+    {
+
+        //Check if the user has logged in, otherwise send him back to homepage
+        if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
+            $this->redirect("home");
+        }
+
+        $baseResource = new Resource();
+
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+            $resources = [];
+            if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
+                $resources = $baseResource->getAllResources();
+            } else if ($_SESSION["userRole"] == Resource::USER_ROLE) {
+                $resources = [$baseResource->getResourceByName($_SESSION["userName"])];
+            }
+            require "application/views/shared/header.php";
+            require "application/views/workHours/dailyReport.php";
+            require "application/views/shared/footer.php";
+
+        } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            if (isset($_POST["risorsa"]) && isset($_POST["data"])) {
+
+                $resourceName = $this->sanitizeInput($_POST["risorsa"]);
+                if (strlen(trim($resourceName)) > 0) {
+                    $resourceName = urldecode($resourceName);
+                    $resource = $baseResource->getResourceByName($resourceName);
+                    $loginResource = $baseResource->getResourceByName($_SESSION["userName"]);
+                    if (!is_null($resource)) {
+                        if ($resource->equals($loginResource) ||
+                            $loginResource->getRole() == Resource::ADMINISTRATOR_ROLE) {
+                            $date = DateTime::createFromFormat("Y-m-d", $_POST["data"]);
+                            if ($date) {
+                                $baseWorkHours = new WorkHours();
+                                $workHoursReport = $baseWorkHours->getWorkHoursByDate($resource, $date);
+                                echo $workHoursReport;
+                            } else {
+                                echo "La data deve seguire il seguente formato: YYYY-mm-dd";
+                            }
+                        } else {
+                            echo "Non hai il permesso di visualizzare il resoconto giornaliero di questo collaboratore";
+                        }
+                    } else {
+                        echo "Impossibile trovare la risorsa specificata";
+                    }
+                } else {
+                    echo "Specificare una risorsa";
+                }
+
+            } else {
+                echo "Specificare una risorsa e una data per visualizzarne il resoconto";
+            }
+
+        }
+
+    }
+
 }

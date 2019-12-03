@@ -119,6 +119,29 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
                                     </div>
                                 </li>
                             <?php endif; ?>
+                            <li class="nav-item dropdown">
+                                <a
+                                        class="nav-link dropdown-toggle"
+                                        id="navbarDropdown"
+                                        role="button"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                >
+                                    Resoconto
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo URL . "workHours/dailyReport"; ?>">
+                                        Giornaliero
+                                    </a>
+                                    <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
+                                        <a class="dropdown-item"
+                                           href="<?php echo URL . "workHours/monthlyReport"; ?>">
+                                            Mensile
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>

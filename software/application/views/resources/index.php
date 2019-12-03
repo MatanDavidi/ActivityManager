@@ -18,6 +18,11 @@
         <a href="<?php echo URL; ?>activities" class="col-sm-3 mb-2 btn btn-info">
             <i class="ti-agenda"></i> GESTISCI LAVORI
         </a>
+        <a
+                href="<?php echo URL . "workHours/dailyReport"; ?>"
+                class="col-sm-3 mb-2 ml-auto btn btn-success">
+            <i class="ti-receipt"></i> RESOCONTO GIORNALIERO
+        </a>
         <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
             <a href="<?php echo URL; ?>resources/add"
                class="col-sm-3 ml-auto mb-2 btn btn-success">
