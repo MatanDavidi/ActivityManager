@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/application/libs/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="ActivityManager è una piattaforma che facilita la gestione delle ore di lavoro della tua azienda.">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/application/libs/css/bootstrap.min.css"/>
