@@ -16,9 +16,9 @@
 <!-- breadcrumb end-->
 
 <div class="container mt-5 mb-4">
-    <div class="row col-xs-12 col-lg-4 mb-1 ml-0">
-        <a href="<?php echo URL . "resources"; ?>" class="btn btn-danger btn-block">
-            <i class="ti-arrow-left"></i> TORNA ALLA LISTA DELLE RISORSE
+    <div class="row">
+        <a href="<?php echo URL . "resources"; ?>" class="col-sm-3 mb-2 btn btn-danger">
+            <i class="ti-arrow-left"></i> TORNA ALLE RISORSE
         </a>
     </div>
     <div class="row border border-dark rounded p-3">
