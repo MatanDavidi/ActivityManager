@@ -243,10 +243,10 @@ class Resource extends Model
                     in_array($this->role, self::ROLE_VALUES)
                 ) ||
                 (
-                    (
-                        is_null($this->role) ||
-                        strlen(trim($this->role)) == 0
-                    )
+                (
+                    is_null($this->role) ||
+                    strlen(trim($this->role)) == 0
+                )
                 )
             );
 
