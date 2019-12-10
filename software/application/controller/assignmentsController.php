@@ -33,21 +33,7 @@ class AssignmentsController extends Controller
         //If the request method is get, show them the page, otherwise add an assignment to the database
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
-            //Get the activity on which the resource has worked
-            $activity = $baseActivity->getActivityByName($activityName);
-
-            //If there's no activity with that name, redirect the user to the list of activities
-            if (is_null($activity)) {
-                $this->redirect("activities");
-            }
-
-            //Get all resources to show them on the page
-            $resources = $baseResource->getAllResources();
-
-            //Show the page
-            require "application/views/shared/header.php";
-            require "application/views/assignments/index.php";
-            require "application/views/shared/footer.php";
+            $this->showIndexView($activityName);
 
         } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //Check if a value for both the activity and the resource's names has been passed
@@ -81,13 +67,33 @@ class AssignmentsController extends Controller
             }
 
             //If something went wrong, show the 'assignments/index' view with an error message
-            $err_msg = "Impossibile assegnare la risorsa al lavoro";
-            require "application/views/shared/header.php";
-            require "application/views/assignments/index.php";
-            require "application/views/shared/footer.php";
+            $this->showIndexView($activityName, "Impossibile assegnare la risorsa al lavoro");
 
         }
 
+    }
+
+    private function showIndexView(string $activityName, $err_msg = "")
+    {
+        //Create two empty objects of type Activity e Resource respectively
+        $baseActivity = new Activity();
+        $baseResource = new Resource();
+
+        //Get the activity on which the resource has worked
+        $activity = $baseActivity->getActivityByName($activityName);
+
+        //If there's no activity with that name, redirect the user to the list of activities
+        if (is_null($activity)) {
+            $this->redirect("activities");
+        }
+
+        //Get all resources to show them on the page
+        $resources = $baseResource->getAllResources();
+
+        //Show the page
+        require "application/views/shared/header.php";
+        require "application/views/assignments/index.php";
+        require "application/views/shared/footer.php";
     }
 
 }
