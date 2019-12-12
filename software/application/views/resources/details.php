@@ -32,7 +32,7 @@
                 Costo all'ora: <?php echo number_format($resource->getHourCost(), 2); ?>
             </p>
             <p class="text-info">
-                Ruolo: <?php echo $resource->getRole(); ?>
+                Ruolo: <?php echo(strlen($resource->getRole()) > 0 ? $resource->getRole() : "risorsa"); ?>
             </p>
             <p class="text-info">
                 Numero di lavori assegnati: <?php echo $assignedActivitiesCount; ?>
