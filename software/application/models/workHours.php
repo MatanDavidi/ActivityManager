@@ -130,65 +130,6 @@ class WorkHours extends Model
     }
 
     /**
-     * Gets the combined total number of hours during which a given resource has worked on an activity on a given date.
-     * @param Activity $activity The activity on which the resource has worked.
-     * @param Resource $resource The resource that worked on the activity.
-     * @param DateTime $date The date on which the work took place.
-     * @return int The total number of hours during which the resource worked
-     * on the activity on the given date, or 0 if no work hours were found.
-     */
-    public function getWorkHoursNumberByDate(Activity $activity, Resource $resource, DateTime $date): int
-    {
-        //Check if activity and resource are valid
-        if (!is_null($this->database) &&
-            $activity->isValid() &&
-            $resource->isValid()) {
-
-            //Get the activity's name
-            $activityName = $activity->getName();
-            //Get the resource's name
-            $resourceName = $resource->getName();
-            //Format the DateTime object as a MySQL string
-            $dateString = $date->format("Y-m-d");
-
-            //Create the query
-            $query =
-                "SELECT SUM(numero_ore) FROM ore_lavoro " .
-                "WHERE nome_lavoro = :activity AND nome_risorsa = :resource AND data = :date";
-
-            //Prepare the statement
-            $statement = $this->database->prepare($query);
-
-            //Bind query placeholders to their respective values:
-            //Bind placeholder :activity to value of 'name' field of parameter 'activity'
-            $statement->bindParam(":activity", $activityName);
-            //Bind placeholder :resource to value of 'name' field of parameter 'resource'
-            $statement->bindParam(":resource", $resourceName);
-            //Bind placeholder :resource to MySQL-formatted value of parameter 'date'
-            $statement->bindParam(":date", $dateString);
-
-            //Execute the statement
-            if ($statement->execute()) {
-
-                //Fetch the statement's results
-                $workHoursSum = $statement->fetch(PDO::FETCH_NUM);
-
-                //If a row has been returned
-                if ($workHoursSum) {
-
-                    return intval($workHoursSum[0]);
-
-                }
-
-            }
-
-        }
-
-        return 0;
-
-    }
-
-    /**
      * Gets all work hours, with date and number of hours, of a single resource on a single activity.
      * @param Activity $activity The activity on which the resource has worked.
      * @param Resource $resource The resource that worked on the activity.
