@@ -47,5 +47,5 @@
 </div>
 
 <script src="/application/libs/js/additional-methods.min.js"></script>
-<script src="/application/libs/js/form-validation/workHours-monthlyReport.js"></script>
 <script src="/application/libs/js/custom/workHours-monthlyReport.js"></script>
+<script src="/application/libs/js/form-validation/workHours-monthlyReport.js"></script>

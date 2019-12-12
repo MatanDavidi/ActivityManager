@@ -67,6 +67,6 @@
 </div>
 
 <script src="/application/libs/js/additional-methods.min.js"></script>
+<script src="/application/libs/js/custom/workHours-dailyReport.js"></script>
 <script src="/application/libs/js/form-validation/select-validation.js"></script>
 <script src="/application/libs/js/form-validation/workHours-dailyReport.js"></script>
-<script src="/application/libs/js/custom/workHours-dailyReport.js"></script>
