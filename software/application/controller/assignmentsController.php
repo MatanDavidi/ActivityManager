@@ -73,6 +73,11 @@ class AssignmentsController extends Controller
 
     }
 
+    /**
+     * Shows view "assignments/index" with the chance to show an error message.
+     * @param string $activityName The name of the activity to which to assign.
+     * @param string $err_msg The error message to show. Default value is an empty string.
+     */
     private function showIndexView(string $activityName, $err_msg = "")
     {
         //Create two empty objects of type Activity e Resource respectively

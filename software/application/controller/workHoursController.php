@@ -185,7 +185,8 @@ class WorkHoursController extends Controller
     }
 
     /**
-     *
+     * Depending on request method either shows the page with the daily report form (GET)
+     * or gets the work hours of the specified resource for the specified date (POST).
      */
     public function dailyReport()
     {
@@ -195,35 +196,52 @@ class WorkHoursController extends Controller
             $this->redirect("home");
         }
 
+        //Create an empty object of type resource to use its functions
         $baseResource = new Resource();
 
+        //If the request method is GET show the form
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
+            //Get the resource to show in the form's select input
             $resources = [];
+            //If the user is an administrator, allow them to choose to see the report for every resource
             if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE) {
                 $resources = $baseResource->getAllResources();
             } else if ($_SESSION["userRole"] == Resource::USER_ROLE) {
+                //Otherwise if the user is a regular user, allow them to only see their own report
                 $resources = [$baseResource->getResourceByName($_SESSION["userName"])];
             }
+            //Show the page
             require "application/views/shared/header.php";
             require "application/views/workHours/dailyReport.php";
             require "application/views/shared/footer.php";
 
         } else if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+            //Otherwise if the request method is POST get and print the resource's work hours for the given date
+            //Check if the correct data was passed
             if (isset($_POST["risorsa"]) && isset($_POST["data"])) {
 
+                //Sanitize the resource's name and save it to a variable
                 $resourceName = $this->sanitizeInput($_POST["risorsa"]);
+                //Check if the resource's name isn't made up of only white space
                 if (strlen(trim($resourceName)) > 0) {
                     $resourceName = urldecode($resourceName);
+                    //Get the resource of which to get the report
                     $resource = $baseResource->getResourceByName($resourceName);
+                    //Get the resource that logged in
                     $loginResource = $baseResource->getResourceByName($_SESSION["userName"]);
+                    //If a resource with the given name exists, go on
                     if (!is_null($resource)) {
+                        //If the user has permission to view the report (either they are the resource
+                        //of which they requested the report or they have the role of administrator), go on
                         if ($resource->equals($loginResource) ||
                             $loginResource->getRole() == Resource::ADMINISTRATOR_ROLE) {
+                            //If the date is in the correct format
                             $date = DateTime::createFromFormat("Y-m-d", $_POST["data"]);
                             if ($date) {
+                                //Create an empty object of type WorkHours
                                 $baseWorkHours = new WorkHours();
+                                //Get work hours of specified resource on given date
                                 $workHoursReport = $baseWorkHours->getWorkHoursByDate($resource, $date);
                                 echo $workHoursReport;
                             } else {
