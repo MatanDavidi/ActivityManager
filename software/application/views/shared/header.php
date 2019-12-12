@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
                         </ul>
                     </div>
                     <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
-                        <div class="d-none d-lg-block">
+                        <div class="d-lg-block">
                             <a class="btn btn-danger" href="<?php echo URL . "home/logout"; ?>">LOGOUT</a>
                         </div>
                     <?php endif; ?>
