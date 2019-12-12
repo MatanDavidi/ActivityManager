@@ -225,7 +225,6 @@ class WorkHoursController extends Controller
                 $resourceName = $this->sanitizeInput($_POST["risorsa"]);
                 //Check if the resource's name isn't made up of only white space
                 if (strlen(trim($resourceName)) > 0) {
-                    $resourceName = urldecode($resourceName);
                     //Get the resource of which to get the report
                     $resource = $baseResource->getResourceByName($resourceName);
                     //Get the resource that logged in
