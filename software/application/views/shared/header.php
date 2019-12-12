@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/application/libs/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="ActivityManager è una piattaforma che facilita la gestione delle ore di lavoro della tua azienda.">
+    <meta name="description"
+          content="ActivityManager è una piattaforma che facilita la gestione delle ore di lavoro della tua azienda.">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/application/libs/css/bootstrap.min.css"/>
@@ -120,29 +121,32 @@ if ($_SERVER["REQUEST_URI"] !== "/home/login") {
                                     </div>
                                 </li>
                             <?php endif; ?>
-                            <li class="nav-item dropdown">
-                                <a
-                                        class="nav-link dropdown-toggle"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                >
-                                    Resoconto
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo URL . "workHours/dailyReport"; ?>">
-                                        Giornaliero
+                            <?php if (isset($_SESSION["userName"]) &&
+                                isset($_SESSION["userRole"])): ?>
+                                <li class="nav-item dropdown">
+                                    <a
+                                            class="nav-link dropdown-toggle"
+                                            id="navbarDropdown"
+                                            role="button"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                    >
+                                        Resoconto
                                     </a>
-                                    <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
-                                        <a class="dropdown-item"
-                                           href="<?php echo URL . "workHours/monthlyReport"; ?>">
-                                            Mensile
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?php echo URL . "workHours/dailyReport"; ?>">
+                                            Giornaliero
                                         </a>
-                                    <?php endif; ?>
-                                </div>
-                            </li>
+                                        <?php if ($_SESSION["userRole"] == Resource::ADMINISTRATOR_ROLE): ?>
+                                            <a class="dropdown-item"
+                                               href="<?php echo URL . "workHours/monthlyReport"; ?>">
+                                                Mensile
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <?php if ($_SERVER["REQUEST_URI"] !== "/home/login"): ?>
