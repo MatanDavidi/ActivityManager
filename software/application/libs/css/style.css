@@ -6623,6 +6623,12 @@ h6 {
 
 /*# sourceMappingURL=../css/style.map */
 
+.activity-table p {
+
+  border: 1px solid;
+
+}
+
 .activity-table:hover p {
 
   z-index: 1;
