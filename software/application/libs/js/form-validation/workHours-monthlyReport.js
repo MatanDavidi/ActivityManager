@@ -10,8 +10,13 @@ $(document).ready(function () {
         },
         messages: {
             mese: {
-                required: "Inserire un mese di cui ottenere il resoconto delle ore di lavoro",
-                pattern: "Il mese deve seguire questo formato: YYYY-MM"
+                date: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                dateISO: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                pattern: "Inserire un mese valido nel seguente formato: YYYY-mm",
+                required: "Inserire un mese di cui ottenere il resoconto delle ore di lavoro"
+            },
+            risorsa: {
+                required: "Selezionare una risorsa"
             }
         }
     });

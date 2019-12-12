@@ -15,15 +15,20 @@ $(document).ready(function () {
         },
         messages: {
             data: {
-                required: "Inserire una data di cui ottenere il resoconto delle ore di lavoro",
-                pattern: "La data deve seguire questo formato: YYYY-MM-DD"
+                date: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                dateISO: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                pattern: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
+                required: "Inserire una data di cui ottenere il resoconto delle ore di lavoro"
+            },
+            risorsa: {
+                required: "Selezionare una risorsa"
             }
         }
     });
 
     let validator = new SelectValidation(selectIDs);
 
-    form.on("submit", function() {
+    form.on("submit", function () {
 
         // Boolean variable that indicates if the value that will be passed for the registration
         // is contained within the original options defined after loading the page.
