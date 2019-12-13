@@ -7,6 +7,9 @@ $(document).ready(function () {
                 required: true,
                 maxlength: {
                     param: 255
+                },
+                pattern: {
+                    param: /^[a-zàéèìòùäëïöüâêîôûßñç&@0-9,.\-_' ]+$/i
                 }
             },
             costo: {
@@ -26,7 +29,8 @@ $(document).ready(function () {
         messages: {
             nome: {
                 required: "Inserire un nome valido",
-                maxlength: "Inserire un nome più corto di 256 caratteri"
+                maxlength: "Inserire un nome più corto di 256 caratteri",
+                pattern: "Il nome inserito contiene caratteri non validi"
             },
             costo: {
                 required: "Inserire un costo valido",
