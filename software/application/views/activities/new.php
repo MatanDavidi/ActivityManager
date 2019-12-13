@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <label for="note">Note: </label>
-            <textarea class="form-control" name="note" id="note" cols="30" rows="10"></textarea>
+            <textarea class="form-control" name="note" id="note" cols="30" rows="6"></textarea>
         </div>
         <?php if (isset($err_msg)): ?>
             <p class="text-danger font-weight-bolder"><?php echo $err_msg; ?></p>
