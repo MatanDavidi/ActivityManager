@@ -28,7 +28,7 @@
             <input class="form-control" type="date" name="data_consegna" id="data_consegna" required>
         </div>
         <div class="form-group">
-            <label for="ore">Numero di ore preventivato: <span class="text-danger">*</span></label>
+            <label for="ore">Numero di ore preventivate: <span class="text-danger">*</span></label>
             <input class="form-control" type="number" name="ore" id="ore" min="1" required>
         </div>
         <div class="form-group">
