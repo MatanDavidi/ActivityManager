@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_URI"] !== "/home/login") {
+    require_once "application/models/resource.php";
     if (!(isset($_SESSION["userName"]) && isset($_SESSION["userRole"]))) {
         header("Location: " . URL . "home");
         die();
