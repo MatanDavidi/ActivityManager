@@ -4,12 +4,17 @@ $(document).ready(function () {
 
     let selectIDs = ["#risorsa"];
 
+    let todayDate = new Date();
+
     form.validate({
         rules: {
             data: {
                 required: true,
                 pattern: {
                     param: /^\d{4}\-\d{1,2}\-\d{1,2}$/
+                },
+                max: {
+                    param: todayDate.toISOString()
                 }
             }
         },
@@ -18,7 +23,9 @@ $(document).ready(function () {
                 date: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
                 dateISO: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
                 pattern: "Inserire una data valida nel seguente formato: YYYY-mm-dd",
-                required: "Inserire una data di cui ottenere il resoconto delle ore di lavoro"
+                required: "Inserire una data di cui ottenere il resoconto delle ore di lavoro",
+                max: "La data di lavoro non può essere maggiore di quella di oggi. " +
+                    "Inserire un valore minore o uguale a " + todayDate.toLocaleDateString()
             },
             risorsa: {
                 required: "Selezionare una risorsa"
