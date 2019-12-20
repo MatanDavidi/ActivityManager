@@ -164,7 +164,7 @@ class WorkHoursController extends Controller
         //If the user does not have the role of administrator, they do not have
         //permission to view the page, redirect them to the activities list
         if ($_SESSION["userRole"] != Resource::ADMINISTRATOR_ROLE) {
-            $this->redirect("activites");
+            $this->redirect("activities");
         }
 
         //If the user has not submitted the form yet, show them the page
